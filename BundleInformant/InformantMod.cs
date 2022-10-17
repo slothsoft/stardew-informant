@@ -53,12 +53,12 @@ public class InformantMod : Mod {
         );
     }
 
-    private static void DrawToolTip(SpriteBatch b, ref string hoverText, string hoverTitle, Item hoveredItem,
+    private static void DrawToolTip(SpriteBatch b, ref string hoverText, string hoverTitle, Item? hoveredItem,
         bool heldItem = false, int healAmountToDisplay = -1, int currencySymbol = 0, int extraItemToShowIndex = -1,
         int extraItemToShowAmount = -1, CraftingRecipe? craftingIngredients = null,
         int moneyAmountToShowAtBottom = -1) {
 
-        if (_lastToolTipCoordinates == null) {
+        if (_lastToolTipCoordinates == null || hoveredItem == null) {
             return;
         }
         
