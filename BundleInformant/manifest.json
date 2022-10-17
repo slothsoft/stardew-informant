@@ -1,0 +1,12 @@
+{
+  "Name": "Bundle Informant",
+  "Author": "Slothsoft",
+  "Version": "0.1.0",
+  "Description": "Displays a little marker next to items that are relevant for the community center bundles.",
+  "UniqueID": "Slothsoft.BundleInformant",
+  "EntryDll": "BundleInformant.dll",
+  "MinimumApiVersion": "3.16.1",
+  "UpdateKeys": [
+    "Github:slothsoft/stardew-informant"
+  ]
+}
