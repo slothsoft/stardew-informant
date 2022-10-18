@@ -10,28 +10,28 @@ using Rectangle = Microsoft.Xna.Framework.Rectangle;
 namespace Slothsoft.BundleInformant;
 
 // ReSharper disable once ClassNeverInstantiated.Global
-public class InformantMod : Mod {
-    public static InformantMod Instance = null!;
+// ReSharper disable UnusedType.Global
+public class BundleInformantMod : Mod {
 
-    private static Texture2D _bundle;
+    private Harmony? _harmony;
+    
+    private static Texture2D? _bundle;
     private static Rectangle? _lastToolTipCoordinates;
 
     /// <summary>The mod entry point, called after the mod is first loaded.</summary>
     /// <param name="modHelper">Provides simplified APIs for writing mods.</param>
     public override void Entry(IModHelper modHelper) {
-        Instance = this;
-
         _bundle = modHelper.ModContent.Load<Texture2D>("assets/bundle.png");
 
-        var harmony = new Harmony(ModManifest.UniqueID);
-        harmony.Patch(
+        _harmony = new Harmony(ModManifest.UniqueID);
+        _harmony.Patch(
             original: AccessTools.Method(
                 typeof(IClickableMenu),
                 nameof(IClickableMenu.drawToolTip)
             ),
-            postfix: new HarmonyMethod(typeof(InformantMod), nameof(DrawToolTip))
+            postfix: new HarmonyMethod(typeof(BundleInformantMod), nameof(DrawToolTip))
         );
-        harmony.Patch(
+        _harmony.Patch(
             original: AccessTools.Method(
                 typeof(IClickableMenu),
                 nameof(IClickableMenu.drawTextureBox),
@@ -49,7 +49,7 @@ public class InformantMod : Mod {
                     typeof(float)
                 }
             ),
-            postfix: new HarmonyMethod(typeof(InformantMod), nameof(RememberToolTipCoordinates))
+            postfix: new HarmonyMethod(typeof(BundleInformantMod), nameof(RememberToolTipCoordinates))
         );
     }
 
@@ -58,7 +58,7 @@ public class InformantMod : Mod {
         int extraItemToShowAmount = -1, CraftingRecipe? craftingIngredients = null,
         int moneyAmountToShowAtBottom = -1) {
 
-        if (_lastToolTipCoordinates == null || hoveredItem == null) {
+        if (_lastToolTipCoordinates == null || hoveredItem == null || _bundle == null) {
             return;
         }
         
@@ -110,5 +110,11 @@ public class InformantMod : Mod {
     private static void RememberToolTipCoordinates(SpriteBatch b, Texture2D texture, Rectangle sourceRect, int x, int y,
         int width, int height, Color color, float scale = 1f, bool drawShadow = true, float draw_layer = -1f) {
         _lastToolTipCoordinates = new Rectangle(x, y, width, height);
+    }
+
+    protected override void Dispose(bool disposing) {
+        base.Dispose(disposing);
+        _harmony?.UnpatchAll(ModManifest.UniqueID);
+        _harmony = null;
     }
 }

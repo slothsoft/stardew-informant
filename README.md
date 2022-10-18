@@ -18,13 +18,7 @@ A mod for [Stardew Valley](https://www.stardewvalley.net/) that displays additio
   - [Prerequisites](#prerequisites)
   - [Installing](#installing)
   - [Using the Mod](#using-the-mod)
-    - [No Challenge](#no-challenge)
-    - [Brewery](#brewery)
-    - [Hermit](#hermit)
-    - [No Capitalist](#no-capitalist)
-    - [Vinyard](#vinyard)
   - [Versions](#versions)
-- **[Translator Guide](#translator-guide)**
 - **[Developer Notes](#developer-notes)**
 - **[License](#license)**
 
@@ -47,8 +41,8 @@ You need **[SMAPI](https://smapi.io/)** to run any kind of mods. And of course y
 
 ### Using the Mod
 
-The mod is automatically present in the game. You will get an mail with the **Magical Challenge Object**™ 
-the next time you wake up:
+The mod is automatically present in the game. 
+You just need to move the mouse over the object you wish to get the information from.
 
 
 
