@@ -8,10 +8,9 @@ _A Mod for Stardew Valley_
 - **Repository:** <https://github.com/slothsoft/stardew-informant>
 - **Open Issues:** <https://github.com/slothsoft/stardew-informant/issues>
 
-A mod for [Stardew Valley](https://www.stardewvalley.net/) that displays a little marker next to items that are relevant for the
-community center bundles.
+A mod for [Stardew Valley](https://www.stardewvalley.net/) that displays additional information.
 
-<img alt="Screenshot" src="readme/screenshot.png" width="200"/>
+<img alt="Screenshot" src="readme/screenshot.png" width="300"/>
 
 **Content of this Read Me:**
 
@@ -50,6 +49,17 @@ You need **[SMAPI](https://smapi.io/)** to run any kind of mods. And of course y
 
 The mod is automatically present in the game. You will get an mail with the **Magical Challenge Object**™ 
 the next time you wake up:
+
+
+
+### Versions
+
+| Version | Issues | Changes          |
+|---------|--------|------------------|
+| 0.2.0   | -      | Crop Informant   |
+| 0.1.0   | -      | Bundle Informant |
+
+_(All issues can be found [here](https://github.com/slothsoft/stardew-challenger/issues).)_
 
 
 

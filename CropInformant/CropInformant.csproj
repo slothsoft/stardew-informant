@@ -1,0 +1,8 @@
+<Project>
+
+    <PropertyGroup>
+        <RootNamespace>Slothsoft.CropInformant</RootNamespace>
+    </PropertyGroup>
+
+    <Import Project="..\build\common.targets" />
+</Project>
