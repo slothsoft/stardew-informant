@@ -55,11 +55,8 @@ public class CropInformantMod : Mod {
 
     private string CreateHoverText(Crop crop) {
         var displayName = GetDisplayName(crop.indexOfHarvest.Value);
-        var daysLeft = CalculateDaysLeft(crop);
-        var daysLeftString = daysLeft == 1
-            ? Helper.Translation.Get("1DayLeft")
-            : Helper.Translation.Get("XDaysLeft", new {X = daysLeft});
-        return $"{displayName}\n{daysLeftString}";
+        var daysLeft = CalculateDaysLeftString(crop);
+        return $"{displayName}\n{daysLeft}";
     }
 
     private static string GetDisplayName(int parentSheetIndex) {
@@ -67,6 +64,18 @@ public class CropInformantMod : Mod {
         if (string.IsNullOrEmpty(str))
             return "???";
         return str.Split('/')[4];
+    }
+
+    private string CalculateDaysLeftString(Crop crop) {
+        if (crop.dead.Value) {
+            return Helper.Translation.Get("Dead");
+        }
+        
+        var daysLeft = CalculateDaysLeft(crop);
+        var daysLeftString = daysLeft == 1
+            ? Helper.Translation.Get("1DayLeft")
+            : Helper.Translation.Get("XDaysLeft", new {X = daysLeft});
+        return daysLeftString;
     }
 
     private static int CalculateDaysLeft(Crop crop) {
@@ -79,6 +88,8 @@ public class CropInformantMod : Mod {
         // Fairy Rose:  current = 4 | day = 1 | days = 1, 4, 4, 3, 99999 | result => 0
         // Cranberry:  current = 5 | day = 4 | days = 1, 2, 1, 1, 2, 99999 | result => ???
         // Ancient Fruit: current = 5 | day = 4 | days = 1 5 5 6 4 99999 | result => 4
+        // Blueberry (harvested): current = 5 | day = 4 | days = 1 3 3 4 2 99999 | regrowAfterHarvest = 4 | result => 4
+        // Blueberry (harvested): current = 5 | day = 0 | days = 1 3 3 4 2 99999 | regrowAfterHarvest = 4 | result => 0
         var result = 0;
         for (var phase = currentPhase; phase < cropPhaseDays.Length; phase++) {
             if (cropPhaseDays[phase] < 99999) {
@@ -86,9 +97,9 @@ public class CropInformantMod : Mod {
                 if (phase == currentPhase) {
                     result -= dayOfCurrentPhase;
                 }
-            } else if (regrowAfterHarvest > 0) {
-                // calculate the repeating harvests
-                result += regrowAfterHarvest - dayOfCurrentPhase;
+            } else if (currentPhase == cropPhaseDays.Length -1 && regrowAfterHarvest > 0) {
+                // calculate the repeating harvests, it seems the dayOfCurrentPhase counts backwards now
+                result = dayOfCurrentPhase;
             }
         }
         return result;

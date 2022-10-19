@@ -1,4 +1,5 @@
 ﻿{
   "1DayLeft" : "1 day left",
-  "XDaysLeft" : "{{X}} days left"
+  "XDaysLeft" : "{{X}} days left",
+  "Dead" : "Dead"
 }
