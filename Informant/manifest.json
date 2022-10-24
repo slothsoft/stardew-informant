@@ -1,8 +1,8 @@
 {
   "Name": "Informant",
   "Author": "Slothsoft",
-  "Version": "0.2.0",
-  "Description": "Displays various information about objects in the game.",
+  "Version": "0.3.0",
+  "Description": "Displays additional information on various objects.",
   "UniqueID": "Slothsoft.Informant",
   "EntryDll": "Informant.dll",
   "MinimumApiVersion": "3.16.1",
