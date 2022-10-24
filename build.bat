@@ -8,8 +8,7 @@ rmdir "%cd%\bin" /s /q
 mkdir "%cd%\bin"
 
 Rem Build all the projects
-CALL :CreateZip BundleInformant %~1
-CALL :CreateZip CropInformant %~1
+CALL :CreateZip Informant %~1
 
 %SystemRoot%\explorer.exe "%cd%\bin"
 EXIT /B %ERRORLEVEL%

@@ -1,0 +1,21 @@
+﻿{
+  "BundleTooltipDecorator" : "Bundles",
+  
+  "CropTooltipGenerator" : "Crops",
+  "CropTooltipGenerator.1DayLeft" : "1 day left",
+  "CropTooltipGenerator.XDaysLeft" : "{{X}} days left",
+  "CropTooltipGenerator.Dead" : "Dead",
+
+  "FruitTreeTooltipGenerator" : "Fruit Trees",
+
+  "MachineTooltipGenerator" : "Machines",
+  
+  "TreeTooltipGenerator" : "Trees",
+  "TreeTooltipGenerator.Type1" : "Oak Tree",
+  "TreeTooltipGenerator.Type2" : "Maple Tree",
+  "TreeTooltipGenerator.Type3" : "Pine Tree",
+  "TreeTooltipGenerator.Type6" : "Palm Tree",
+  "TreeTooltipGenerator.Type7" : "Mushroom Tree",
+  "TreeTooltipGenerator.Type8" : "Mahogany Tree",
+  "TreeTooltipGenerator.Type9" : "Palm Tree"
+}
