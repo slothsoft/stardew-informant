@@ -6,6 +6,8 @@
 
   "FruitTreeTooltipGenerator" : "Fruchtbäume",
   
+  "MachineTooltipGenerator" : "Machinen",
+  
   "TreeTooltipGenerator" : "Bäume",
   "TreeTooltipGenerator.Type1" : "Eiche",
   "TreeTooltipGenerator.Type2" : "Ahornbaum",

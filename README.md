@@ -9,8 +9,8 @@ _A Mod for Stardew Valley_
 - **Open Issues:** <https://github.com/slothsoft/stardew-informant/issues>
 
 A mod for [Stardew Valley](https://www.stardewvalley.net/) that displays additional information on various objects.
-It marks inventory items that are still necessary for the bundle and calculates how many days are still left until the
-harvest.
+It marks inventory items that are still necessary for the bundle, calculates how many days are still left until the
+harvest and displays what is in a machine and how much time is left on it.
 
 <img alt="Screenshot" src="readme/screenshot.png" width="600"/>
 
@@ -50,12 +50,12 @@ You just need to move the mouse over the object you wish to get the information 
 
 ### Versions
 
-| Version | Issues                                                                         | Changes          |
-|---------|--------------------------------------------------------------------------------|------------------|
-| Future  | [Issues](https://github.com/slothsoft/stardew-informant/milestone/1)          |                  |
-| 0.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/2?closed=1) | Strutured PoC    |
-| 0.2.0   | -                                                                              | Crop Informant   |
-| 0.1.0   | -                                                                              | Bundle Informant |
+| Version | Issues                                                                          | Changes          |
+|---------|---------------------------------------------------------------------------------|------------------|
+| Future  | [Issues](https://github.com/slothsoft/stardew-informant/milestone/1)            |                  |
+| 0.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/2?closed=1)   | Strutured PoC    |
+| 0.2.0   | -                                                                               | Crop Informant   |
+| 0.1.0   | -                                                                               | Bundle Informant |
 
 _(All issues can be found [here](https://github.com/slothsoft/stardew-informant/issues).)_
 

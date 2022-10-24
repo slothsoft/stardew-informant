@@ -10,10 +10,11 @@ using StardewValley.TerrainFeatures;
 
 namespace Slothsoft.Informant.Implementation; 
 
-internal class TooltipInformant : ITooltipInformant<TerrainFeature> {
+internal class TooltipInformant : ITooltipInformant<TerrainFeature>, ITooltipInformant<SObject> {
 
     private readonly IModHelper _modHelper;
     private BaseTooltipInformant<TerrainFeature>? _terrainFeatureInformant;
+    private BaseTooltipInformant<SObject>? _objectInformant;
     
     private Tooltip? _tooltip;
         
@@ -24,14 +25,20 @@ internal class TooltipInformant : ITooltipInformant<TerrainFeature> {
         modHelper.Events.Display.Rendered += OnRendered;
     }
     
-    public IEnumerable<string> GeneratorIds => _terrainFeatureInformant?.GeneratorIds ?? Enumerable.Empty<string>();
+    public IEnumerable<string> GeneratorIds {
+        get {
+            var result = _terrainFeatureInformant?.GeneratorIds ?? Enumerable.Empty<string>();
+            result = result.Concat(_objectInformant?.GeneratorIds ?? Enumerable.Empty<string>());
+            return result;
+        }
+    }
 
     private void OnUpdateTicked(object? sender, UpdateTickedEventArgs e2) {
         if (!Context.IsPlayerFree) {
             return;
         }
-
-        _tooltip = GenerateTerrainFeatureTooltip();
+        _tooltip = GenerateObjectTooltip();
+        _tooltip ??= GenerateTerrainFeatureTooltip();
     }
 
     private Tooltip? GenerateTerrainFeatureTooltip() {
@@ -46,6 +53,22 @@ internal class TooltipInformant : ITooltipInformant<TerrainFeature> {
         return _terrainFeatureInformant.Generate(
             Game1.currentLocation.terrainFeatures.Values
                 .Where(t => mousePosX == (int) t.currentTileLocation.X && mousePosY == (int) t.currentTileLocation.Y)
+                .ToArray()
+        ).SingleOrDefault();
+    }
+    
+    private Tooltip? GenerateObjectTooltip() {
+        if (_objectInformant == null) {
+            // if there is no generator in that, we don't need to do anything further
+            return null;
+        }
+        
+        var mousePosX = (Game1.getOldMouseX() + Game1.viewport.X) / Game1.tileSize;
+        var mousePosY = (Game1.getOldMouseY() + Game1.viewport.Y) / Game1.tileSize;
+
+        return _objectInformant.Generate(
+            Game1.currentLocation.netObjects.Values
+                .Where(t => mousePosX == (int) t.TileLocation.X && mousePosY == (int) t.TileLocation.Y)
                 .ToArray()
         ).SingleOrDefault();
     }
@@ -89,5 +112,11 @@ internal class TooltipInformant : ITooltipInformant<TerrainFeature> {
 
     public void Remove(string generatorId) {
         _terrainFeatureInformant?.Remove(generatorId);
+        _objectInformant?.Remove(generatorId);
+    }
+    
+    public void Add(ITooltipGenerator<SObject> generator) {
+        _objectInformant ??= new BaseTooltipInformant<SObject>();
+        _objectInformant.Add(generator);
     }
 }

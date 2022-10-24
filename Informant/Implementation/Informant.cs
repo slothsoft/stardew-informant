@@ -1,10 +1,4 @@
-﻿using System;
-using System.Linq;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Slothsoft.Informant.Api;
-using StardewModdingAPI.Events;
-using StardewValley.Menus;
+﻿using Slothsoft.Informant.Api;
 using StardewValley.TerrainFeatures;
 
 namespace Slothsoft.Informant.Implementation; 
@@ -16,6 +10,13 @@ internal class Informant : IInformant {
     private TooltipInformant? _terrainFeatureInformant;
     
     public ITooltipInformant<TerrainFeature> TerrainFeatureInformant {
+        get {
+            _terrainFeatureInformant ??= new TooltipInformant(_modHelper);
+            return _terrainFeatureInformant;
+        }
+    }
+    
+    public ITooltipInformant<SObject> ObjectInformant {
         get {
             _terrainFeatureInformant ??= new TooltipInformant(_modHelper);
             return _terrainFeatureInformant;
