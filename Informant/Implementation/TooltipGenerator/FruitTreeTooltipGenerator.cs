@@ -1,4 +1,5 @@
 ﻿using Slothsoft.Informant.Api;
+using Slothsoft.Informant.Implementation.Common;
 using StardewValley.TerrainFeatures;
 
 namespace Slothsoft.Informant.Implementation.TooltipGenerator;
@@ -20,16 +21,9 @@ internal class FruitTreeTooltipGenerator : ITooltipGenerator<TerrainFeature> {
     }
 
     private string CreateText(FruitTree fruitTree) {
-        var displayName = GetDisplayName(fruitTree.indexOfFruit.Value);
+        var displayName = GameInformation.GetObjectDisplayName(fruitTree.indexOfFruit.Value);
         var daysLeft = CalculateDaysLeftString(fruitTree);
         return $"{displayName}\n{daysLeft}";
-    }
-
-    private static string GetDisplayName(int parentSheetIndex) {
-        Game1.objectInformation.TryGetValue(parentSheetIndex, out var str);
-        if (string.IsNullOrEmpty(str))
-            return "???";
-        return str.Split('/')[4];
     }
 
     private string CalculateDaysLeftString(FruitTree fruitTree) {

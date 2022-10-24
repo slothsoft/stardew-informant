@@ -10,6 +10,7 @@ public class InformantMod : Mod {
     /// <param name="modHelper">Provides simplified APIs for writing mods.</param>
     public override void Entry(IModHelper modHelper) {
         var informant = new Implementation.Informant(modHelper);
+        informant.TerrainFeatureInformant.Add(new CropTooltipGenerator(modHelper));
         informant.TerrainFeatureInformant.Add(new FruitTreeTooltipGenerator(modHelper));
     }
 
