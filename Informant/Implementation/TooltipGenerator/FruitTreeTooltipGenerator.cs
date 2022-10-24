@@ -32,7 +32,7 @@ internal class FruitTreeTooltipGenerator : ITooltipGenerator<TerrainFeature> {
 
     private string CalculateDaysLeftString(FruitTree fruitTree) {
         var daysLeft = fruitTree.daysUntilMature.Value;
-        if (daysLeft == 0) {
+        if (daysLeft <= 0) {
             // if mature, 0 days are left if there are fruits on the tree, else 1 day
             daysLeft = fruitTree.fruitsOnTree.Value <= 0 ? 1 : 0;
         }

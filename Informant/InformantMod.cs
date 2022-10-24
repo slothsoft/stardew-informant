@@ -12,6 +12,7 @@ public class InformantMod : Mod {
         var informant = new Implementation.Informant(modHelper);
         informant.TerrainFeatureInformant.Add(new CropTooltipGenerator(modHelper));
         informant.TerrainFeatureInformant.Add(new FruitTreeTooltipGenerator(modHelper));
+        informant.TerrainFeatureInformant.Add(new TreeTooltipGenerator(modHelper));
     }
 
 }

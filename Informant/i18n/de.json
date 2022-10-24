@@ -4,5 +4,14 @@
   "CropTooltipGenerator.XDaysLeft" : "Noch {{X}} Tage",
   "CropTooltipGenerator.Dead" : "Tot",
 
-  "FruitTreeTooltipGenerator" : "Fruchtbäume"
+  "FruitTreeTooltipGenerator" : "Fruchtbäume",
+  
+  "TreeTooltipGenerator" : "Bäume",
+  "TreeTooltipGenerator.Type1" : "Eiche",
+  "TreeTooltipGenerator.Type2" : "Ahornbaum",
+  "TreeTooltipGenerator.Type3" : "Kiefer",
+  "TreeTooltipGenerator.Type6" : "Palme",
+  "TreeTooltipGenerator.Type7" : "Pilzbaum",
+  "TreeTooltipGenerator.Type8" : "Mahagoni-Baum",
+  "TreeTooltipGenerator.Type9" : "Palme"
 }
