@@ -12,7 +12,11 @@ internal class CropTooltipGenerator : ITooltipGenerator<TerrainFeature> {
     public CropTooltipGenerator(IModHelper modHelper) {
         _modHelper = modHelper;
     }
+
+    public string DisplayName => _modHelper.Translation.Get("CropTooltipGenerator");
     
+    public string Id => "crop";
+
     public bool HasTooltip(TerrainFeature input) {
         return input is HoeDirt {crop: { }};
     }

@@ -12,6 +12,10 @@ internal class FruitTreeTooltipGenerator : ITooltipGenerator<TerrainFeature> {
         _modHelper = modHelper;
     }
     
+    public string DisplayName => _modHelper.Translation.Get("FruitTreeTooltipGenerator");
+    
+    public string Id => "fruit-tree";
+    
     public bool HasTooltip(TerrainFeature input) {
         return input is FruitTree;
     }
