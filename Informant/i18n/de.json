@@ -1,0 +1,5 @@
+﻿{
+  "CropTooltipGenerator.1DayLeft" : "Noch 1 Tag",
+  "CropTooltipGenerator.XDaysLeft" : "Noch {{X}} Tage",
+  "CropTooltipGenerator.Dead" : "Tot" 
+}
