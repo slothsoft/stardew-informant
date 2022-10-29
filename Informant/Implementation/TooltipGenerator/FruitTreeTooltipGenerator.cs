@@ -47,8 +47,9 @@ internal class FruitTreeTooltipGenerator : ITooltipGenerator<TerrainFeature> {
         }
         if (daysLeft > 0) {
             // check that the date we are calculating is in the correct season   
-            var futureDay = (Game1.dayOfMonth + daysLeft) % Seasons.LengthInDays;
+            var futureDay = Game1.dayOfMonth + daysLeft;
             var seasonsLeft = futureDay / Seasons.LengthInDays;
+            futureDay %= Seasons.LengthInDays;
 
             var futureSeasonIndex = Array.IndexOf(Seasons.All, Game1.currentSeason) + seasonsLeft;
             var futureSeason = Seasons.All[futureSeasonIndex % Seasons.All.Length];
