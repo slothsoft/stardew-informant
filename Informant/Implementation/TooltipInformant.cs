@@ -13,6 +13,8 @@ namespace Slothsoft.Informant.Implementation;
 
 internal class TooltipInformant : ITooltipInformant<TerrainFeature>, ITooltipInformant<SObject> {
 
+    internal static Rectangle TooltipSourceRect = new Rectangle(0, 256, 60, 60);
+    
     private readonly IModHelper _modHelper;
     private BaseTooltipInformant<TerrainFeature>? _terrainFeatureInformant;
     private BaseTooltipInformant<SObject>? _objectInformant;
@@ -107,7 +109,7 @@ internal class TooltipInformant : ITooltipInformant<TerrainFeature>, ITooltipInf
         }
 
         var textureBoxBounds = new Rectangle(x, y, width, height);
-        IClickableMenu.drawTextureBox(b, Game1.menuTexture, new Rectangle(0, 256, 60, 60), textureBoxBounds.X, textureBoxBounds.Y, 
+        IClickableMenu.drawTextureBox(b, Game1.menuTexture, TooltipSourceRect, textureBoxBounds.X, textureBoxBounds.Y, 
             textureBoxBounds.Width, textureBoxBounds.Height, Color.White);
 
         var position = new Vector2(x + Game1.tileSize / 4, y + Game1.tileSize / 4 + 4);

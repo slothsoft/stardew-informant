@@ -58,25 +58,35 @@ internal class ItemDecoratorInformant : IDecoratorInformant<Item> {
         }
 
         var config = InformantMod.Instance?.Config ?? new InformantConfig();
-        var decoration = DecoratorsList
+        var decorations = DecoratorsList
             .Where(g => config.DisplayIds.GetValueOrDefault(g.Id, true))
             .Where(d => d.HasDecoration(hoveredItem))
             .Select(d => d.Decorate(hoveredItem))
-            .SingleOrDefault();
+            .ToArray();
 
-        if (decoration == null) {
+        if (decorations.Length == 0) {
             return;
         }
         
-        const int indent = 16;
-        const int scaleFactor = 3;
         var tipCoordinates = _lastToolTipCoordinates.Value;
+        const int borderSize = 3 * Game1.pixelZoom;
+        const int decoratorsHeight = Game1.tileSize;
+
+        var decoratorsBox = new Rectangle(tipCoordinates.X, tipCoordinates.Y - decoratorsHeight + borderSize, tipCoordinates.Width, decoratorsHeight);
+        IClickableMenu.drawTextureBox(b, Game1.menuTexture, TooltipInformant.TooltipSourceRect, decoratorsBox.X, 
+            decoratorsBox.Y, decoratorsBox.Width, decoratorsBox.Height, Color.White, drawShadow: false);
+        
+        const int indent = 4 * Game1.pixelZoom;
         var destinationRectangle = new Rectangle(
-            tipCoordinates.X + tipCoordinates.Width - decoration.Texture.Width * scaleFactor - indent,
-            tipCoordinates.Y + indent,
-            decoration.Texture.Width * scaleFactor,
-            decoration.Texture.Height * scaleFactor);
-        b.Draw(decoration.Texture, destinationRectangle, null, Color.White);
+            decoratorsBox.X + indent,
+            decoratorsBox.Y + indent,
+            decoratorsHeight - 2 * indent,
+            decoratorsHeight - 2 * indent);
+        
+        foreach (var decoration in decorations) {
+            b.Draw(decoration.Texture, destinationRectangle, null, Color.White);
+            destinationRectangle.X += destinationRectangle.Width + Game1.pixelZoom;
+        }
     }
 
     private static void RememberToolTipCoordinates(SpriteBatch b, Texture2D texture, Rectangle sourceRect, int x, int y,
