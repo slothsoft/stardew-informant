@@ -4,15 +4,15 @@ using System.Linq;
 using Microsoft.Xna.Framework.Graphics;
 using Slothsoft.Informant.Api;
 
-namespace Slothsoft.Informant.Implementation.TooltipDecorator;
+namespace Slothsoft.Informant.Implementation.Decorator;
 
-internal class BundleTooltipDecorator : ITooltipDecorator<Item> {
+internal class BundleDecorator : IDecorator<Item> {
 
     private static Texture2D? _bundle;
     
     private readonly IModHelper _modHelper;
     
-    public BundleTooltipDecorator(IModHelper modHelper) {
+    public BundleDecorator(IModHelper modHelper) {
         _modHelper = modHelper;
         _bundle ??= modHelper.ModContent.Load<Texture2D>("assets/bundle.png");
     }

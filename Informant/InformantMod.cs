@@ -1,5 +1,5 @@
 ﻿using Slothsoft.Informant.Api;
-using Slothsoft.Informant.Implementation.TooltipDecorator;
+using Slothsoft.Informant.Implementation.Decorator;
 using Slothsoft.Informant.Implementation.TooltipGenerator;
 using Slothsoft.Informant.ThirdParty;
 using StardewModdingAPI.Events;
@@ -21,13 +21,13 @@ public class InformantMod : Mod {
         Config = Helper.ReadConfig<InformantConfig>();
         _api = new Implementation.Informant(modHelper);
         
-        _api.TerrainFeatureTooltips.Add(new CropTooltipGenerator(modHelper));
-        _api.TerrainFeatureTooltips.Add(new FruitTreeTooltipGenerator(modHelper));
-        _api.TerrainFeatureTooltips.Add(new TreeTooltipGenerator(modHelper));
+        _api.TerrainFeatureTooltipsGenerator.Add(new CropTooltipGenerator(modHelper));
+        _api.TerrainFeatureTooltipsGenerator.Add(new FruitTreeTooltipGenerator(modHelper));
+        _api.TerrainFeatureTooltipsGenerator.Add(new TreeTooltipGenerator(modHelper));
         
-        _api.ObjectTooltips.Add(new MachineTooltipGenerator(modHelper));
+        _api.ObjectTooltipsGenerator.Add(new MachineTooltipGenerator(modHelper));
         
-        _api.ItemDecorators.Add(new BundleTooltipDecorator(modHelper));
+        _api.ItemDecorators.Add(new BundleDecorator(modHelper));
         
         // has to be done after registering all the tooltips and decorators
         Helper.Events.GameLoop.GameLaunched += OnGameLaunched;

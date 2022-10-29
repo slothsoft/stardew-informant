@@ -3,12 +3,12 @@
 namespace Slothsoft.Informant.Api; 
 
 /// <summary>
-/// A general informant that allows hooking new providers for a specific type into.
+/// A general manager that allows hooking new providers for a specific type into.
 /// </summary>
-public interface ITooltipInformant<TInput> {
+public interface ITooltipGeneratorManager<TInput> {
 
     /// <summary>
-    /// Returns the generators this informant has.
+    /// Returns the generators this manager has.
     /// </summary>
     IEnumerable<ITooltipGenerator<TInput>> Generators { get; }
 
