@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using Slothsoft.Informant.Api;
 
@@ -8,10 +9,12 @@ internal class BaseTooltipInformant<TInput> : ITooltipInformant<TInput> {
 
     private readonly List<ITooltipGenerator<TInput>> _generators = new();
 
-    public IEnumerable<string> GeneratorIds => _generators.Select(g => g.DisplayName);
+    public IEnumerable<ITooltipGenerator<TInput>> Generators => _generators.ToImmutableArray();
 
     internal IEnumerable<Tooltip> Generate(params TInput[] inputs) {
+        var config = InformantMod.Instance?.Config ?? new InformantConfig();
         return _generators
+            .Where(g => config.DisplayIds.GetValueOrDefault(g.Id, true))
             .SelectMany(g => inputs
                 .Where(g.HasTooltip)
                 .Select(g.Generate)

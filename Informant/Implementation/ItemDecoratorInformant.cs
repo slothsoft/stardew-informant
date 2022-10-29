@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using HarmonyLib;
 using Microsoft.Xna.Framework.Graphics;
@@ -15,7 +15,7 @@ internal class ItemDecoratorInformant : IDecoratorInformant<Item> {
     
     private readonly Harmony _harmony;
 
-    private static readonly List<ITooltipDecorator<Item>> Decorators = new();
+    private static readonly List<ITooltipDecorator<Item>> DecoratorsList = new();
     private static Rectangle? _lastToolTipCoordinates;
 
     public ItemDecoratorInformant(IModHelper modHelper) {
@@ -57,7 +57,9 @@ internal class ItemDecoratorInformant : IDecoratorInformant<Item> {
             return;
         }
 
-        var decoration = Decorators
+        var config = InformantMod.Instance?.Config ?? new InformantConfig();
+        var decoration = DecoratorsList
+            .Where(g => config.DisplayIds.GetValueOrDefault(g.Id, true))
             .Where(d => d.HasDecoration(hoveredItem))
             .Select(d => d.Decorate(hoveredItem))
             .SingleOrDefault();
@@ -82,13 +84,13 @@ internal class ItemDecoratorInformant : IDecoratorInformant<Item> {
         _lastToolTipCoordinates = new Rectangle(x, y, width, height);
     }
 
-    public IEnumerable<string> DecoratorIds => Decorators.Select(g => g.DisplayName);
+    public IEnumerable<ITooltipDecorator<Item>> Decorators => DecoratorsList.ToImmutableArray();
 
     public void Add(ITooltipDecorator<Item> decorator) {
-        Decorators.Add(decorator);
+        DecoratorsList.Add(decorator);
     }
 
     public void Remove(string decoratorId) {
-        Decorators.RemoveAll(g => g.Id == decoratorId);
+        DecoratorsList.RemoveAll(g => g.Id == decoratorId);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -17,21 +18,19 @@ internal class TooltipInformant : ITooltipInformant<TerrainFeature>, ITooltipInf
     private BaseTooltipInformant<SObject>? _objectInformant;
     
     private Tooltip? _tooltip;
-        
+
     public TooltipInformant(IModHelper modHelper) {
         _modHelper = modHelper;
         
         modHelper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
         modHelper.Events.Display.Rendered += OnRendered;
     }
-    
-    public IEnumerable<string> GeneratorIds {
-        get {
-            var result = _terrainFeatureInformant?.GeneratorIds ?? Enumerable.Empty<string>();
-            result = result.Concat(_objectInformant?.GeneratorIds ?? Enumerable.Empty<string>());
-            return result;
-        }
-    }
+
+    IEnumerable<ITooltipGenerator<SObject>> ITooltipInformant<SObject>.Generators => 
+        _objectInformant?.Generators.ToImmutableArray() ?? Enumerable.Empty<ITooltipGenerator<SObject>>();
+
+    IEnumerable<ITooltipGenerator<TerrainFeature>> ITooltipInformant<TerrainFeature>.Generators => 
+        _terrainFeatureInformant?.Generators.ToImmutableArray() ?? Enumerable.Empty<ITooltipGenerator<TerrainFeature>>();
 
     private void OnUpdateTicked(object? sender, UpdateTickedEventArgs e2) {
         if (!Context.IsPlayerFree) {
@@ -114,7 +113,7 @@ internal class TooltipInformant : ITooltipInformant<TerrainFeature>, ITooltipInf
         _terrainFeatureInformant?.Remove(generatorId);
         _objectInformant?.Remove(generatorId);
     }
-    
+
     public void Add(ITooltipGenerator<SObject> generator) {
         _objectInformant ??= new BaseTooltipInformant<SObject>();
         _objectInformant.Add(generator);

@@ -4,18 +4,8 @@
 /// A class that decorates a vanilla tooltip using <see cref="Decoration"/>.
 /// </summary>
 /// <typeparam name="TInput">input object.</typeparam>
-public interface ITooltipDecorator<in TInput> {
+public interface ITooltipDecorator<in TInput> : IDisplayable {
 
-    /// <summary>
-    /// The unique ID of the decorator. 
-    /// </summary>
-    string Id { get; }
-    
-    /// <summary>
-    /// The display name of the decorator for the configuration. 
-    /// </summary>
-    string DisplayName { get; }
-    
     /// <summary>
     /// Returns true if <see cref="Decorate"/> should be called on this object. 
     /// </summary>

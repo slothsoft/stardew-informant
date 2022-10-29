@@ -10,9 +10,10 @@ internal class MachineTooltipGenerator : ITooltipGenerator<SObject> {
         _modHelper = modHelper;
     }
 
-    public string DisplayName => _modHelper.Translation.Get("MachineTooltipGenerator");
-    
     public string Id => "machine";
+    public string DisplayName => _modHelper.Translation.Get("MachineTooltipGenerator");
+    public string Description => _modHelper.Translation.Get("MachineTooltipGenerator.Description");
+    
 
     public bool HasTooltip(SObject input) {
         return input.bigCraftable.Value;

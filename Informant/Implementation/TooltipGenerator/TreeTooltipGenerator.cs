@@ -11,9 +11,9 @@ internal class TreeTooltipGenerator : ITooltipGenerator<TerrainFeature> {
         _modHelper = modHelper;
     }
     
-    public string DisplayName => _modHelper.Translation.Get("TreeTooltipGenerator");
-    
     public string Id => "tree";
+    public string DisplayName => _modHelper.Translation.Get("TreeTooltipGenerator");
+    public string Description => _modHelper.Translation.Get("TreeTooltipGenerator.Description");
     
     public bool HasTooltip(TerrainFeature input) {
         return input is Tree;
