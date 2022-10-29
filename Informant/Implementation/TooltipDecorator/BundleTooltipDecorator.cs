@@ -17,9 +17,9 @@ internal class BundleTooltipDecorator : ITooltipDecorator<Item> {
         _bundle ??= modHelper.ModContent.Load<Texture2D>("assets/bundle.png");
     }
 
-    public string DisplayName => _modHelper.Translation.Get("BundleTooltipDecorator");
-    
     public string Id => "bundles";
+    public string DisplayName => _modHelper.Translation.Get("BundleTooltipDecorator");
+    public string Description => _modHelper.Translation.Get("BundleTooltipDecorator.Description");
 
     public bool HasDecoration(Item input) {
         if (_bundle != null) {

@@ -1,21 +1,26 @@
 ﻿{
-  "BundleTooltipDecorator" : "Bundles",
+  "BundleTooltipDecorator" : "Bundles Decorator",
+  "BundleTooltipDecorator.Description" : "Marks items that are needed for the bundles",
   
-  "CropTooltipGenerator" : "Crops",
+  "CropTooltipGenerator" : "Crops Tooltip",
+  "CropTooltipGenerator.Description" : "A tooltip that displays the type of crop and remaining days till harvest",
   "CropTooltipGenerator.1DayLeft" : "1 day left",
   "CropTooltipGenerator.XDaysLeft" : "{{X}} days left",
   "CropTooltipGenerator.Dead" : "Dead",
 
-  "FruitTreeTooltipGenerator" : "Fruit Trees",
+  "FruitTreeTooltipGenerator" : "Fruit Trees Tooltip",
+  "FruitTreeTooltipGenerator.Description" : "A tooltip that displays the type of fruit tree and remaining days till harvest",
 
-  "MachineTooltipGenerator" : "Machines",
+  "MachineTooltipGenerator" : "Machines Tooltip",
+  "MachineTooltipGenerator.Description" : "A tooltip that displays the type of result and remaining time",
   
-  "TreeTooltipGenerator" : "Trees",
+  "TreeTooltipGenerator" : "Trees Tooltip",
+  "TreeTooltipGenerator.Description" : "A tooltip that displays the type of tree",
   "TreeTooltipGenerator.Type1" : "Oak Tree",
   "TreeTooltipGenerator.Type2" : "Maple Tree",
   "TreeTooltipGenerator.Type3" : "Pine Tree",
   "TreeTooltipGenerator.Type6" : "Palm Tree",
   "TreeTooltipGenerator.Type7" : "Mushroom Tree",
   "TreeTooltipGenerator.Type8" : "Mahogany Tree",
-  "TreeTooltipGenerator.Type9" : "Palm Tree"
+  "TreeTooltipGenerator.Type9" : "Palm Tree",
 }

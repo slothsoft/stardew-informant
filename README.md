@@ -8,19 +8,21 @@ _A Mod for Stardew Valley_
 - **Repository:** <https://github.com/slothsoft/stardew-informant>
 - **Open Issues:** <https://github.com/slothsoft/stardew-informant/issues>
 
-A mod for [Stardew Valley](https://www.stardewvalley.net/) that displays additional information on various objects.
+A mod that displays additional information on various objects.
 It marks inventory items that are still necessary for the bundle, calculates how many days are still left until the
 harvest and displays what is in a machine and how much time is left on it.
 
 <img alt="Screenshot" src="readme/screenshot.png" width="600"/>
 
-**Content of this Read Me:**
+**Content of this ReadMe:**
 
 - **[User Manual](#user-manual)**
   - [Prerequisites](#prerequisites)
   - [Installing](#installing)
   - [Using the Mod](#using-the-mod)
+  - [Configuration](#configuration)
   - [Versions](#versions)
+- **[Translator Guide](#translator-guide)**
 - **[Developer Notes](#developer-notes)**
 - **[License](#license)**
 
@@ -48,16 +50,72 @@ You just need to move the mouse over the object you wish to get the information 
 
 
 
+### Configuration
+
+If you wish to configure this mod, it's advised to install spacechase0's
+[Generic Mod Config Menu](https://www.nexusmods.com/stardewvalley/mods/5098). Then there will be a config
+page.
+
+<img alt="Screenshot" src="readme/screenshot_config.png" width="300"/>
+
+But if you wish to change the _config.json_ file manually, you can also do that. The _config.json_ with all
+entries is:
+
+```json
+{
+  "DisplayIds": {
+    "bundles": true,
+    "crop": true,
+    "fruit-tree": true,
+    "machine": true,
+    "tree": true
+  }
+}
+```
+
+| Key in JSON             | Config Name         | Default Value | Explanation                                         |
+|-------------------------|---------------------|---------------|-----------------------------------------------------|
+| `DisplayIds.bundles`    | Bundles Decorator   | `true`        | True if the bundle decorator should be activated    |
+| `DisplayIds.crop`       | Crops Tooltip       | `true`        | True if the crops tooltip should be activated       |
+| `DisplayIds.fruit-tree` | Fruit Trees Tooltip | `true`        | True if the fruit trees tooltip should be activated |
+| `DisplayIds.machine`    | Machines Tooltip    | `true`        | True if the machines tooltip should be activated    |
+| `DisplayIds.tree`       | Trees Tooltip       | `true`        | True if the trees tooltip should be activated       |
+
+
+
 ### Versions
 
-| Version | Issues                                                                          | Changes          |
-|---------|---------------------------------------------------------------------------------|------------------|
-| Future  | [Issues](https://github.com/slothsoft/stardew-informant/milestone/1)            |                  |
-| 0.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/2?closed=1)   | Strutured PoC    |
-| 0.2.0   | -                                                                               | Crop Informant   |
-| 0.1.0   | -                                                                               | Bundle Informant |
+| Version | Issues                                                                        | Changes                   |
+|---------|-------------------------------------------------------------------------------|---------------------------|
+| Future  | [Issues](https://github.com/slothsoft/stardew-informant/milestone/1)          |                           |
+| 0.4.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/3?closed=1) | Prepare for Nexus Release |
+| 0.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/2?closed=1) | Strutured PoC             |
+| 0.2.0   | -                                                                             | Crop Informant            |
+| 0.1.0   | -                                                                             | Bundle Informant          |
 
 _(All issues can be found [here](https://github.com/slothsoft/stardew-informant/issues).)_
+
+
+
+## Translator Guide
+
+Right now, not all translations are provided. If you want to help, translate either file in the _[i18n/](Informant/i18n/)_
+and test it right in your Stardew Valley (the same folder exists in your _Mods/_ folder). You can than provide it
+to me via [pull request](https://github.com/slothsoft/stardew-informant/fork) or [email](mailto:s.schulz@slothsoft.de).
+
+| Key       | Language  | Translated? |
+|-----------|-----------|-------------|
+| `default` | English   |  ✅  |
+| `de`      | German    |  ✅  |
+| `es`      | Spanish   |             |
+| `fr`      | French    |             |
+| `hu`      | Hungarian |             |
+| `it`      | Italian   |             |
+| `ko`      | Korean    |             |
+| `pt`      | Portugese |             |
+| `ru`      | Russian   |             |
+| `tr`      | Turkish   |             |
+| `zh`      | Chinese   |             |
 
 
 

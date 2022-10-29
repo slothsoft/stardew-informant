@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using HarmonyLib;
 using Microsoft.Xna.Framework.Graphics;
@@ -15,7 +15,7 @@ internal class ItemDecoratorInformant : IDecoratorInformant<Item> {
     
     private readonly Harmony _harmony;
 
-    private static readonly List<ITooltipDecorator<Item>> Decorators = new();
+    private static readonly List<ITooltipDecorator<Item>> DecoratorsList = new();
     private static Rectangle? _lastToolTipCoordinates;
 
     public ItemDecoratorInformant(IModHelper modHelper) {
@@ -57,24 +57,36 @@ internal class ItemDecoratorInformant : IDecoratorInformant<Item> {
             return;
         }
 
-        var decoration = Decorators
+        var config = InformantMod.Instance?.Config ?? new InformantConfig();
+        var decorations = DecoratorsList
+            .Where(g => config.DisplayIds.GetValueOrDefault(g.Id, true))
             .Where(d => d.HasDecoration(hoveredItem))
             .Select(d => d.Decorate(hoveredItem))
-            .SingleOrDefault();
+            .ToArray();
 
-        if (decoration == null) {
+        if (decorations.Length == 0) {
             return;
         }
         
-        const int indent = 16;
-        const int scaleFactor = 3;
         var tipCoordinates = _lastToolTipCoordinates.Value;
+        const int borderSize = 3 * Game1.pixelZoom;
+        const int decoratorsHeight = Game1.tileSize;
+
+        var decoratorsBox = new Rectangle(tipCoordinates.X, tipCoordinates.Y - decoratorsHeight + borderSize, tipCoordinates.Width, decoratorsHeight);
+        IClickableMenu.drawTextureBox(b, Game1.menuTexture, TooltipInformant.TooltipSourceRect, decoratorsBox.X, 
+            decoratorsBox.Y, decoratorsBox.Width, decoratorsBox.Height, Color.White, drawShadow: false);
+        
+        const int indent = 4 * Game1.pixelZoom;
         var destinationRectangle = new Rectangle(
-            tipCoordinates.X + tipCoordinates.Width - decoration.Texture.Width * scaleFactor - indent,
-            tipCoordinates.Y + indent,
-            decoration.Texture.Width * scaleFactor,
-            decoration.Texture.Height * scaleFactor);
-        b.Draw(decoration.Texture, destinationRectangle, null, Color.White);
+            decoratorsBox.X + indent,
+            decoratorsBox.Y + indent,
+            decoratorsHeight - 2 * indent,
+            decoratorsHeight - 2 * indent);
+        
+        foreach (var decoration in decorations) {
+            b.Draw(decoration.Texture, destinationRectangle, null, Color.White);
+            destinationRectangle.X += destinationRectangle.Width + Game1.pixelZoom;
+        }
     }
 
     private static void RememberToolTipCoordinates(SpriteBatch b, Texture2D texture, Rectangle sourceRect, int x, int y,
@@ -82,13 +94,13 @@ internal class ItemDecoratorInformant : IDecoratorInformant<Item> {
         _lastToolTipCoordinates = new Rectangle(x, y, width, height);
     }
 
-    public IEnumerable<string> DecoratorIds => Decorators.Select(g => g.DisplayName);
+    public IEnumerable<ITooltipDecorator<Item>> Decorators => DecoratorsList.ToImmutableArray();
 
     public void Add(ITooltipDecorator<Item> decorator) {
-        Decorators.Add(decorator);
+        DecoratorsList.Add(decorator);
     }
 
     public void Remove(string decoratorId) {
-        Decorators.RemoveAll(g => g.Id == decoratorId);
+        DecoratorsList.RemoveAll(g => g.Id == decoratorId);
     }
 }
