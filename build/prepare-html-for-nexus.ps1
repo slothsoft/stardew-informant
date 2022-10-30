@@ -30,7 +30,7 @@ $html = $html -replace "(?ms)<table(.*?)German(.*?)</table>","<p>More informatio
 # Add link to GitHub
 $html = $html -replace "dev-notes.md"">here</a>.</p>", "dev-notes.md"">here</a>.</p>`n<p>The source code for this mod is on <a href=""https://github.com/slothsoft/stardew-informant"">GitHub</a>.</p>"
 # Remove Developer Notes
-$html = $html -replace "(?ms)<h2 id=""developer-notes(.*?)<h2 id=""license",'<h2 id="license'
+$html = $html -replace "(?ms)<h2 id=""developer-notes(.*?)<h2 id=""license","<h2 id=""developer-notes"">Developer Notes</h2>`n<p>Can be found <a href=""https://github.com/slothsoft/stardew-informant#developer-notes"">here</a>.</p>`n<p>The source code for this mod is on <a href=""https://github.com/slothsoft/stardew-informant"">GitHub</a>.</p>`n<h2 id=""license"
 
 # Move headers one category up
 $html = $html -replace '<([/])*h3','<$1h2'
