@@ -22,7 +22,7 @@ internal class BundleDecorator : IDecorator<Item> {
     public string Description => _modHelper.Translation.Get("BundleTooltipDecorator.Description");
 
     public bool HasDecoration(Item input) {
-        if (_bundle != null) {
+        if (_bundle != null && input is SObject obj && !obj.bigCraftable.Value) {
             return GetNeededItems().Contains(input.ParentSheetIndex);
         }
         return false;

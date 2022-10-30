@@ -21,7 +21,7 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
     internal static Rectangle TooltipSourceRect = new(0, 256, 60, 60);
     
     private readonly IModHelper _modHelper;
-    private BaseTooltipGeneratorManager<TerrainFeature>? _terrainFeatureInformant;
+    private BaseTooltipGeneratorManager<TerrainFeature>? _terrainFeatureManager;
     private BaseTooltipGeneratorManager<SObject>? _objectInformant;
     
     private IEnumerable<Tooltip>? _tooltips;
@@ -37,7 +37,7 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
         _objectInformant?.Generators.ToImmutableArray() ?? Enumerable.Empty<ITooltipGenerator<SObject>>();
 
     IEnumerable<ITooltipGenerator<TerrainFeature>> ITooltipGeneratorManager<TerrainFeature>.Generators => 
-        _terrainFeatureInformant?.Generators.ToImmutableArray() ?? Enumerable.Empty<ITooltipGenerator<TerrainFeature>>();
+        _terrainFeatureManager?.Generators.ToImmutableArray() ?? Enumerable.Empty<ITooltipGenerator<TerrainFeature>>();
 
     private void OnUpdateTicked(object? sender, UpdateTickedEventArgs e2) {
         if (!Context.IsPlayerFree) {
@@ -47,35 +47,38 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
     }
 
     private IEnumerable<Tooltip> GenerateTerrainFeatureTooltips() {
-        if (_terrainFeatureInformant == null) {
+        return GenerateTooltips(_terrainFeatureManager, (mousePosX, mousePosY) => 
+            Game1.currentLocation.terrainFeatures.Values
+            .Where(t => mousePosX == (int) t.currentTileLocation.X && mousePosY == (int) t.currentTileLocation.Y)
+            .ToArray());
+    }
+    
+    private static IEnumerable<Tooltip> GenerateTooltips<TTile>(BaseTooltipGeneratorManager<TTile>? manager, Func<int, int, TTile[]> getTilesForPosition) {
+        if (manager == null) {
             // if there is no generator in that, we don't need to do anything further
             return Enumerable.Empty<Tooltip>();
         }
         
-        var mousePosX = (Game1.getOldMouseX() + Game1.viewport.X) / Game1.tileSize;
-        var mousePosY = (Game1.getOldMouseY() + Game1.viewport.Y) / Game1.tileSize;
+        var mouseX = Game1.getOldMouseX();
+        var mouseY = Game1.getOldMouseY();
+
+        var toolbar = Game1.onScreenMenus.FirstOrDefault(m => m is Toolbar);
+        if (toolbar != null && toolbar.isWithinBounds(mouseX, mouseY)) {
+            // mouse is over the toolbar, so we won't generate tooltips for the map
+            return Enumerable.Empty<Tooltip>();
+        }
         
-        return _terrainFeatureInformant.Generate(
-            Game1.currentLocation.terrainFeatures.Values
-                .Where(t => mousePosX == (int) t.currentTileLocation.X && mousePosY == (int) t.currentTileLocation.Y)
-                .ToArray()
-        );
+        var mousePosX = (mouseX + Game1.viewport.X) / Game1.tileSize;
+        var mousePosY = (mouseY + Game1.viewport.Y) / Game1.tileSize;
+        
+        return manager.Generate(getTilesForPosition.Invoke(mousePosX, mousePosY));
     }
     
     private IEnumerable<Tooltip> GenerateObjectTooltips() {
-        if (_objectInformant == null) {
-            // if there is no generator in that, we don't need to do anything further
-            return Enumerable.Empty<Tooltip>();
-        }
-        
-        var mousePosX = (Game1.getOldMouseX() + Game1.viewport.X) / Game1.tileSize;
-        var mousePosY = (Game1.getOldMouseY() + Game1.viewport.Y) / Game1.tileSize;
-
-        return _objectInformant.Generate(
+        return GenerateTooltips(_objectInformant, (mousePosX, mousePosY) => 
             Game1.currentLocation.netObjects.Values
                 .Where(t => mousePosX == (int) t.TileLocation.X && mousePosY == (int) t.TileLocation.Y)
-                .ToArray()
-        );
+                .ToArray());
     }
 
     private void OnRendered(object? sender, RenderedEventArgs e) {
@@ -127,12 +130,12 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
     }
     
     public void Add(ITooltipGenerator<TerrainFeature> generator) {
-        _terrainFeatureInformant ??= new BaseTooltipGeneratorManager<TerrainFeature>();
-        _terrainFeatureInformant.Add(generator);
+        _terrainFeatureManager ??= new BaseTooltipGeneratorManager<TerrainFeature>();
+        _terrainFeatureManager.Add(generator);
     }
 
     public void Remove(string generatorId) {
-        _terrainFeatureInformant?.Remove(generatorId);
+        _terrainFeatureManager?.Remove(generatorId);
         _objectInformant?.Remove(generatorId);
     }
 

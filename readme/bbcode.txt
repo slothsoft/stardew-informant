@@ -19,6 +19,13 @@ Right now, not all translations are provided. If you want to help, translate eit
 More information can be found [url=https://github.com/slothsoft/stardew-informant/blob/main/README.md#translator-guide]here[/url].
 
 
+[size=6]Developer Notes[/size]
+
+Can be found [url=https://github.com/slothsoft/stardew-informant#developer-notes]here[/url].
+
+The source code for this mod is on [url=https://github.com/slothsoft/stardew-informant]GitHub[/url].
+
+
 [size=6]License[/size]
 
 This project is licensed under the MIT License - see the [url=https://github.com/slothsoft/stardew-informant/blob/main/LICENSE]MIT license[/url] for details.

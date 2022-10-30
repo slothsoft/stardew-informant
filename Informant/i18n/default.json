@@ -1,6 +1,9 @@
 ﻿{
   "BundleTooltipDecorator" : "Bundles Decorator",
   "BundleTooltipDecorator.Description" : "Marks items that are needed for the bundles",
+
+  "MuseumDecorator": "Museum Decorator",
+  "MuseumDecorator.Description": "Marks items that are needed for the museum",
   
   "CropTooltipGenerator" : "Crops Tooltip",
   "CropTooltipGenerator.Description" : "A tooltip that displays the type of crop and remaining days till harvest",

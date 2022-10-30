@@ -68,6 +68,7 @@ entries is:
     "crop": true,
     "fruit-tree": true,
     "machine": true,
+    "museum": true,
     "tree": true
   }
 }
@@ -79,6 +80,7 @@ entries is:
 | `DisplayIds.crop`       | Crops Tooltip       | `true`        | True if the crops tooltip should be activated       |
 | `DisplayIds.fruit-tree` | Fruit Trees Tooltip | `true`        | True if the fruit trees tooltip should be activated |
 | `DisplayIds.machine`    | Machines Tooltip    | `true`        | True if the machines tooltip should be activated    |
+| `DisplayIds.museum`    | Museum Decorator    | `true`        | True if the museum decorator should be activated    |
 | `DisplayIds.tree`       | Trees Tooltip       | `true`        | True if the trees tooltip should be activated       |
 
 
@@ -88,6 +90,7 @@ entries is:
 | Version | Issues                                                                        | Changes                   |
 |---------|-------------------------------------------------------------------------------|---------------------------|
 | Future  | [Issues](https://github.com/slothsoft/stardew-informant/milestone/1)          |                           |
+| 1.0.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/4?closed=1) | Nexus Release             |
 | 0.4.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/3?closed=1) | Prepare for Nexus Release |
 | 0.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/2?closed=1) | Strutured PoC             |
 | 0.2.0   | -                                                                             | Crop Informant            |

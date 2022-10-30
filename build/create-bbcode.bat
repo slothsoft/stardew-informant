@@ -8,5 +8,5 @@ pandoc %markdownFile% -t html -o %htmlFile% --wrap=none
 powershell -ExecutionPolicy Bypass -File %cd%/build/prepare-html-for-nexus.ps1 %htmlFile% %htmlFileSnip%
 powershell -ExecutionPolicy Bypass -File %cd%/build/html-to-bbcode.ps1 %htmlFileSnip% %outputFile%
 
-Rem del %htmlFile%
-Rem del %htmlFileSnip%
+del %htmlFile%
+del %htmlFileSnip%
