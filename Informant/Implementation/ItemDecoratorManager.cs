@@ -11,21 +11,21 @@ using Rectangle = Microsoft.Xna.Framework.Rectangle;
 namespace Slothsoft.Informant.Implementation;
 
 // ReSharper disable UnusedParameter.Local
-internal class ItemDecoratorInformant : IDecoratorInformant<Item> {
+internal class ItemDecoratorManager : IDecoratorManager<Item> {
     
     private readonly Harmony _harmony;
 
-    private static readonly List<ITooltipDecorator<Item>> DecoratorsList = new();
+    private static readonly List<IDecorator<Item>> DecoratorsList = new();
     private static Rectangle? _lastToolTipCoordinates;
 
-    public ItemDecoratorInformant(IModHelper modHelper) {
+    public ItemDecoratorManager(IModHelper modHelper) {
         _harmony = new Harmony(InformantMod.Instance!.ModManifest.UniqueID);
         _harmony.Patch(
             original: AccessTools.Method(
                 typeof(IClickableMenu),
                 nameof(IClickableMenu.drawToolTip)
             ),
-            postfix: new HarmonyMethod(typeof(ItemDecoratorInformant), nameof(DrawToolTip))
+            postfix: new HarmonyMethod(typeof(ItemDecoratorManager), nameof(DrawToolTip))
         );
         _harmony.Patch(
             original: AccessTools.Method(
@@ -45,7 +45,7 @@ internal class ItemDecoratorInformant : IDecoratorInformant<Item> {
                     typeof(float)
                 }
             ),
-            postfix: new HarmonyMethod(typeof(ItemDecoratorInformant), nameof(RememberToolTipCoordinates))
+            postfix: new HarmonyMethod(typeof(ItemDecoratorManager), nameof(RememberToolTipCoordinates))
         );
     }
 
@@ -73,7 +73,7 @@ internal class ItemDecoratorInformant : IDecoratorInformant<Item> {
         const int decoratorsHeight = Game1.tileSize;
 
         var decoratorsBox = new Rectangle(tipCoordinates.X, tipCoordinates.Y - decoratorsHeight + borderSize, tipCoordinates.Width, decoratorsHeight);
-        IClickableMenu.drawTextureBox(b, Game1.menuTexture, TooltipInformant.TooltipSourceRect, decoratorsBox.X, 
+        IClickableMenu.drawTextureBox(b, Game1.menuTexture, TooltipGeneratorManager.TooltipSourceRect, decoratorsBox.X, 
             decoratorsBox.Y, decoratorsBox.Width, decoratorsBox.Height, Color.White, drawShadow: false);
         
         const int indent = 4 * Game1.pixelZoom;
@@ -94,9 +94,9 @@ internal class ItemDecoratorInformant : IDecoratorInformant<Item> {
         _lastToolTipCoordinates = new Rectangle(x, y, width, height);
     }
 
-    public IEnumerable<ITooltipDecorator<Item>> Decorators => DecoratorsList.ToImmutableArray();
+    public IEnumerable<IDecorator<Item>> Decorators => DecoratorsList.ToImmutableArray();
 
-    public void Add(ITooltipDecorator<Item> decorator) {
+    public void Add(IDecorator<Item> decorator) {
         DecoratorsList.Add(decorator);
     }
 

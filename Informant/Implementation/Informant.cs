@@ -7,26 +7,26 @@ internal class Informant : IInformant {
 
     private readonly IModHelper _modHelper;
     
-    private TooltipInformant? _terrainFeatureInformant;
-    private ItemDecoratorInformant? _itemDecoratorInformant;
+    private TooltipGeneratorManager? _terrainFeatureInformant;
+    private ItemDecoratorManager? _itemDecoratorInformant;
     
-    public ITooltipInformant<TerrainFeature> TerrainFeatureTooltips {
+    public ITooltipGeneratorManager<TerrainFeature> TerrainFeatureTooltipGenerators {
         get {
-            _terrainFeatureInformant ??= new TooltipInformant(_modHelper);
+            _terrainFeatureInformant ??= new TooltipGeneratorManager(_modHelper);
             return _terrainFeatureInformant;
         }
     }
     
-    public ITooltipInformant<SObject> ObjectTooltips {
+    public ITooltipGeneratorManager<SObject> ObjectTooltipGenerators {
         get {
-            _terrainFeatureInformant ??= new TooltipInformant(_modHelper);
+            _terrainFeatureInformant ??= new TooltipGeneratorManager(_modHelper);
             return _terrainFeatureInformant;
         }
     }
     
-    public IDecoratorInformant<Item> ItemDecorators {
+    public IDecoratorManager<Item> ItemDecorators {
         get {
-            _itemDecoratorInformant ??= new ItemDecoratorInformant(_modHelper);
+            _itemDecoratorInformant ??= new ItemDecoratorManager(_modHelper);
             return _itemDecoratorInformant;
         }
     }

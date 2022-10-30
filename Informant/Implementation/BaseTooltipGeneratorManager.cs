@@ -5,7 +5,7 @@ using Slothsoft.Informant.Api;
 
 namespace Slothsoft.Informant.Implementation; 
 
-internal class BaseTooltipInformant<TInput> : ITooltipInformant<TInput> {
+internal class BaseTooltipGeneratorManager<TInput> : ITooltipGeneratorManager<TInput> {
 
     private readonly List<ITooltipGenerator<TInput>> _generators = new();
 

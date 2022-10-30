@@ -11,27 +11,32 @@ using StardewValley.TerrainFeatures;
 
 namespace Slothsoft.Informant.Implementation; 
 
-internal class TooltipInformant : ITooltipInformant<TerrainFeature>, ITooltipInformant<SObject> {
+/// <summary>
+/// Generating tooltips for all kinds of objects is actually pretty similar, that's why this
+/// is only one instance for all <see cref="ITooltipGeneratorManager{TInput}"/> implementations.
+/// </summary>
 
-    internal static Rectangle TooltipSourceRect = new Rectangle(0, 256, 60, 60);
+internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature>, ITooltipGeneratorManager<SObject> {
+
+    internal static Rectangle TooltipSourceRect = new(0, 256, 60, 60);
     
     private readonly IModHelper _modHelper;
-    private BaseTooltipInformant<TerrainFeature>? _terrainFeatureInformant;
-    private BaseTooltipInformant<SObject>? _objectInformant;
+    private BaseTooltipGeneratorManager<TerrainFeature>? _terrainFeatureInformant;
+    private BaseTooltipGeneratorManager<SObject>? _objectInformant;
     
     private IEnumerable<Tooltip>? _tooltips;
 
-    public TooltipInformant(IModHelper modHelper) {
+    public TooltipGeneratorManager(IModHelper modHelper) {
         _modHelper = modHelper;
         
         modHelper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
         modHelper.Events.Display.Rendered += OnRendered;
     }
 
-    IEnumerable<ITooltipGenerator<SObject>> ITooltipInformant<SObject>.Generators => 
+    IEnumerable<ITooltipGenerator<SObject>> ITooltipGeneratorManager<SObject>.Generators => 
         _objectInformant?.Generators.ToImmutableArray() ?? Enumerable.Empty<ITooltipGenerator<SObject>>();
 
-    IEnumerable<ITooltipGenerator<TerrainFeature>> ITooltipInformant<TerrainFeature>.Generators => 
+    IEnumerable<ITooltipGenerator<TerrainFeature>> ITooltipGeneratorManager<TerrainFeature>.Generators => 
         _terrainFeatureInformant?.Generators.ToImmutableArray() ?? Enumerable.Empty<ITooltipGenerator<TerrainFeature>>();
 
     private void OnUpdateTicked(object? sender, UpdateTickedEventArgs e2) {
@@ -122,7 +127,7 @@ internal class TooltipInformant : ITooltipInformant<TerrainFeature>, ITooltipInf
     }
     
     public void Add(ITooltipGenerator<TerrainFeature> generator) {
-        _terrainFeatureInformant ??= new BaseTooltipInformant<TerrainFeature>();
+        _terrainFeatureInformant ??= new BaseTooltipGeneratorManager<TerrainFeature>();
         _terrainFeatureInformant.Add(generator);
     }
 
@@ -132,7 +137,7 @@ internal class TooltipInformant : ITooltipInformant<TerrainFeature>, ITooltipInf
     }
 
     public void Add(ITooltipGenerator<SObject> generator) {
-        _objectInformant ??= new BaseTooltipInformant<SObject>();
+        _objectInformant ??= new BaseTooltipGeneratorManager<SObject>();
         _objectInformant.Add(generator);
     }
 }
