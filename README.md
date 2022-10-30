@@ -68,6 +68,7 @@ entries is:
     "crop": true,
     "fruit-tree": true,
     "machine": true,
+    "museum": true,
     "tree": true
   }
 }
@@ -79,6 +80,7 @@ entries is:
 | `DisplayIds.crop`       | Crops Tooltip       | `true`        | True if the crops tooltip should be activated       |
 | `DisplayIds.fruit-tree` | Fruit Trees Tooltip | `true`        | True if the fruit trees tooltip should be activated |
 | `DisplayIds.machine`    | Machines Tooltip    | `true`        | True if the machines tooltip should be activated    |
+| `DisplayIds.museum`    | Museum Decorator    | `true`        | True if the museum decorator should be activated    |
 | `DisplayIds.tree`       | Trees Tooltip       | `true`        | True if the trees tooltip should be activated       |
 
 

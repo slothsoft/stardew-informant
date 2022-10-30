@@ -28,6 +28,7 @@ public class InformantMod : Mod {
         _api.ObjectTooltipGenerators.Add(new MachineTooltipGenerator(modHelper));
         
         _api.ItemDecorators.Add(new BundleDecorator(modHelper));
+        _api.ItemDecorators.Add(new MuseumDecorator(modHelper));
         
         // has to be done after registering all the tooltips and decorators
         Helper.Events.GameLoop.GameLaunched += OnGameLaunched;
