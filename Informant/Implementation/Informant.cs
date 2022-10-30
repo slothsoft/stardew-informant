@@ -10,14 +10,14 @@ internal class Informant : IInformant {
     private TooltipGeneratorManager? _terrainFeatureInformant;
     private ItemDecoratorManager? _itemDecoratorInformant;
     
-    public ITooltipGeneratorManager<TerrainFeature> TerrainFeatureTooltipsGenerator {
+    public ITooltipGeneratorManager<TerrainFeature> TerrainFeatureTooltipGenerators {
         get {
             _terrainFeatureInformant ??= new TooltipGeneratorManager(_modHelper);
             return _terrainFeatureInformant;
         }
     }
     
-    public ITooltipGeneratorManager<SObject> ObjectTooltipsGenerator {
+    public ITooltipGeneratorManager<SObject> ObjectTooltipGenerators {
         get {
             _terrainFeatureInformant ??= new TooltipGeneratorManager(_modHelper);
             return _terrainFeatureInformant;

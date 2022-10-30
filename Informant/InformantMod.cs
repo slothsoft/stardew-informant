@@ -21,11 +21,11 @@ public class InformantMod : Mod {
         Config = Helper.ReadConfig<InformantConfig>();
         _api = new Implementation.Informant(modHelper);
         
-        _api.TerrainFeatureTooltipsGenerator.Add(new CropTooltipGenerator(modHelper));
-        _api.TerrainFeatureTooltipsGenerator.Add(new FruitTreeTooltipGenerator(modHelper));
-        _api.TerrainFeatureTooltipsGenerator.Add(new TreeTooltipGenerator(modHelper));
+        _api.TerrainFeatureTooltipGenerators.Add(new CropTooltipGenerator(modHelper));
+        _api.TerrainFeatureTooltipGenerators.Add(new FruitTreeTooltipGenerator(modHelper));
+        _api.TerrainFeatureTooltipGenerators.Add(new TreeTooltipGenerator(modHelper));
         
-        _api.ObjectTooltipsGenerator.Add(new MachineTooltipGenerator(modHelper));
+        _api.ObjectTooltipGenerators.Add(new MachineTooltipGenerator(modHelper));
         
         _api.ItemDecorators.Add(new BundleDecorator(modHelper));
         

@@ -8,17 +8,17 @@ namespace Slothsoft.Informant.Api;
 public interface IInformant {
 
     /// <summary>
-    /// An informant class for the <see cref="TerrainFeature"/>(s) under the mouse position.
+    /// A manager class for the <see cref="TerrainFeature"/>(s) under the mouse position.
     /// </summary>
-    ITooltipGeneratorManager<TerrainFeature> TerrainFeatureTooltipsGenerator { get; }
+    ITooltipGeneratorManager<TerrainFeature> TerrainFeatureTooltipGenerators { get; }
     
     /// <summary>
-    /// An informant class for the <see cref="SObject"/>(s) under the mouse position.
+    /// A manager class for the <see cref="SObject"/>(s) under the mouse position.
     /// </summary>
-    ITooltipGeneratorManager<SObject> ObjectTooltipsGenerator { get; }
+    ITooltipGeneratorManager<SObject> ObjectTooltipGenerators { get; }
     
     /// <summary>
-    /// An informant class for decorating a tooltip for an <see cref="Item"/>.
+    /// A manager class for decorating a tooltip for an <see cref="Item"/>.
     /// </summary>
     IDecoratorManager<Item> ItemDecorators { get; }
 }

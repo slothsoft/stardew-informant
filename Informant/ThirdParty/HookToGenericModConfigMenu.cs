@@ -22,8 +22,8 @@ internal static class HookToGenericModConfigMenu {
         // add some config options
         var configurables = new List<IDisplayable>();
         configurables.AddRange(api.ItemDecorators.Decorators);
-        configurables.AddRange(api.ObjectTooltipsGenerator.Generators);
-        configurables.AddRange(api.TerrainFeatureTooltipsGenerator.Generators);
+        configurables.AddRange(api.ObjectTooltipGenerators.Generators);
+        configurables.AddRange(api.TerrainFeatureTooltipGenerators.Generators);
         configurables.Sort((a, b) => string.Compare(a.DisplayName, b.DisplayName, StringComparison.CurrentCulture));
         
         foreach (var configurable in configurables) {
