@@ -2,6 +2,8 @@
 
 A mod that displays additional information on various objects. It marks inventory items that are still necessary for the bundle, calculates how many days are still left until the harvest and displays what is in a machine and how much time is left on it.
 
+This mod also provides a handy API to extend its functionality.
+
 
 The mod is automatically present in the game. You just need to move the mouse over the object you wish to get the information from.
 
