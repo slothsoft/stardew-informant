@@ -33,11 +33,11 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
         modHelper.Events.Display.Rendered += OnRendered;
     }
 
-    IEnumerable<ITooltipGenerator<SObject>> ITooltipGeneratorManager<SObject>.Generators => 
-        _objectInformant?.Generators.ToImmutableArray() ?? Enumerable.Empty<ITooltipGenerator<SObject>>();
+    IEnumerable<IDisplayable> ITooltipGeneratorManager<SObject>.Generators => 
+        _objectInformant?.Generators.ToImmutableArray() ?? Enumerable.Empty<IDisplayable>();
 
-    IEnumerable<ITooltipGenerator<TerrainFeature>> ITooltipGeneratorManager<TerrainFeature>.Generators => 
-        _terrainFeatureManager?.Generators.ToImmutableArray() ?? Enumerable.Empty<ITooltipGenerator<TerrainFeature>>();
+    IEnumerable<IDisplayable> ITooltipGeneratorManager<TerrainFeature>.Generators => 
+        _terrainFeatureManager?.Generators.ToImmutableArray() ?? Enumerable.Empty<IDisplayable>();
 
     private void OnUpdateTicked(object? sender, UpdateTickedEventArgs e2) {
         if (!Context.IsPlayerFree) {

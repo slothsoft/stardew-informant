@@ -9,7 +9,7 @@ internal class BaseTooltipGeneratorManager<TInput> : ITooltipGeneratorManager<TI
 
     private readonly List<ITooltipGenerator<TInput>> _generators = new();
 
-    public IEnumerable<ITooltipGenerator<TInput>> Generators => _generators.ToImmutableArray();
+    public IEnumerable<IDisplayable> Generators => _generators.ToImmutableArray();
 
     internal IEnumerable<Tooltip> Generate(params TInput[] inputs) {
         var config = InformantMod.Instance?.Config ?? new InformantConfig();

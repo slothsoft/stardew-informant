@@ -10,7 +10,7 @@ public interface ITooltipGeneratorManager<TInput> {
     /// <summary>
     /// Returns the generators this manager has.
     /// </summary>
-    IEnumerable<ITooltipGenerator<TInput>> Generators { get; }
+    IEnumerable<IDisplayable> Generators { get; }
 
     /// <summary>
     /// Add a generator that provides information for a specific type.

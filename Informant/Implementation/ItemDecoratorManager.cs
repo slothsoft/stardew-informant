@@ -94,7 +94,7 @@ internal class ItemDecoratorManager : IDecoratorManager<Item> {
         _lastToolTipCoordinates = new Rectangle(x, y, width, height);
     }
 
-    public IEnumerable<IDecorator<Item>> Decorators => DecoratorsList.ToImmutableArray();
+    public IEnumerable<IDisplayable> Decorators => DecoratorsList.ToImmutableArray();
 
     public void Add(IDecorator<Item> decorator) {
         DecoratorsList.Add(decorator);
