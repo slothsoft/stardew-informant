@@ -2,7 +2,7 @@
 
 _A Mod for Stardew Valley_
 
-[![MIT Licence](https://img.shields.io/github/license/jenkinsci/java-client-api.svg?label=License)](LICENSE)
+[![MIT Licence](https://img.shields.io/github/license/jenkinsci/java-client-api.svg?label=License)](./LICENSE)
 
 - **Author:** [Stef Schulz](mailto:s.schulz@slothsoft.de)
 - **Repository:** <https://github.com/slothsoft/stardew-informant>
@@ -12,7 +12,7 @@ A mod that displays additional information on various objects.
 It marks inventory items that are still necessary for the bundle, calculates how many days are still left until the
 harvest and displays what is in a machine and how much time is left on it.
 
-<img alt="Screenshot" src="readme/screenshot.png" width="600"/>
+<img alt="Screenshot" src="./readme/screenshot.png" width="600"/>
 
 **Content of this ReadMe:**
 
@@ -56,7 +56,7 @@ If you wish to configure this mod, it's advised to install spacechase0's
 [Generic Mod Config Menu](https://www.nexusmods.com/stardewvalley/mods/5098). Then there will be a config
 page.
 
-<img alt="Screenshot" src="readme/screenshot_config.png" width="300"/>
+<img alt="Screenshot" src="./readme/screenshot_config.png" width="300"/>
 
 But if you wish to change the _config.json_ file manually, you can also do that. The _config.json_ with all
 entries is:
@@ -102,7 +102,7 @@ _(All issues can be found [here](https://github.com/slothsoft/stardew-informant/
 
 ## Translator Guide
 
-Right now, not all translations are provided. If you want to help, translate either file in the _[i18n/](Informant/i18n/)_
+Right now, not all translations are provided. If you want to help, translate either file in the _[i18n/](./Informant/i18n/)_
 and test it right in your Stardew Valley (the same folder exists in your _Mods/_ folder). You can than provide it
 to me via [pull request](https://github.com/slothsoft/stardew-informant/fork) or [email](mailto:s.schulz@slothsoft.de).
 
@@ -154,4 +154,4 @@ To start developing this mod, you need to
 
 ## License
 
-This project is licensed under the MIT License - see the [MIT license](LICENSE) for details.
+This project is licensed under the MIT License - see the [MIT license](./LICENSE) for details.

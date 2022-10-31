@@ -7,6 +7,8 @@ $htmlFileSnip=$args[1]
 
 $html = [string]::Join("`n", (gc $htmlFile -encoding utf8)) # Note: all line separators are \n !
 
+# removes images entirely
+$html = $html -replace '<img(.*?)src="(.*?)"(.*?)width="(.*?)"(.*?)>(\n)+','' 
 # Removes the header info of the readme file
 $html = $html -replace "(?ms)</h1>(.*?)</ul>",'</h1>'
 # Removes the TOC and installation and deinstallation guides
