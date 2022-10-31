@@ -93,6 +93,7 @@ entries is:
 | Version | Issues                                                                        | Changes                   |
 |---------|-------------------------------------------------------------------------------|---------------------------|
 | Future  | [Issues](https://github.com/slothsoft/stardew-informant/milestone/1)          |                           |
+| 1.1.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/5?closed=1) | Split-screen & API fixes  |
 | 1.0.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/4?closed=1) | Nexus Release             |
 | 0.4.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/3?closed=1) | Prepare for Nexus Release |
 | 0.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/2?closed=1) | Strutured PoC             |
