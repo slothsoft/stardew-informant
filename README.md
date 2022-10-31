@@ -14,6 +14,9 @@ harvest and displays what is in a machine and how much time is left on it.
 
 <img alt="Screenshot" src="./readme/screenshot.png" width="600"/>
 
+This mod also provides a handy API to extend its functionality. 
+
+
 **Content of this ReadMe:**
 
 - **[User Manual](#user-manual)**
@@ -133,14 +136,69 @@ To start developing this mod, you need to
 1. Create [stardewvalley.targets](https://github.com/Pathoschild/SMAPI/blob/develop/docs/technical/mod-package.md#custom-game-path) file with the game folder
 
 
+# Use the Mod's API
+
+There is a smaller API you can use without a direct dependency to this DLL. Just copy this interface:
+
+```dotnet
+using System;
+using Microsoft.Xna.Framework.Graphics;
+using StardewValley.TerrainFeatures;
+
+namespace MyMod.ThirdParty; 
+
+/// <summary>
+/// Base class for the entire API. Can be used to add custom information providers.
+/// </summary>
+public interface IInformant {
+
+    /// <summary>
+    /// Adds a tooltip generator for the <see cref="TerrainFeature"/>(s) under the mouse position.
+    /// </summary>
+    void AddTerrainFeatureTooltipGenerator(string id, string displayName, string description, Func<TerrainFeature, string> generator); 
+    
+    /// <summary>
+    /// Adds a tooltip generator for the <see cref="Object"/>(s) under the mouse position.
+    /// </summary>
+    void AddObjectTooltipGenerator(string id, string displayName, string description, Func<SObject, string?> generator); 
+    
+    /// <summary>
+    /// Adds a decorator for the <see cref="Item"/>(s) under the mouse position.
+    /// </summary>
+    void AddItemDecorator(string id, string displayName, string description, Func<Item, Texture2D?> decorator); 
+}
+```
+
+And then you can access the mod's API like this:
+
+```dotnet
+public class MyMod : Mod {
+    public override void Entry(IModHelper modHelper) {
+        Helper.Events.GameLoop.GameLaunched += (sender, args) => {
+            var informant = Helper.ModRegistry.GetApi<IInformant>("Slothsoft.Informant");
+            if (informant is null)
+                return;
+
+            // now call the methods of the informant
+            informant.AddItemDecorator(...);
+            informant.AddObjectTooltipGenerator(...);
+            informant.AddTerrainFeatureTooltipGenerator(...);
+        };
+    }
+}
+```
+
+If more control over the API is wanted or needed, a dependency to this mod can be added, and then the 
+entire [Api](./Informant/Api) folder can be used.
+
+
 ### Release
 
-1. Check that all the versions are correct (see point 5)
-2. Run _build.bat_, which only really works on my PC, but so what:
+1. Run _build.bat_, which only really works on my PC, but so what:
 ```bat
-.\build x.x.x
+.\build
 ```
-3. Put the contents of _bin/Informant*.zip_ in a fresh Stardew Valley and test if everything works (see [Test Plan](#test-plan))
+3. Put the contents of _bin/Informant*.zip_ in a fresh Stardew Valley and test if everything works
 4. Create a new tag and release on GitHub, append the ZIPs
 5. Increment the version in _manifest.json_ and _build/common.targets_
 
