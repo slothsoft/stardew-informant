@@ -3,7 +3,7 @@ using StardewValley.TerrainFeatures;
 
 namespace Slothsoft.Informant.Implementation; 
 
-internal class Informant : IInformant {
+public class Informant : IInformant {
 
     private readonly IModHelper _modHelper;
     

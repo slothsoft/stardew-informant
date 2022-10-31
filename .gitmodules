@@ -1,0 +1,3 @@
+[submodule "nexusmods-build"]
+	path = nexusmods-build
+	url = https://github.com/slothsoft/nexusmods-build.git

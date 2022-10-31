@@ -2,7 +2,9 @@
 
 A mod that displays additional information on various objects. It marks inventory items that are still necessary for the bundle, calculates how many days are still left until the harvest and displays what is in a machine and how much time is left on it.
 
+
 The mod is automatically present in the game. You just need to move the mouse over the object you wish to get the information from.
+
 
 
 [size=6]Configuration[/size]
@@ -12,6 +14,7 @@ If you wish to configure this mod, it’s advised to install spacechase0’s [ur
 But if you wish to change the [i]config.json[/i] file manually, you can also do that. The [i]config.json[/i] with all entries is documented [url=https://github.com/slothsoft/stardew-informant/blob/main/README.md#configuration]here[/url].
 
 
+
 [size=6]Translator Guide[/size]
 
 Right now, not all translations are provided. If you want to help, translate either file in the [i][url=https://github.com/slothsoft/stardew-informant/blob/main/Informant/i18n/]i18n/[/url][/i] and test it right in your Stardew Valley (the same folder exists in your [i]Mods/[/i] folder). You can than provide it to me via [url=https://github.com/slothsoft/stardew-informant/fork]pull request[/url] or [url=mailto:s.schulz@slothsoft.de]email[/url].
@@ -19,11 +22,13 @@ Right now, not all translations are provided. If you want to help, translate eit
 More information can be found [url=https://github.com/slothsoft/stardew-informant/blob/main/README.md#translator-guide]here[/url].
 
 
+
 [size=6]Developer Notes[/size]
 
 Can be found [url=https://github.com/slothsoft/stardew-informant#developer-notes]here[/url].
 
 The source code for this mod is on [url=https://github.com/slothsoft/stardew-informant]GitHub[/url].
+
 
 
 [size=6]License[/size]
