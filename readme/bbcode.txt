@@ -7,8 +7,11 @@ This mod also provides a handy API to extend its functionality.
 
 The mod is automatically present in the game. You just need to move the mouse over the object you wish to get the information from.
 
-
-
+There are two “decorators”, i.e. images displayed on the regular item tooltip, that have a specific meaning:
+[list]
+[*][img]https://github.com/slothsoft/stardew-informant/raw/main/Informant/assets/bundle.png[/img] [b]Bundles Decorator[/b] - displayed when the item is still needed for the bundles
+[*][img]https://github.com/slothsoft/stardew-informant/raw/main/Informant/assets/museum.png[/img] [b]Museum Decorator[/b] - displayed when the item is still needed for the museum
+[/list]
 [size=6]Configuration[/size]
 
 If you wish to configure this mod, it’s advised to install spacechase0’s [url=https://www.nexusmods.com/stardewvalley/mods/5098]Generic Mod Config Menu[/url]. Then there will be a config page.

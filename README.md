@@ -51,6 +51,11 @@ You need **[SMAPI](https://smapi.io/)** to run any kind of mods. And of course y
 The mod is automatically present in the game. 
 You just need to move the mouse over the object you wish to get the information from.
 
+There are two "decorators", i.e. images displayed on the regular item tooltip, that have a specific meaning:
+
+- ![Bundle Image](./Informant/assets/bundle.png) **Bundles Decorator** - displayed when the item is still needed for the bundles
+- ![Museum Image](./Informant/assets/museum.png) **Museum Decorator** - displayed when the item is still needed for the museum
+
 
 
 ### Configuration
