@@ -1,4 +1,8 @@
-﻿using Slothsoft.Informant.Api;
+﻿using System;
+using Microsoft.Xna.Framework.Graphics;
+using Slothsoft.Informant.Api;
+using Slothsoft.Informant.Implementation.Decorator;
+using Slothsoft.Informant.Implementation.TooltipGenerator;
 using StardewValley.TerrainFeatures;
 
 namespace Slothsoft.Informant.Implementation; 
@@ -16,12 +20,20 @@ public class Informant : IInformant {
             return _terrainFeatureInformant;
         }
     }
-    
+
+    public void AddTerrainFeatureTooltipGenerator(string id, string displayName, string description, Func<TerrainFeature, string> generator) {
+        TerrainFeatureTooltipGenerators.Add(new TooltipGenerator<TerrainFeature>(id, displayName, description, generator));
+    }
+
     public ITooltipGeneratorManager<SObject> ObjectTooltipGenerators {
         get {
             _terrainFeatureInformant ??= new TooltipGeneratorManager(_modHelper);
             return _terrainFeatureInformant;
         }
+    }
+
+    public void AddObjectTooltipGenerator(string id, string displayName, string description, Func<SObject, string?> generator) {
+        ObjectTooltipGenerators.Add(new TooltipGenerator<SObject>(id, displayName, description, generator));
     }
     
     public IDecoratorManager<Item> ItemDecorators {
@@ -29,6 +41,10 @@ public class Informant : IInformant {
             _itemDecoratorInformant ??= new ItemDecoratorManager(_modHelper);
             return _itemDecoratorInformant;
         }
+    }
+    
+    public void AddItemDecorator(string id, string displayName, string description, Func<Item, Texture2D?> decorator) {
+        ItemDecorators.Add(new Decorator<Item>(id, displayName, description, decorator));
     }
     
     public Informant(IModHelper modHelper) {

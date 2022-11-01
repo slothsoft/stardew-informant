@@ -14,6 +14,9 @@ harvest and displays what is in a machine and how much time is left on it.
 
 <img alt="Screenshot" src="./readme/screenshot.png" width="600"/>
 
+This mod also provides a handy API to extend its functionality. 
+
+
 **Content of this ReadMe:**
 
 - **[User Manual](#user-manual)**
@@ -47,6 +50,11 @@ You need **[SMAPI](https://smapi.io/)** to run any kind of mods. And of course y
 
 The mod is automatically present in the game. 
 You just need to move the mouse over the object you wish to get the information from.
+
+There are two "decorators", i.e. images displayed on the regular item tooltip, that have a specific meaning:
+
+- ![Bundle Image](./Informant/assets/bundle.png) **Bundles Decorator** - displayed when the item is still needed for the bundles
+- ![Museum Image](./Informant/assets/museum.png) **Museum Decorator** - displayed when the item is still needed for the museum
 
 
 
@@ -90,6 +98,7 @@ entries is:
 | Version | Issues                                                                        | Changes                   |
 |---------|-------------------------------------------------------------------------------|---------------------------|
 | Future  | [Issues](https://github.com/slothsoft/stardew-informant/milestone/1)          |                           |
+| 1.1.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/5?closed=1) | Split-screen & API fixes  |
 | 1.0.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/4?closed=1) | Nexus Release             |
 | 0.4.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/3?closed=1) | Prepare for Nexus Release |
 | 0.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/2?closed=1) | Strutured PoC             |
@@ -133,14 +142,69 @@ To start developing this mod, you need to
 1. Create [stardewvalley.targets](https://github.com/Pathoschild/SMAPI/blob/develop/docs/technical/mod-package.md#custom-game-path) file with the game folder
 
 
+# Use the Mod's API
+
+There is a smaller API you can use without a direct dependency to this DLL. Just copy this interface:
+
+```dotnet
+using System;
+using Microsoft.Xna.Framework.Graphics;
+using StardewValley.TerrainFeatures;
+
+namespace MyMod.ThirdParty; 
+
+/// <summary>
+/// Base class for the entire API. Can be used to add custom information providers.
+/// </summary>
+public interface IInformant {
+
+    /// <summary>
+    /// Adds a tooltip generator for the <see cref="TerrainFeature"/>(s) under the mouse position.
+    /// </summary>
+    void AddTerrainFeatureTooltipGenerator(string id, string displayName, string description, Func<TerrainFeature, string> generator); 
+    
+    /// <summary>
+    /// Adds a tooltip generator for the <see cref="Object"/>(s) under the mouse position.
+    /// </summary>
+    void AddObjectTooltipGenerator(string id, string displayName, string description, Func<SObject, string?> generator); 
+    
+    /// <summary>
+    /// Adds a decorator for the <see cref="Item"/>(s) under the mouse position.
+    /// </summary>
+    void AddItemDecorator(string id, string displayName, string description, Func<Item, Texture2D?> decorator); 
+}
+```
+
+And then you can access the mod's API like this:
+
+```dotnet
+public class MyMod : Mod {
+    public override void Entry(IModHelper modHelper) {
+        Helper.Events.GameLoop.GameLaunched += (sender, args) => {
+            var informant = Helper.ModRegistry.GetApi<IInformant>("Slothsoft.Informant");
+            if (informant is null)
+                return;
+
+            // now call the methods of the informant
+            informant.AddItemDecorator(...);
+            informant.AddObjectTooltipGenerator(...);
+            informant.AddTerrainFeatureTooltipGenerator(...);
+        };
+    }
+}
+```
+
+If more control over the API is wanted or needed, a dependency to this mod can be added, and then the 
+entire [Api](./Informant/Api) folder can be used.
+
+
 ### Release
 
-1. Check that all the versions are correct (see point 5)
-2. Run _build.bat_, which only really works on my PC, but so what:
+1. Run _build.bat_, which only really works on my PC, but so what:
 ```bat
-.\build x.x.x
+.\build
 ```
-3. Put the contents of _bin/Informant*.zip_ in a fresh Stardew Valley and test if everything works (see [Test Plan](#test-plan))
+3. Put the contents of _bin/Informant*.zip_ in a fresh Stardew Valley and test if everything works
 4. Create a new tag and release on GitHub, append the ZIPs
 5. Increment the version in _manifest.json_ and _build/common.targets_
 

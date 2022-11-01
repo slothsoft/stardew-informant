@@ -1,4 +1,4 @@
-﻿echo off
+@echo off
 
 Rem Release the entire solution
 dotnet publish -c Release

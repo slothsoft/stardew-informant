@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Slothsoft.Informant.Api;
 using StardewModdingAPI.Events;
+using StardewModdingAPI.Utilities;
 using StardewValley.Menus;
 using StardewValley.TerrainFeatures;
 
@@ -24,7 +25,7 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
     private BaseTooltipGeneratorManager<TerrainFeature>? _terrainFeatureManager;
     private BaseTooltipGeneratorManager<SObject>? _objectInformant;
     
-    private IEnumerable<Tooltip>? _tooltips;
+    private readonly PerScreen<IEnumerable<Tooltip>?> _tooltips = new();
 
     public TooltipGeneratorManager(IModHelper modHelper) {
         _modHelper = modHelper;
@@ -33,17 +34,17 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
         modHelper.Events.Display.Rendered += OnRendered;
     }
 
-    IEnumerable<ITooltipGenerator<SObject>> ITooltipGeneratorManager<SObject>.Generators => 
-        _objectInformant?.Generators.ToImmutableArray() ?? Enumerable.Empty<ITooltipGenerator<SObject>>();
+    IEnumerable<IDisplayable> ITooltipGeneratorManager<SObject>.Generators => 
+        _objectInformant?.Generators.ToImmutableArray() ?? Enumerable.Empty<IDisplayable>();
 
-    IEnumerable<ITooltipGenerator<TerrainFeature>> ITooltipGeneratorManager<TerrainFeature>.Generators => 
-        _terrainFeatureManager?.Generators.ToImmutableArray() ?? Enumerable.Empty<ITooltipGenerator<TerrainFeature>>();
+    IEnumerable<IDisplayable> ITooltipGeneratorManager<TerrainFeature>.Generators => 
+        _terrainFeatureManager?.Generators.ToImmutableArray() ?? Enumerable.Empty<IDisplayable>();
 
     private void OnUpdateTicked(object? sender, UpdateTickedEventArgs e2) {
         if (!Context.IsPlayerFree) {
             return;
         }
-        _tooltips = GenerateObjectTooltips().Concat(GenerateTerrainFeatureTooltips());
+        _tooltips.Value = GenerateObjectTooltips().Concat(GenerateTerrainFeatureTooltips());
     }
 
     private IEnumerable<Tooltip> GenerateTerrainFeatureTooltips() {
@@ -61,7 +62,7 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
         
         var mouseX = Game1.getOldMouseX();
         var mouseY = Game1.getOldMouseY();
-
+        
         var toolbar = Game1.onScreenMenus.FirstOrDefault(m => m is Toolbar);
         if (toolbar != null && toolbar.isWithinBounds(mouseX, mouseY)) {
             // mouse is over the toolbar, so we won't generate tooltips for the map
@@ -82,8 +83,8 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
     }
 
     private void OnRendered(object? sender, RenderedEventArgs e) {
-        if (Context.IsPlayerFree && _tooltips != null) {
-            var tooltipsArray = _tooltips.ToArray();
+        if (Context.IsPlayerFree && _tooltips.Value != null) {
+            var tooltipsArray = _tooltips.Value.ToArray();
 
             if (tooltipsArray.Length == 0) {
                 return;

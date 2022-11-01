@@ -10,7 +10,7 @@ public interface IDecoratorManager<TInput> {
     /// <summary>
     /// Returns the decorators this manager has.
     /// </summary>
-    IEnumerable<IDecorator<TInput>> Decorators { get; }
+    IEnumerable<IDisplayable> Decorators { get; }
 
     /// <summary>
     /// Add a decorator that provides information for a specific type.
