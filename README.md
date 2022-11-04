@@ -143,7 +143,7 @@ To start developing this mod, you need to
 1. Create [stardewvalley.targets](https://github.com/Pathoschild/SMAPI/blob/develop/docs/technical/mod-package.md#custom-game-path) file with the game folder
 
 
-# Use the Mod's API
+### Use the Mod's API
 
 There is a smaller API you can use without a direct dependency to this DLL. Just copy this interface:
 
