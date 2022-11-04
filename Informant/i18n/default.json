@@ -7,6 +7,7 @@
   
   "CropTooltipGenerator" : "Crops Tooltip",
   "CropTooltipGenerator.Description" : "A tooltip that displays the type of crop and remaining days till harvest",
+  "CropTooltipGenerator.0DaysLeft" : "Ready to harvest",
   "CropTooltipGenerator.1DayLeft" : "1 day left",
   "CropTooltipGenerator.XDaysLeft" : "{{X}} days left",
   "CropTooltipGenerator.Dead" : "Dead",

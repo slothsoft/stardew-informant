@@ -32,19 +32,22 @@ internal class CropTooltipGenerator : ITooltipGenerator<TerrainFeature> {
         return $"{displayName}\n{daysLeft}";
     }
 
-    private string CalculateDaysLeftString(Crop crop) {
+    internal string CalculateDaysLeftString(Crop crop) {
         if (crop.dead.Value) {
             return _modHelper.Translation.Get("CropTooltipGenerator.Dead");
         }
-
-        var daysLeft = CalculateDaysLeft(crop);
-        var daysLeftString = daysLeft == 1
-            ? _modHelper.Translation.Get("CropTooltipGenerator.1DayLeft")
-            : _modHelper.Translation.Get("CropTooltipGenerator.XDaysLeft", new {X = daysLeft});
-        return daysLeftString;
+        return ToDaysLeftString(_modHelper, CalculateDaysLeft(crop));
     }
 
-    private static int CalculateDaysLeft(Crop crop) {
+    internal static string ToDaysLeftString(IModHelper modHelper, int daysLeft) {
+        return daysLeft switch {
+            0 => modHelper.Translation.Get("CropTooltipGenerator.0DaysLeft"),
+            1 => modHelper.Translation.Get("CropTooltipGenerator.1DayLeft"),
+            _ => modHelper.Translation.Get("CropTooltipGenerator.XDaysLeft", new {X = daysLeft})
+        };
+    }
+
+    internal static int CalculateDaysLeft(Crop crop) {
         var currentPhase = crop.currentPhase.Value;
         var dayOfCurrentPhase = crop.dayOfCurrentPhase.Value;
         var regrowAfterHarvest = crop.regrowAfterHarvest.Value;
