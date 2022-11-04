@@ -96,15 +96,16 @@ entries is:
 
 ### Versions
 
-| Version | Issues                                                                        | Changes                   |
-|---------|-------------------------------------------------------------------------------|---------------------------|
-| Future  | [Issues](https://github.com/slothsoft/stardew-informant/milestone/1)          |                           |
-| 1.1.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/5?closed=1) | Split-screen & API fixes  |
-| 1.0.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/4?closed=1) | Nexus Release             |
-| 0.4.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/3?closed=1) | Prepare for Nexus Release |
-| 0.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/2?closed=1) | Strutured PoC             |
-| 0.2.0   | -                                                                             | Crop Informant            |
-| 0.1.0   | -                                                                             | Bundle Informant          |
+| Version | Issues                                                                        | Changes                          |
+|---------|-------------------------------------------------------------------------------|----------------------------------|
+| Future  | [Issues](https://github.com/slothsoft/stardew-informant/milestone/1)          |                                  |
+| 1.1.1   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/6?closed=1) | Bugfixes from NexusMods feedback |
+| 1.1.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/5?closed=1) | Split-screen & API fixes         |
+| 1.0.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/4?closed=1) | Nexus Release                    |
+| 0.4.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/3?closed=1) | Prepare for Nexus Release        |
+| 0.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/2?closed=1) | Strutured PoC                    |
+| 0.2.0   | -                                                                             | Crop Informant                   |
+| 0.1.0   | -                                                                             | Bundle Informant                 |
 
 _(All issues can be found [here](https://github.com/slothsoft/stardew-informant/issues).)_
 
