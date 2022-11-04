@@ -5,8 +5,9 @@ _A Mod for Stardew Valley_
 [![MIT Licence](https://img.shields.io/github/license/jenkinsci/java-client-api.svg?label=License)](./LICENSE)
 
 - **Author:** [Stef Schulz](mailto:s.schulz@slothsoft.de)
-- **Repository:** <https://github.com/slothsoft/stardew-informant>
+- **Repository:** https://github.com/slothsoft/stardew-informant]
 - **Open Issues:** <https://github.com/slothsoft/stardew-informant/issues>
+- **NexusMods:** <https://www.nexusmods.com/stardewvalley/mods/14293>
 
 A mod that displays additional information on various objects.
 It marks inventory items that are still necessary for the bundle, calculates how many days are still left until the
