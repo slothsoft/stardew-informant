@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace StardewTests.Common; 
+namespace StardewTests.Harness; 
 
 public record TestCursorPosition : ICursorPosition {
     

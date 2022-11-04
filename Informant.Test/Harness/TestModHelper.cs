@@ -1,14 +1,16 @@
 ﻿using System.Collections.Generic;
+using NUnit.Framework;
 using StardewModdingAPI.Events;
 
-namespace StardewTests.Common; 
+namespace StardewTests.Harness; 
 
 public class TestModHelper : IModHelper {
 
     private Dictionary<string, dynamic> _config = new();
     
-    public TestModHelper(string directoryPath = ".") {
-        DirectoryPath = directoryPath;
+    public TestModHelper(string? modFolder = null) {
+        DirectoryPath = modFolder ?? TestContext.CurrentContext.TestDirectory;
+        TestTranslation = new TestTranslationHelper(DirectoryPath);
     }
     
     public string DirectoryPath { get; }
@@ -26,7 +28,8 @@ public class TestModHelper : IModHelper {
     public IReflectionHelper Reflection { get; }
     public IModRegistry ModRegistry { get; }
     public IMultiplayerHelper Multiplayer { get; }
-    public ITranslationHelper Translation { get; }
+    public ITranslationHelper Translation => TestTranslation;
+    public TestTranslationHelper TestTranslation { get; init;  }
 
     public void ClearConfig<TConfig>() where TConfig : class, new() {
         _config.Remove(GetKey<TConfig>());

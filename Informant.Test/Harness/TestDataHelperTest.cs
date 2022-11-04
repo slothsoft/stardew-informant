@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 
-namespace StardewTests.Common; 
+namespace StardewTests.Harness; 
 
 [TestFixture]
 public class TestDataHelperTest {

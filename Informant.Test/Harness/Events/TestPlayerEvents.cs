@@ -1,7 +1,7 @@
 ﻿using System;
 using StardewModdingAPI.Events;
 
-namespace StardewTests.Common.Events; 
+namespace StardewTests.Harness.Events; 
 
 public class TestPlayerEvents : IPlayerEvents {
     public event EventHandler<InventoryChangedEventArgs>? InventoryChanged;

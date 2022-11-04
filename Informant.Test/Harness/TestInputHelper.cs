@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using StardewModdingAPI.Utilities;
 
-namespace StardewTests.Common; 
+namespace StardewTests.Harness; 
 
 public class TestInputHelper : IInputHelper {
 

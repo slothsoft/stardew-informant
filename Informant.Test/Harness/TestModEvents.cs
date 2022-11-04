@@ -1,8 +1,8 @@
 ﻿using System;
-using StardewTests.Common.Events;
+using StardewTests.Harness.Events;
 using StardewModdingAPI.Events;
 
-namespace StardewTests.Common;
+namespace StardewTests.Harness;
 
 public class TestModEvents : IModEvents {
     public IContentEvents Content { get; } = new TestContentEvents();

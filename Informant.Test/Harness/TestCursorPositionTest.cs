@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using NUnit.Framework;
 
-namespace StardewTests.Common; 
+namespace StardewTests.Harness; 
 
 public class TestCursorPositionTest {
     

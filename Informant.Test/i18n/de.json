@@ -1,0 +1,4 @@
+﻿{
+  "Key" : "Wert",
+  "WithTokens" : "Eins, {{Token}}, Drei"
+}
