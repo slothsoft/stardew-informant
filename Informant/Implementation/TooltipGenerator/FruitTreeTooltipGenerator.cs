@@ -17,7 +17,6 @@ internal class FruitTreeTooltipGenerator : ITooltipGenerator<TerrainFeature> {
     public string DisplayName => _modHelper.Translation.Get("FruitTreeTooltipGenerator");
     public string Description => _modHelper.Translation.Get("FruitTreeTooltipGenerator.Description");
     
-    
     public bool HasTooltip(TerrainFeature input) {
         return input is FruitTree;
     }
@@ -28,19 +27,11 @@ internal class FruitTreeTooltipGenerator : ITooltipGenerator<TerrainFeature> {
 
     private string CreateText(FruitTree fruitTree) {
         var displayName = GameInformation.GetObjectDisplayName(fruitTree.indexOfFruit.Value);
-        var daysLeft = CalculateDaysLeftString(fruitTree);
+        var daysLeft = CropTooltipGenerator.ToDaysLeftString(_modHelper, CalculateDaysLeft(fruitTree));
         return $"{displayName}\n{daysLeft}";
     }
 
-    private string CalculateDaysLeftString(FruitTree fruitTree) {
-        var daysLeft = CalculateDaysLeft(fruitTree);
-        var daysLeftString = daysLeft == 1
-            ? _modHelper.Translation.Get("CropTooltipGenerator.1DayLeft")
-            : _modHelper.Translation.Get("CropTooltipGenerator.XDaysLeft", new {X = daysLeft});
-        return daysLeftString;
-    }
-
-    private int CalculateDaysLeft(FruitTree fruitTree) {
+    internal int CalculateDaysLeft(FruitTree fruitTree) {
         var daysLeft = fruitTree.daysUntilMature.Value;
         if (daysLeft <= 0) {
             // if mature, 0 days are left if there are fruits on the tree, else 1 day

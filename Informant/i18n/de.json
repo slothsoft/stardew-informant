@@ -7,6 +7,7 @@
   
   "CropTooltipGenerator" : "Nutzpflanzen-Tooltip",
   "CropTooltipGenerator.Description" : "Ein Tooltip, der die Art der Nutzpflanze und die Tage bis zur Ernte zeigt",
+  "CropTooltipGenerator.0DaysLeft" : "Bereit zur Ernte",
   "CropTooltipGenerator.1DayLeft" : "Noch 1 Tag",
   "CropTooltipGenerator.XDaysLeft" : "Noch {{X}} Tage",
   "CropTooltipGenerator.Dead" : "Tot",

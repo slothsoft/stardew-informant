@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using StardewModdingAPI.Utilities;
 
-namespace StardewTests.Common; 
+namespace StardewTests.Harness; 
 
 public class TestInputHelperTest {
     

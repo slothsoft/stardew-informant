@@ -5,8 +5,9 @@ _A Mod for Stardew Valley_
 [![MIT Licence](https://img.shields.io/github/license/jenkinsci/java-client-api.svg?label=License)](./LICENSE)
 
 - **Author:** [Stef Schulz](mailto:s.schulz@slothsoft.de)
-- **Repository:** <https://github.com/slothsoft/stardew-informant>
+- **Repository:** https://github.com/slothsoft/stardew-informant]
 - **Open Issues:** <https://github.com/slothsoft/stardew-informant/issues>
+- **NexusMods:** <https://www.nexusmods.com/stardewvalley/mods/14293>
 
 A mod that displays additional information on various objects.
 It marks inventory items that are still necessary for the bundle, calculates how many days are still left until the
@@ -95,15 +96,16 @@ entries is:
 
 ### Versions
 
-| Version | Issues                                                                        | Changes                   |
-|---------|-------------------------------------------------------------------------------|---------------------------|
-| Future  | [Issues](https://github.com/slothsoft/stardew-informant/milestone/1)          |                           |
-| 1.1.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/5?closed=1) | Split-screen & API fixes  |
-| 1.0.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/4?closed=1) | Nexus Release             |
-| 0.4.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/3?closed=1) | Prepare for Nexus Release |
-| 0.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/2?closed=1) | Strutured PoC             |
-| 0.2.0   | -                                                                             | Crop Informant            |
-| 0.1.0   | -                                                                             | Bundle Informant          |
+| Version | Issues                                                                        | Changes                          |
+|---------|-------------------------------------------------------------------------------|----------------------------------|
+| Future  | [Issues](https://github.com/slothsoft/stardew-informant/milestone/1)          |                                  |
+| 1.1.1   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/6?closed=1) | Bugfixes from NexusMods feedback |
+| 1.1.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/5?closed=1) | Split-screen & API fixes         |
+| 1.0.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/4?closed=1) | Nexus Release                    |
+| 0.4.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/3?closed=1) | Prepare for Nexus Release        |
+| 0.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/2?closed=1) | Strutured PoC                    |
+| 0.2.0   | -                                                                             | Crop Informant                   |
+| 0.1.0   | -                                                                             | Bundle Informant                 |
 
 _(All issues can be found [here](https://github.com/slothsoft/stardew-informant/issues).)_
 
@@ -142,7 +144,7 @@ To start developing this mod, you need to
 1. Create [stardewvalley.targets](https://github.com/Pathoschild/SMAPI/blob/develop/docs/technical/mod-package.md#custom-game-path) file with the game folder
 
 
-# Use the Mod's API
+### Use the Mod's API
 
 There is a smaller API you can use without a direct dependency to this DLL. Just copy this interface:
 

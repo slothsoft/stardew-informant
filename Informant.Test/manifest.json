@@ -1,0 +1,12 @@
+{
+  "Name": "Informant.Test",
+  "Author": "Slothsoft",
+  "Version": "1.1.1",
+  "Description": "Test Project.",
+  "UniqueID": "Slothsoft.Informant.Test",
+  "EntryDll": "Informant.Test.dll",
+  "MinimumApiVersion": "3.16.1",
+  "UpdateKeys": [
+    "Github:slothsoft/stardew-informant"
+  ]
+}

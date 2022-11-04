@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace StardewTests.Common; 
+namespace StardewTests.Harness; 
 
 public class TestDataHelper : IDataHelper {
 
