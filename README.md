@@ -52,11 +52,24 @@ You need **[SMAPI](https://smapi.io/)** to run any kind of mods. And of course y
 The mod is automatically present in the game. 
 You just need to move the mouse over the object you wish to get the information from.
 
-There are two "decorators", i.e. images displayed on the regular item tooltip, that have a specific meaning:
+If you don't like one or more of the displayed information (or worse, if there are conflicts with other mods), you
+can disable each type.
+
+#### Decorators
+
+There are two decorators, i.e. images displayed on the regular item tooltip, that have a specific meaning:
 
 - ![Bundle Image](./Informant/assets/bundle.png) **Bundles Decorator** - displayed when the item is still needed for the bundles
 - ![Museum Image](./Informant/assets/museum.png) **Museum Decorator** - displayed when the item is still needed for the museum
 
+#### Tooltips
+
+You can also configure the tooltip "trigger", i.e. if you want the tooltip to show when the mouse hovers over an object,
+or if you want to press a key. You can also select the key to press.
+
+On default, of all the big craftable objects in the game, only machines that produce something will get a tooltip. You 
+can configure that to include all craftable objects, or all except chest (if you have a mod that shows specific 
+information for them already).
 
 
 ### Configuration
