@@ -57,6 +57,7 @@ public class FruitTreeTooltipGeneratorTest {
     [TestCase(5,Seasons.Spring, 0, 3, Seasons.Spring, "Ready to harvest")] 
     [TestCase(10,Seasons.Summer, 0, 0, Seasons.Summer, "1 day left")]
     [TestCase(10,Seasons.Spring, 10, 0, Seasons.Spring, "10 days left")] 
+    [TestCase(10,Seasons.Spring, 10, 0, "unsupported season", "")] 
     public void Generate(int dayOfMonth, string season, int daysUntilMature, int fruitsOnTree, string fruitSeason, string expectedString) {
         Game1.dayOfMonth = dayOfMonth;
         Game1.currentSeason = season;
@@ -86,6 +87,7 @@ public class FruitTreeTooltipGeneratorTest {
     [TestCase(10,Seasons.Fall, 0, 3, Seasons.Fall, 0)]
     [TestCase(5,Seasons.Spring, 0, 1, Seasons.Summer, 0)]
     [TestCase(5,Seasons.Spring, 0, 0, Seasons.Summer, 23)]
+    [TestCase(5,Seasons.Spring, 0, 0, "unsupported season", -1)]
     public void CalculateDaysLeft(int dayOfMonth, string season, int daysUntilMature, int fruitsOnTree, string fruitSeason, int expectedDaysLeft) {
         Game1.dayOfMonth = dayOfMonth;
         Game1.currentSeason = season;

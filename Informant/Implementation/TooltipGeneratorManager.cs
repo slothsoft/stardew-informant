@@ -42,9 +42,29 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
 
     private void OnUpdateTicked(object? sender, UpdateTickedEventArgs e2) {
         if (!Context.IsPlayerFree) {
+            _tooltips.Value = Array.Empty<Tooltip>();
             return;
         }
+
+        if (!WasTriggered()) {
+            _tooltips.Value = Array.Empty<Tooltip>();
+            return;
+        }
+        
         _tooltips.Value = GenerateObjectTooltips().Concat(GenerateTerrainFeatureTooltips());
+    }
+
+    private bool WasTriggered() {
+        var config = InformantMod.Instance?.Config;
+        if (config == null) {
+            return false; // something went wrong here!
+        }
+
+        return config.TooltipTrigger switch {
+            TooltipTrigger.Hover => true, // hover is ALWAYS triggered
+            TooltipTrigger.ButtonHeld => _modHelper.Input.GetState(config.TooltipTriggerButton) == SButtonState.Held,
+            _ => false // we don't know this trigger
+        };
     }
 
     private IEnumerable<Tooltip> GenerateTerrainFeatureTooltips() {

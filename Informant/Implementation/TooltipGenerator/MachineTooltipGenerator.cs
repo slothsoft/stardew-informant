@@ -1,4 +1,6 @@
-﻿using Slothsoft.Informant.Api;
+﻿using System.Linq;
+using Slothsoft.Informant.Api;
+using Slothsoft.Informant.Implementation.Common;
 
 namespace Slothsoft.Informant.Implementation.TooltipGenerator;
 
@@ -14,9 +16,17 @@ internal class MachineTooltipGenerator : ITooltipGenerator<SObject> {
     public string DisplayName => _modHelper.Translation.Get("MachineTooltipGenerator");
     public string Description => _modHelper.Translation.Get("MachineTooltipGenerator.Description");
     
-
     public bool HasTooltip(SObject input) {
-        return input.bigCraftable.Value;
+        return HasTooltip(input, InformantMod.Instance?.Config.HideMachineTooltips ?? HideMachineTooltips.ForNonMachines);
+    }
+    
+    internal static bool HasTooltip(SObject input, HideMachineTooltips hideMachineTooltips) {
+        if (!input.bigCraftable.Value) return false;
+        return hideMachineTooltips switch {
+            HideMachineTooltips.Never => true,
+            HideMachineTooltips.ForChests => !BigCraftableIds.AllChests.Contains(input.ParentSheetIndex),
+            _ => BigCraftableIds.AllMachines.Contains(input.ParentSheetIndex)
+        };
     }
 
     public Tooltip Generate(SObject input) {
@@ -34,7 +44,13 @@ internal class MachineTooltipGenerator : ITooltipGenerator<SObject> {
         return $"{displayName}\n> {heldObject}\n{daysLeft}";
     }
 
-    private string CalculateMinutesLeftString(SObject input) {
+    internal string CalculateMinutesLeftString(SObject input) {
+        switch (input.MinutesUntilReady) {
+            case < 0:
+                return _modHelper.Translation.Get("MachineTooltipGenerator.CannotBeUnloaded");
+            case 0:
+                return _modHelper.Translation.Get("MachineTooltipGenerator.Finished");
+        }
         var minutesLeft = input.MinutesUntilReady % 60;
         var hoursLeft = (input.MinutesUntilReady / 60) % 24;
         var daysLeft = input.MinutesUntilReady / 60 / 24;

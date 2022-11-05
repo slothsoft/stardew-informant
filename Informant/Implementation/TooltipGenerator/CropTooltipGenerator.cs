@@ -41,6 +41,7 @@ internal class CropTooltipGenerator : ITooltipGenerator<TerrainFeature> {
 
     internal static string ToDaysLeftString(IModHelper modHelper, int daysLeft) {
         return daysLeft switch {
+            -1 => "", // something went very wrong, but we don't want to break the game
             0 => modHelper.Translation.Get("CropTooltipGenerator.0DaysLeft"),
             1 => modHelper.Translation.Get("CropTooltipGenerator.1DayLeft"),
             _ => modHelper.Translation.Get("CropTooltipGenerator.XDaysLeft", new {X = daysLeft})

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework.Graphics;
 using Slothsoft.Informant.Api;
+using StardewValley.Locations;
 
 namespace Slothsoft.Informant.Implementation.Decorator;
 
@@ -23,29 +24,52 @@ internal class BundleDecorator : IDecorator<Item> {
 
     public bool HasDecoration(Item input) {
         if (_bundle != null && input is SObject obj && !obj.bigCraftable.Value) {
-            return GetNeededItems().Contains(input.ParentSheetIndex);
+            
+            // if player can't read Junimo text, they can't have bundles yet
+            if (!Game1.player.mailReceived.Contains("canReadJunimoText")) {
+                return false;
+            }
+            
+            // let the community center calculate which bundles are allowed
+            var communityCenter = Game1.getLocationFromName("CommunityCenter") as CommunityCenter;
+            var allowedAreas = communityCenter?.areasComplete
+                .Select((complete, index) => new { complete, index})
+                .Where(area => communityCenter.shouldNoteAppearInArea(area.index) && !area.complete)
+                .Select(area => area.index)
+                .ToArray();
+            
+            return GetNeededItems(allowedAreas).Contains(input.ParentSheetIndex);
         }
         return false;
     }
 
-    private static IEnumerable<int> GetNeededItems() {
+    internal static IEnumerable<int> GetNeededItems(int[]? allowedAreas) {
         // BUNDLE DATA
         // ============
+        // See https://stardewvalleywiki.com/Modding:Bundles
+        // The "main" data of the bundle has three values per item:
         // ParentSheetIndex Stack Quality (-> BundleGenerator.ParseItemList)
+        //
         // Examples:
         //
-        // Pantry/0
-        // Spring Crops/O 465 20/24 1 0 188 1 0 190 1 0 192 1 0/0/4/0
+        // bundleTitle = Pantry/0
+        // bundleData = Spring Crops/O 465 20/24 1 0 188 1 0 190 1 0 192 1 0/0/4/0
         //
-        // Boiler Room/22
-        // Adventurer's/R 518 1/766 99 0 767 10 0 768 1 0 881 10 0/1/2/22
+        // bundleTitle = Boiler Room/22
+        // bundleData = Adventurer's/R 518 1/766 99 0 767 10 0 768 1 0 881 10 0/1/2/22
 
         var bundleData = Game1.netWorldState.Value.BundleData;
         var bundlesCompleted = Game1.netWorldState.Value.Bundles.Pairs
             .ToDictionary(p => p.Key, p => p.Value.ToArray());
 
         foreach (var bundleTitle in bundleData.Keys) {
-            var bundleIndex = Convert.ToInt32(bundleTitle.Split('/')[1]);
+            var bundleTitleSplit = bundleTitle.Split('/');
+            var bundleTitleId = bundleTitleSplit[0];
+            if (allowedAreas != null && !allowedAreas.Contains(CommunityCenter.getAreaNumberFromName(bundleTitleId))) {
+                // bundle was not yet unlocked or already completed
+                continue;
+            }
+            var bundleIndex = Convert.ToInt32(bundleTitleSplit[1]);
             var bundleDataSplit = bundleData[bundleTitle].Split('/');
             var indexStackQuality = bundleDataSplit[2].Split(' ');
             for (var index = 0; index < indexStackQuality.Length; index += 3) {

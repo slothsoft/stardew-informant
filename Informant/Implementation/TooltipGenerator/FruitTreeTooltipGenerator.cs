@@ -50,6 +50,12 @@ internal class FruitTreeTooltipGenerator : ITooltipGenerator<TerrainFeature> {
                 futureSeason = Seasons.All[futureSeasonIndex % Seasons.All.Length];
                 daysLeft += Seasons.LengthInDays - futureDay; // add only the remainder of the month
                 futureDay = 0; // and after the remainder was added, all following months are fully added
+
+                if (daysLeft > Seasons.All.Length * Seasons.LengthInDays) {
+                    // daysLeft is now more than one year - which might happen if the fruitSeason is unknown
+                    // (or I misspelled "winter" in the seasons constants) -> just ignore this
+                    return -1;
+                }
             }
         }
         return daysLeft;
