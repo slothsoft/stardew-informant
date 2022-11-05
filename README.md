@@ -79,6 +79,7 @@ If you wish to configure this mod, it's advised to install spacechase0's
 page.
 
 <img alt="Screenshot" src="./readme/screenshot_config.png" width="300"/>
+<img alt="Screenshot" src="./readme/screenshot_config2.png" width="300"/>
 
 But if you wish to change the _config.json_ file manually, you can also do that. The _config.json_ with all
 entries is:
@@ -168,7 +169,7 @@ To start developing this mod, you need to
 
 There is a smaller API you can use without a direct dependency to this DLL. Just copy this interface:
 
-```dotnet
+```c#
 using System;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley.TerrainFeatures;
@@ -199,7 +200,7 @@ public interface IInformant {
 
 And then you can access the mod's API like this:
 
-```dotnet
+```c#
 public class MyMod : Mod {
     public override void Entry(IModHelper modHelper) {
         Helper.Events.GameLoop.GameLaunched += (sender, args) => {
