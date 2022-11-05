@@ -17,7 +17,9 @@
 
   "MachineTooltipGenerator" : "Machines Tooltip",
   "MachineTooltipGenerator.Description" : "A tooltip that displays the type of result and remaining time",
-  
+  "MachineTooltipGenerator.Finished" : "Finished",
+  "MachineTooltipGenerator.CannotBeUnloaded" : "Cannot be unloaded",
+ 
   "TreeTooltipGenerator" : "Trees Tooltip",
   "TreeTooltipGenerator.Description" : "A tooltip that displays the type of tree",
   "TreeTooltipGenerator.Type1" : "Oak Tree",
@@ -26,5 +28,20 @@
   "TreeTooltipGenerator.Type6" : "Palm Tree",
   "TreeTooltipGenerator.Type7" : "Mushroom Tree",
   "TreeTooltipGenerator.Type8" : "Mahogany Tree",
-  "TreeTooltipGenerator.Type9" : "Palm Tree"
+  "TreeTooltipGenerator.Type9" : "Palm Tree",
+
+  "Decorators.GeneralSection" : "Decorators - General",
+  "Decorators.Visibility" : "Decorators - Visibility",
+  "TooltipGenerators.GeneralSection" : "Tooltips - General",
+  "TooltipGenerators.Visibility" : "Tooltips - Visibility",
+  
+  "TooltipTrigger": "Tooltip Trigger",
+  "TooltipTrigger.Hover": "On hover",
+  "TooltipTrigger.ButtonHeld": "On button held",
+  "TooltipTriggerButton": "Tooltip Button",
+
+  "HideMachineTooltips": "Hide Machine Tooltips",
+  "HideMachineTooltips.ForNonMachines": "For non-machines",
+  "HideMachineTooltips.ForChests": "For chests",
+  "HideMachineTooltips.Never": "Never"
 }
