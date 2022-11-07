@@ -25,7 +25,8 @@ internal class MachineTooltipGenerator : ITooltipGenerator<SObject> {
         return hideMachineTooltips switch {
             HideMachineTooltips.Never => true,
             HideMachineTooltips.ForChests => !BigCraftableIds.AllChests.Contains(input.ParentSheetIndex),
-            _ => BigCraftableIds.AllMachines.Contains(input.ParentSheetIndex)
+            _ => !BigCraftableIds.AllChests.Contains(input.ParentSheetIndex) &&
+                 !BigCraftableIds.AllStaticCraftables.Contains(input.ParentSheetIndex)
         };
     }
 
