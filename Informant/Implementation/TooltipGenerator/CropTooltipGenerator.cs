@@ -23,20 +23,20 @@ internal class CropTooltipGenerator : ITooltipGenerator<TerrainFeature> {
     }
 
     public Tooltip Generate(TerrainFeature input) {
-        return new Tooltip(CreateText(((HoeDirt) input).crop));
+        return new Tooltip(CreateText(_modHelper, ((HoeDirt) input).crop));
     }
 
-    private string CreateText(Crop crop) {
+    internal static string CreateText(IModHelper modHelper, Crop crop) {
         var displayName = GameInformation.GetObjectDisplayName(crop.indexOfHarvest.Value);
-        var daysLeft = CalculateDaysLeftString(crop);
+        var daysLeft = CalculateDaysLeftString(modHelper, crop);
         return $"{displayName}\n{daysLeft}";
     }
 
-    internal string CalculateDaysLeftString(Crop crop) {
+    internal static string CalculateDaysLeftString(IModHelper modHelper, Crop crop) {
         if (crop.dead.Value) {
-            return _modHelper.Translation.Get("CropTooltipGenerator.Dead");
+            return modHelper.Translation.Get("CropTooltipGenerator.Dead");
         }
-        return ToDaysLeftString(_modHelper, CalculateDaysLeft(crop));
+        return ToDaysLeftString(modHelper, CalculateDaysLeft(crop));
     }
 
     internal static string ToDaysLeftString(IModHelper modHelper, int daysLeft) {

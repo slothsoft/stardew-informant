@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Slothsoft.Informant.Api;
 using Slothsoft.Informant.Implementation.Common;
+using StardewValley.Objects;
 
 namespace Slothsoft.Informant.Implementation.TooltipGenerator;
 
@@ -22,6 +23,12 @@ internal class MachineTooltipGenerator : ITooltipGenerator<SObject> {
     
     internal static bool HasTooltip(SObject input, HideMachineTooltips hideMachineTooltips) {
         if (!input.bigCraftable.Value) return false;
+        if (input.ParentSheetIndex == BigCraftableIds.GardenPot) {
+            var gardenPot = input as IndoorPot;
+            var crop = gardenPot?.hoeDirt.Value.crop;
+            return crop != null;
+        }
+        
         return hideMachineTooltips switch {
             HideMachineTooltips.Never => true,
             HideMachineTooltips.ForChests => !BigCraftableIds.AllChests.Contains(input.ParentSheetIndex),
@@ -31,6 +38,11 @@ internal class MachineTooltipGenerator : ITooltipGenerator<SObject> {
     }
 
     public Tooltip Generate(SObject input) {
+        if (input.ParentSheetIndex == BigCraftableIds.GardenPot) {
+            var gardenPot = input as IndoorPot;
+            var crop = gardenPot?.hoeDirt.Value.crop;
+            return new Tooltip(crop == null ? "???" : CropTooltipGenerator.CreateText(_modHelper, crop));
+        }
         return new Tooltip(CreateText(input));
     }
 
