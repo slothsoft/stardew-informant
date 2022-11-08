@@ -141,19 +141,19 @@ Right now, not all translations are provided. If you want to help, translate eit
 and test it right in your Stardew Valley (the same folder exists in your _Mods/_ folder). You can than provide it
 to me via [pull request](https://github.com/slothsoft/stardew-informant/fork) or [email](mailto:s.schulz@slothsoft.de).
 
-| Key       | Language  | Translated? |
-|-----------|-----------|-------------|
-| `default` | English   |  ✅  |
-| `de`      | German    |  ✅  |
-| `es`      | Spanish   |             |
-| `fr`      | French    |             |
-| `hu`      | Hungarian |             |
-| `it`      | Italian   |             |
-| `ko`      | Korean    |             |
-| `pt`      | Portugese |             |
-| `ru`      | Russian   |             |
-| `tr`      | Turkish   |             |
-| `zh`      | Chinese   |             |
+| Key       | Language  | Translated?                                                   |
+|-----------|-----------|---------------------------------------------------------------|
+| `default` | English   | ✅                                                             |
+| `de`      | German    | ✅                                                             |
+| `es`      | Spanish   |                                                               |
+| `fr`      | French    |                                                               |
+| `hu`      | Hungarian |                                                               |
+| `it`      | Italian   |                                                               |
+| `ko`      | Korean    | ✅ (thanks to [brighteast99](https://github.com/brighteast99)) |
+| `pt`      | Portugese |                                                               |
+| `ru`      | Russian   |                                                               |
+| `tr`      | Turkish   |                                                               |
+| `zh`      | Chinese   |                                                               |
 
 
 

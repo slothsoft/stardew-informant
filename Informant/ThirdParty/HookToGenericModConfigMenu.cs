@@ -64,14 +64,15 @@ internal static class HookToGenericModConfigMenu {
     private static void AddEnumOption<TEnum>(this IGenericModConfigMenuApi configMenu, IManifest mod, Func<TEnum> getValue, Action<TEnum> setValue, 
         Func<string> name, Func<TEnum, string> getDisplayName) where TEnum: notnull {
         var enumValues = Enum.GetValues(typeof(TEnum)).Cast<TEnum>().ToArray();
-        var enumDisplayNames = enumValues.Select(getDisplayName).ToArray();
+        var enumStrings = enumValues.Select(e => e.ToString()!).ToArray();
         
         configMenu.AddTextOption(
             mod: mod,
             name: name,
-            getValue: () => getDisplayName(getValue())!,
-            setValue: value => setValue(enumValues[Array.IndexOf(enumDisplayNames, value)]),
-            allowedValues: enumDisplayNames
+            getValue: () => getValue().ToString()!,
+            setValue: value => setValue(enumValues[Array.IndexOf(enumStrings, value)]),
+            allowedValues: enumStrings,
+            formatAllowedValue: value => getDisplayName(enumValues[Array.IndexOf(enumStrings, value)])
         );
     }
 
