@@ -110,25 +110,29 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
                 return;
             }
             const int borderSize = 3 * Game1.pixelZoom;
-            int? startY = null;
             var font = Game1.smallFont;
-            var tooltipsWidth = (int) tooltipsArray.Select(t => font.MeasureString(t.Text).X).Max() + Game1.tileSize / 2;
+            var approximateBounds = CalculateApproximateBounds(tooltipsArray, font);
+            var startY = approximateBounds.Y;
             
             foreach (var tooltip in tooltipsArray) {
-                var bounds = DrawSimpleTooltip(Game1.spriteBatch, tooltip, font, startY, tooltipsWidth);
-                startY = bounds.Y + bounds.Height - borderSize;
+                var height = Math.Max(60, (int) font.MeasureString(tooltip.Text).Y + Game1.tileSize / 2);
+                DrawSimpleTooltip(Game1.spriteBatch, tooltip, font, approximateBounds with {
+                    Y = startY,
+                    Height = height,
+                });
+                startY += height - borderSize;
             }
         }
     }
 
-    private static Rectangle DrawSimpleTooltip(SpriteBatch b, Tooltip tooltip, SpriteFont font, int? startY, int width) {
-        var textSize = font.MeasureString(tooltip.Text);
+    private static Rectangle CalculateApproximateBounds(IEnumerable<Tooltip> tooltips, SpriteFont font) {
+        var textSize = font.MeasureString(string.Join("\n\n", tooltips.Select(t => t.Text)));
         var height = Math.Max(60, (int) textSize.Y + Game1.tileSize / 2);
         var x = Game1.getOldMouseX() + Game1.tileSize / 2;
-        var y = startY ?? Game1.getOldMouseY() + Game1.tileSize / 2;
+        var y = Game1.getOldMouseY() + Game1.tileSize / 2;
 
-        if (x + width > Game1.viewport.Width) {
-            x = Game1.viewport.Width - width;
+        if (x + textSize.X > Game1.viewport.Width) {
+            x = (int) (Game1.viewport.Width - textSize.X);
             y += Game1.tileSize / 4;
         }
 
@@ -136,18 +140,18 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
             x += Game1.tileSize / 4;
             y = Game1.viewport.Height - height;
         }
+        return new Rectangle(x, y, (int) textSize.X + Game1.tileSize / 2, (int) textSize.Y);
+    }
 
-        var textureBoxBounds = new Rectangle(x, y, width, height);
+    private static void DrawSimpleTooltip(SpriteBatch b, Tooltip tooltip, SpriteFont font, Rectangle textureBoxBounds) {
         IClickableMenu.drawTextureBox(b, Game1.menuTexture, TooltipSourceRect, textureBoxBounds.X, textureBoxBounds.Y, 
             textureBoxBounds.Width, textureBoxBounds.Height, Color.White);
 
-        var position = new Vector2(x + Game1.tileSize / 4, y + Game1.tileSize / 4 + 4);
+        var position = new Vector2(textureBoxBounds.X + Game1.tileSize / 4, textureBoxBounds.Y + Game1.tileSize / 4 + 4);
         b.DrawString(font, tooltip.Text, position + new Vector2(2f, 2f), Game1.textShadowColor, 0, Vector2.Zero, 1f, SpriteEffects.None, 0);
         b.DrawString(font, tooltip.Text, position + new Vector2(0f, 2f), Game1.textShadowColor, 0, Vector2.Zero, 1f, SpriteEffects.None, 0);
         b.DrawString(font, tooltip.Text, position + new Vector2(2f, 0f), Game1.textShadowColor, 0, Vector2.Zero, 1f, SpriteEffects.None, 0);
         b.DrawString(font, tooltip.Text, position, Game1.textColor * 0.9f, 0, Vector2.Zero, 1f, SpriteEffects.None, 0);
-
-        return textureBoxBounds;
     }
     
     public void Add(ITooltipGenerator<TerrainFeature> generator) {

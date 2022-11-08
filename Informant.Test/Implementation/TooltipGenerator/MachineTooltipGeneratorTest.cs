@@ -68,6 +68,8 @@ internal class MachineTooltipGeneratorTest {
     [TestCase(BigCraftableIds.Incubator, AlwaysVisible)]
     [TestCase(BigCraftableIds.CoffeeMaker, AlwaysVisible)]
     [TestCase(BigCraftableIds.Deconstructor, AlwaysVisible)]
+    [TestCase(BigCraftableIds.StatueOfPerfection, AlwaysVisible)]
+    [TestCase(BigCraftableIds.StatueOfTruePerfection, AlwaysVisible)]
     // chests are hidden if at least ForChests is selected
     [TestCase(BigCraftableIds.Chest, HideMachineTooltips.ForChests)]
     [TestCase(BigCraftableIds.JunimoChest, HideMachineTooltips.ForChests)]
@@ -75,7 +77,9 @@ internal class MachineTooltipGeneratorTest {
     [TestCase(BigCraftableIds.StoneChest, HideMachineTooltips.ForChests)]
     [TestCase(BigCraftableIds.MiniShippingBin, HideMachineTooltips.ForChests)]
     // all other BigCraftables are hidden if at least ForNonMachines is selected
-    [TestCase(BigCraftableIds.PinkBunny, HideMachineTooltips.ForNonMachines)]
+    [TestCase(BigCraftableIds.PlushBunny, HideMachineTooltips.ForNonMachines)]
+    // all UNKNOWN BigCraftables should be displayed, because we have no idea what they are
+    [TestCase(999999, AlwaysVisible)]
     public void HasTooltip(int parentSheetIndex, HideMachineTooltips firstHide) {
         var obj = new SObject {
             parentSheetIndex = {parentSheetIndex},

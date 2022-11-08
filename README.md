@@ -87,31 +87,33 @@ entries is:
 ```json
 {
   "DisplayIds": {
+    "bundles": true,
+    "challenger-decorator": true,
     "crop": true,
     "fruit-tree": true,
     "machine": true,
-    "tree": true,
-    "bundles": true,
-    "challenger-decorator": true,
-    "museum": true
+    "museum": true,
+    "sell-price": true,
+    "tree": true
   },
+  "HideMachineTooltips": "ForNonMachines",
   "TooltipTrigger": "Hover",
-  "TooltipTriggerButton": "MouseRight",
-  "HideMachineTooltips": "ForNonMachines"
+  "TooltipTriggerButton": "MouseRight"
 }
 ```
 
-| Key in JSON               | Config Name           | Default Value     | Explanation                                                                                                                                              |
-|---------------------------|-----------------------|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `DisplayIds.bundles`      | Bundles Decorator     | `true`            | True if the bundle decorator should be activated                                                                                                         |
-| `DisplayIds.crop`         | Crops Tooltip         | `true`            | True if the crops tooltip should be activated                                                                                                            |
-| `DisplayIds.fruit-tree`   | Fruit Trees Tooltip   | `true`            | True if the fruit trees tooltip should be activated                                                                                                      |
-| `DisplayIds.machine`      | Machines Tooltip      | `true`            | True if the machines tooltip should be activated                                                                                                         |
-| `DisplayIds.museum`       | Museum Decorator      | `true`            | True if the museum decorator should be activated                                                                                                         |
-| `DisplayIds.tree`         | Trees Tooltip         | `true`            | True if the trees tooltip should be activated                                                                                                            |
-| `HideMachineTooltips`     | Hide Machine Tooltips | `ForNonMachines`  | `ForNonMachines` displays tooltips only on machines that do work<br>`ForChests` hides tooltips only for chests<br>`Never` displays tooltip on every item |
-| `TooltipTrigger`          | Tooltip Trigger       | `Hover`           | `Hover` to get tooltips when the mouse hovers over the item<br>`ButtonHeld` to get tooltips only when a button is held                                   |
-| `TooltipTriggerButton`    | Tooltip Button        | `MouseRight`      | If the trigger is `ButtonHeld`, this is the button that triggers the tooltip                                                                             |
+| Key in JSON             | Config Name           | Default Value    | Explanation                                                                                                                                              |
+|-------------------------|-----------------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `DisplayIds.bundles`    | Bundles Decorator     | `true`           | True if the bundle decorator should be activated                                                                                                         |
+| `DisplayIds.crop`       | Crops Tooltip         | `true`           | True if the crops tooltip should be activated                                                                                                            |
+| `DisplayIds.fruit-tree` | Fruit Trees Tooltip   | `true`           | True if the fruit trees tooltip should be activated                                                                                                      |
+| `DisplayIds.machine`    | Machines Tooltip      | `true`           | True if the machines tooltip should be activated                                                                                                         |
+| `DisplayIds.museum`     | Museum Decorator      | `true`           | True if the museum decorator should be activated                                                                                                         |
+| `DisplayIds.sell-price` | Sell Price Decorator  | `true`           | True to show the item's price on the bottom of the tooltip                                                                                             |
+| `DisplayIds.tree`       | Trees Tooltip         | `true`           | True if the trees tooltip should be activated                                                                                                            |
+| `HideMachineTooltips`   | Hide Machine Tooltips | `ForNonMachines` | `ForNonMachines` displays tooltips only on machines that do work<br>`ForChests` hides tooltips only for chests<br>`Never` displays tooltip on every item |
+| `TooltipTrigger`        | Tooltip Trigger       | `Hover`          | `Hover` to get tooltips when the mouse hovers over the item<br>`ButtonHeld` to get tooltips only when a button is held                                   |
+| `TooltipTriggerButton`  | Tooltip Button        | `MouseRight`     | If the trigger is `ButtonHeld`, this is the button that triggers the tooltip                                                                             |
 
 
 
@@ -120,6 +122,7 @@ entries is:
 | Version | Issues                                                                        | Changes                          |
 |---------|-------------------------------------------------------------------------------|----------------------------------|
 | Future  | [Issues](https://github.com/slothsoft/stardew-informant/milestone/1)          |                                  |
+| 1.2.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/7?closed=1) | Sell price feature               |
 | 1.1.1   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/6?closed=1) | Bugfixes from NexusMods feedback |
 | 1.1.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/5?closed=1) | Split-screen & API fixes         |
 | 1.0.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/4?closed=1) | Nexus Release                    |

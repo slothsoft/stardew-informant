@@ -8,10 +8,11 @@ namespace InformantTest.Implementation.TooltipGenerator;
 [TestFixture]
 public class CropTooltipGeneratorTest {
     
+    private static readonly IModHelper ModHelper = new TestModHelper(TestUtils.ModFolder);
     private CropTooltipGenerator _classUnderTest = CreateClassUnderTest();
 
     private static CropTooltipGenerator CreateClassUnderTest() {
-        return new CropTooltipGenerator(new TestModHelper(TestUtils.ModFolder));
+        return new CropTooltipGenerator(ModHelper);
     }
 
     [SetUp]
@@ -47,7 +48,7 @@ public class CropTooltipGeneratorTest {
             dead = { dead },
         };
         crop.phaseDays.AddRange(cropPhaseDays);
-        Assert.AreEqual(expectedString, _classUnderTest.CalculateDaysLeftString(crop));
+        Assert.AreEqual(expectedString, CropTooltipGenerator.CalculateDaysLeftString(ModHelper, crop));
     }
     
     [Test]
@@ -79,6 +80,4 @@ public class CropTooltipGeneratorTest {
         crop.phaseDays.AddRange(cropPhaseDays);
         Assert.AreEqual(expectedDaysLeft, CropTooltipGenerator.CalculateDaysLeft(crop));
     }
-    
-    
 }
