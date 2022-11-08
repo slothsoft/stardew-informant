@@ -2,6 +2,9 @@
   "BundleTooltipDecorator" : "Bundles Decorator",
   "BundleTooltipDecorator.Description" : "Marks items that are needed for the bundles",
 
+  "SellPricePainter" : "Sell Price Decorator",
+  "SellPricePainter.Description" : "Adds the sell price at the bottom of the tooltip",
+  
   "MuseumDecorator": "Museum Decorator",
   "MuseumDecorator.Description": "Marks items that are needed for the museum",
   

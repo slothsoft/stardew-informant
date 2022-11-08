@@ -10,13 +10,12 @@ using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
 namespace Slothsoft.Informant.Implementation;
 
-// ReSharper disable UnusedParameter.Local
 internal class ItemDecoratorManager : IDecoratorManager<Item> {
-    
-    private readonly Harmony _harmony;
 
     private static readonly List<IDecorator<Item>> DecoratorsList = new();
     private static Rectangle? _lastToolTipCoordinates;
+    
+    private readonly Harmony _harmony;
 
     public ItemDecoratorManager(IModHelper modHelper) {
         _harmony = new Harmony(InformantMod.Instance!.ModManifest.UniqueID);
@@ -49,10 +48,8 @@ internal class ItemDecoratorManager : IDecoratorManager<Item> {
         );
     }
 
-    private static void DrawToolTip(SpriteBatch b, ref string hoverText, string hoverTitle, Item? hoveredItem,
-        bool heldItem = false, int healAmountToDisplay = -1, int currencySymbol = 0, int extraItemToShowIndex = -1,
-        int extraItemToShowAmount = -1, CraftingRecipe? craftingIngredients = null,
-        int moneyAmountToShowAtBottom = -1) {
+    private static void DrawToolTip(SpriteBatch b, Item? hoveredItem) {
+        
         if (_lastToolTipCoordinates == null || hoveredItem == null) {
             return;
         }
@@ -89,8 +86,7 @@ internal class ItemDecoratorManager : IDecoratorManager<Item> {
         }
     }
 
-    private static void RememberToolTipCoordinates(SpriteBatch b, Texture2D texture, Rectangle sourceRect, int x, int y,
-        int width, int height, Color color, float scale = 1f, bool drawShadow = true, float draw_layer = -1f) {
+    private static void RememberToolTipCoordinates(int x, int y, int width, int height) {
         _lastToolTipCoordinates = new Rectangle(x, y, width, height);
     }
 

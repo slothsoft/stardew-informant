@@ -2,6 +2,9 @@
   "BundleTooltipDecorator" : "Bündel-Dekoration",
   "BundleTooltipDecorator.Description" : "Markiert Gegenstände, die für die Bündel gebraucht werden",
 
+  "SellPricePainter" : "Verkaufspreis-Dekoration",
+  "SellPricePainter.Description" : "Fügt den Verkaufspreis unten am Tooltip ein",
+  
   "MuseumDecorator": "Museum-Dekoration",
   "MuseumDecorator.Description": "Markiert Gegenstände, die für das Museum gebraucht werden",
   

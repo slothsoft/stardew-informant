@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Slothsoft.Informant.Api;
+using Slothsoft.Informant.Implementation;
+using Slothsoft.Informant.Implementation.Decorator;
 
 namespace Slothsoft.Informant.ThirdParty; 
 
@@ -52,7 +54,11 @@ internal static class HookToGenericModConfigMenu {
         // add some config options for decorators
         // TODO: commong soon? configMenu.AddSectionTitle(informantMod.ModManifest, () => informantMod.Helper.Translation.Get("Decorators.GeneralSection"));
         configMenu.AddSectionTitle(informantMod.ModManifest, () => informantMod.Helper.Translation.Get("Decorators.Visibility"));
-        CreateDisplayableOptions(configMenu, api.ItemDecorators.Decorators, informantMod);
+        configurables = new List<IDisplayable>();
+        configurables.AddRange(api.ItemDecorators.Decorators);
+        configurables.Add(new Decorator<object>(SellPricePainter.Id, informantMod.Helper.Translation.Get("SellPricePainter"), 
+            informantMod.Helper.Translation.Get("SellPricePainter.Description"), _ => null)); 
+        CreateDisplayableOptions(configMenu, configurables, informantMod);
     }
     
     private static void AddEnumOption<TEnum>(this IGenericModConfigMenuApi configMenu, IManifest mod, Func<TEnum> getValue, Action<TEnum> setValue, 

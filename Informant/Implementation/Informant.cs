@@ -13,6 +13,12 @@ public class Informant : IInformant {
     
     private TooltipGeneratorManager? _terrainFeatureInformant;
     private ItemDecoratorManager? _itemDecoratorInformant;
+    private SellPricePainter _sellPricePainter;
+    
+    public Informant(IModHelper modHelper) {
+        _modHelper = modHelper;
+        _sellPricePainter = new SellPricePainter();
+    }
     
     public ITooltipGeneratorManager<TerrainFeature> TerrainFeatureTooltipGenerators {
         get {
@@ -47,7 +53,4 @@ public class Informant : IInformant {
         ItemDecorators.Add(new Decorator<Item>(id, displayName, description, decorator));
     }
     
-    public Informant(IModHelper modHelper) {
-        _modHelper = modHelper;
-    }
 }
