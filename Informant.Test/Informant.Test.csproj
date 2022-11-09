@@ -18,6 +18,7 @@
 
     <ItemGroup>
         <Reference Include="MonoGame.Framework" HintPath="$(GamePath)\MonoGame.Framework.dll" />
+        <Reference Include="MonoMod.Common" HintPath="$(GamePath)\smapi-internal\MonoMod.Common.dll" />
         <Reference Include="Stardew Valley" HintPath="$(GamePath)\Stardew Valley.dll" />
         <Reference Include="SMAPI.Toolkit.CoreInterfaces" HintPath="$(GamePath)\smapi-internal\SMAPI.Toolkit.CoreInterfaces.dll" />
         <Reference Include="StardewModdingAPI" HintPath="$(GamePath)\StardewModdingAPI.dll" />

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Slothsoft.Informant.Api;
 using Slothsoft.Informant.Implementation.Decorator;
@@ -13,11 +14,11 @@ public class Informant : IInformant {
     
     private TooltipGeneratorManager? _terrainFeatureInformant;
     private ItemDecoratorManager? _itemDecoratorInformant;
-    private SellPricePainter _sellPricePainter;
+    private readonly SellPriceDisplayable _sellPriceDisplayable;
     
     public Informant(IModHelper modHelper) {
         _modHelper = modHelper;
-        _sellPricePainter = new SellPricePainter();
+        _sellPriceDisplayable = new SellPriceDisplayable(modHelper);
     }
     
     public ITooltipGeneratorManager<TerrainFeature> TerrainFeatureTooltipGenerators {
@@ -52,5 +53,6 @@ public class Informant : IInformant {
     public void AddItemDecorator(string id, string displayName, string description, Func<Item, Texture2D?> decorator) {
         ItemDecorators.Add(new Decorator<Item>(id, displayName, description, decorator));
     }
-    
+
+    public IEnumerable<IDisplayable> GeneralDisplayables => new[] {_sellPriceDisplayable};
 }

@@ -2,6 +2,9 @@
   "BundleTooltipDecorator" : "번들 표시",
   "BundleTooltipDecorator.Description" : "번들에 필요한 아이템을 표시합니다",
 
+  "SellPriceDisplayable" : "Sell Price Decorator",
+  "SellPriceDisplayable.Description" : "Adds the sell price at the bottom of the tooltip",
+  
   "MuseumDecorator": "박물관 표시",
   "MuseumDecorator.Description": "박물관에 기증해야 하는 아이템을 표시합니다",
   
