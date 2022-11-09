@@ -56,8 +56,7 @@ internal static class HookToGenericModConfigMenu {
         configMenu.AddSectionTitle(informantMod.ModManifest, () => informantMod.Helper.Translation.Get("Decorators.Visibility"));
         configurables = new List<IDisplayable>();
         configurables.AddRange(api.ItemDecorators.Decorators);
-        configurables.Add(new Decorator<object>(SellPricePainter.Id, informantMod.Helper.Translation.Get("SellPricePainter"), 
-            informantMod.Helper.Translation.Get("SellPricePainter.Description"), _ => null)); 
+        configurables.AddRange(api.GeneralDisplayables); 
         CreateDisplayableOptions(configMenu, configurables, informantMod);
     }
     

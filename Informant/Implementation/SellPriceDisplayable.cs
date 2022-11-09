@@ -2,32 +2,34 @@
 using HarmonyLib;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Slothsoft.Informant.Api;
 using StardewValley.Menus;
 using Color = Microsoft.Xna.Framework.Color;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
 
 namespace Slothsoft.Informant.Implementation;
 
-internal class SellPricePainter {
+internal class SellPriceDisplayable : IDisplayable {
     private static readonly Rectangle CoinSourceBounds = new(5, 69, 6, 6);
-    internal const string Id = "sell-price";
     
     private record MoneyToDisplay(int One, int? Stack);
 
     private static Vector2? _lastCurrencyCoordinates;
     private static bool _myCall;
 
+    private readonly IModHelper _modHelper;
     private readonly Harmony _harmony;
 
-    public SellPricePainter() {
-        _harmony = new Harmony(InformantMod.Instance!.ModManifest.UniqueID);
+    public SellPriceDisplayable(IModHelper modHelper, string? uniqueId = null) {
+        _modHelper = modHelper;
+        _harmony = new Harmony(uniqueId ?? InformantMod.Instance!.ModManifest.UniqueID);
         _harmony.Patch(
             original: AccessTools.Method(
                 typeof(IClickableMenu),
                 nameof(IClickableMenu.drawToolTip)
             ),
-            prefix: new HarmonyMethod(typeof(SellPricePainter), nameof(ManipulateMoneyValue)),
-            postfix: new HarmonyMethod(typeof(SellPricePainter), nameof(DrawAdditionalMoneyValues))
+            prefix: new HarmonyMethod(typeof(SellPriceDisplayable), nameof(ManipulateMoneyValue)),
+            postfix: new HarmonyMethod(typeof(SellPriceDisplayable), nameof(DrawAdditionalMoneyValues))
         );
         _harmony.Patch(
             original: AccessTools.Method(
@@ -45,9 +47,13 @@ internal class SellPricePainter {
                     typeof(float),
                 }
             ),
-            prefix: new HarmonyMethod(typeof(SellPricePainter), nameof(RememberCurrencyCoordinates))
+            prefix: new HarmonyMethod(typeof(SellPriceDisplayable), nameof(RememberCurrencyCoordinates))
         );
     }
+
+    public string Id => "sell-price";
+    public string DisplayName => _modHelper.Translation.Get("SellPriceDisplayable");
+    public string Description => _modHelper.Translation.Get("SellPriceDisplayable.Description");
 
     // __state => https://harmony.pardeike.net/articles/patching-injections.html
     // "Patches can use an argument called __state to store information in the prefix method that can be accessed again in the postfix method."
@@ -57,7 +63,7 @@ internal class SellPricePainter {
 
         
         var config = InformantMod.Instance?.Config ?? new InformantConfig();
-        if (!config.DisplayIds.GetValueOrDefault(Id, true)) {
+        if (!config.DisplayIds.GetValueOrDefault("sell-price", true)) {
             return; // this "decorator" is deactivated
         }
            

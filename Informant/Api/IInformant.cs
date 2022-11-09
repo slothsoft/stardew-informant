@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley.TerrainFeatures;
 
@@ -41,4 +42,10 @@ public interface IInformant {
     /// <br/><b>Since Version:</b> 1.1.0
     /// </summary>
     void AddItemDecorator(string id, string displayName, string description, Func<Item, Texture2D?> decorator); 
+    
+    /// <summary>
+    /// A list of other classes that add information somwhere in the game.
+    /// <br/><b>Since Version:</b> 1.2.0
+    /// </summary>
+    IEnumerable<IDisplayable> GeneralDisplayables { get; }
 }
