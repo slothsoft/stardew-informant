@@ -45,7 +45,7 @@ public interface IInformant {
     
     /// <summary>
     /// A list of other classes that add information somwhere in the game.
-    /// <br/><b>Since Version:</b> 1.2.0
+    /// <br/><b>Since Version:</b> 1.2.1
     /// </summary>
     IEnumerable<IDisplayable> GeneralDisplayables { get; }
 }

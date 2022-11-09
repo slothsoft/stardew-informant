@@ -122,6 +122,7 @@ entries is:
 | Version | Issues                                                                        | Changes                          |
 |---------|-------------------------------------------------------------------------------|----------------------------------|
 | Future  | [Issues](https://github.com/slothsoft/stardew-informant/milestone/1)          |                                  |
+| 1.2.1   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/8?closed=1) | Chinese translation              |
 | 1.2.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/7?closed=1) | Sell price feature               |
 | 1.1.1   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/6?closed=1) | Bugfixes from NexusMods feedback |
 | 1.1.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/5?closed=1) | Split-screen & API fixes         |
@@ -153,7 +154,7 @@ to me via [pull request](https://github.com/slothsoft/stardew-informant/fork) or
 | `pt`      | Portugese |                                                               |
 | `ru`      | Russian   |                                                               |
 | `tr`      | Turkish   |                                                               |
-| `zh`      | Chinese   |                                                               |
+| `zh`      | Chinese   | ✅ (thanks to [gottyduke](https://github.com/gottyduke)       |
 
 
 

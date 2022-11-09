@@ -2,8 +2,8 @@
   "BundleTooltipDecorator" : "收集包",
   "BundleTooltipDecorator.Description" : "标记还未献祭的物品",
 
-  "SellPricePainter" : "售价",
-  "SellPricePainter.Description" : "显示物品售价信息",
+  "SellPriceDisplayable" : "售价",
+  "SellPriceDisplayable.Description" : "显示物品售价信息",
   
   "MuseumDecorator": "博物馆",
   "MuseumDecorator.Description": "标记还未捐赠的物品",
