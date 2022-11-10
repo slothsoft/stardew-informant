@@ -16,6 +16,7 @@ There are two decorators, i.e. images displayed on the regular item tooltip, th
 [list]
 [*][img]https://github.com/slothsoft/stardew-informant/raw/main/Informant/assets/bundle.png[/img] [b]Bundles Decorator[/b] - displayed when the item is still needed for the bundles
 [*][img]https://github.com/slothsoft/stardew-informant/raw/main/Informant/assets/museum.png[/img] [b]Museum Decorator[/b] - displayed when the item is still needed for the museum
+[*][img]https://github.com/slothsoft/stardew-informant/raw/main/Informant/assets/shipping_bin.png[/img] [b]Shipping Decorator[/b] - displayed when the item is still needed to be shipped
 [/list]
 [size=5]Tooltips[/size]
 

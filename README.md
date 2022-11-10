@@ -61,6 +61,7 @@ There are two decorators, i.e. images displayed on the regular item tooltip, tha
 
 - ![Bundle Image](./Informant/assets/bundle.png) **Bundles Decorator** - displayed when the item is still needed for the bundles
 - ![Museum Image](./Informant/assets/museum.png) **Museum Decorator** - displayed when the item is still needed for the museum
+- ![Museum Image](./Informant/assets/shipping_bin.png) **Shipping Decorator** - displayed when the item was not yet shipped
 
 #### Tooltips
 
@@ -94,6 +95,7 @@ entries is:
     "machine": true,
     "museum": true,
     "sell-price": true,
+    "shipping": true,
     "tree": true
   },
   "HideMachineTooltips": "ForNonMachines",
@@ -109,7 +111,8 @@ entries is:
 | `DisplayIds.fruit-tree` | Fruit Trees Tooltip   | `true`           | True if the fruit trees tooltip should be activated                                                                                                      |
 | `DisplayIds.machine`    | Machines Tooltip      | `true`           | True if the machines tooltip should be activated                                                                                                         |
 | `DisplayIds.museum`     | Museum Decorator      | `true`           | True if the museum decorator should be activated                                                                                                         |
-| `DisplayIds.sell-price` | Sell Price Decorator  | `true`           | True to show the item's price on the bottom of the tooltip                                                                                             |
+| `DisplayIds.sell-price` | Sell Price Decorator  | `true`           | True to show the item's price on the bottom of the tooltip                                                                                               |
+| `DisplayIds.shipping`   | Shipping Decorator    | `true`           | True to marks items that were not shipped yet                                                                                                            |
 | `DisplayIds.tree`       | Trees Tooltip         | `true`           | True if the trees tooltip should be activated                                                                                                            |
 | `HideMachineTooltips`   | Hide Machine Tooltips | `ForNonMachines` | `ForNonMachines` displays tooltips only on machines that do work<br>`ForChests` hides tooltips only for chests<br>`Never` displays tooltip on every item |
 | `TooltipTrigger`        | Tooltip Trigger       | `Hover`          | `Hover` to get tooltips when the mouse hovers over the item<br>`ButtonHeld` to get tooltips only when a button is held                                   |
