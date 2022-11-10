@@ -125,6 +125,7 @@ entries is:
 | Version | Issues                                                                        | Changes                          |
 |---------|-------------------------------------------------------------------------------|----------------------------------|
 | Future  | [Issues](https://github.com/slothsoft/stardew-informant/milestone/1)          |                                  |
+| 1.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/9?closed=1) | Additional information           |
 | 1.2.1   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/8?closed=1) | Chinese translation              |
 | 1.2.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/7?closed=1) | Sell price feature               |
 | 1.1.1   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/6?closed=1) | Bugfixes from NexusMods feedback |
