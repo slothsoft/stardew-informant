@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Xna.Framework;
 using Slothsoft.Informant.Api;
 using Slothsoft.Informant.Implementation.Common;
 using StardewValley.TerrainFeatures;
@@ -22,13 +23,20 @@ internal class FruitTreeTooltipGenerator : ITooltipGenerator<TerrainFeature> {
     }
 
     public Tooltip Generate(TerrainFeature input) {
-        return new Tooltip(CreateText((FruitTree) input));
+        return CreateTooltip((FruitTree) input);
     }
 
-    private string CreateText(FruitTree fruitTree) {
+    private Tooltip CreateTooltip(FruitTree fruitTree) {
         var displayName = GameInformation.GetObjectDisplayName(fruitTree.indexOfFruit.Value);
         var daysLeft = CropTooltipGenerator.ToDaysLeftString(_modHelper, CalculateDaysLeft(fruitTree));
-        return $"{displayName}\n{daysLeft}";
+        return new Tooltip($"{displayName}\n{daysLeft}") {
+            Icon = Icon.ForParentSheetIndex(
+                fruitTree.indexOfFruit.Value, 
+                false, 
+                IPosition.TopLeft,
+                new Vector2(Game1.tileSize, Game1.tileSize)
+            ),
+        };
     }
 
     internal int CalculateDaysLeft(FruitTree fruitTree) {
