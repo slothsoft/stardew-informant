@@ -148,16 +148,16 @@ to me via [pull request](https://github.com/slothsoft/stardew-informant/fork) or
 
 | Key       | Language  | Translated?                                                   |
 |-----------|-----------|---------------------------------------------------------------|
-| `default` | English   | ✅                                                             |
-| `de`      | German    | ✅                                                             |
-| `es`      | Spanish   |                                                               |
-| `fr`      | French    |                                                               |
-| `hu`      | Hungarian |                                                               |
-| `it`      | Italian   |                                                               |
+| `default` | English   | ✅                                                            |
+| `de`      | German    | ✅                                                            |
+| `es`      | Spanish   | 🔜                                                            |
+| `fr`      | French    | 🔜                                                            |
+| `hu`      | Hungarian | 🔜                                                            |
+| `it`      | Italian   | 🔜                                                            |
 | `ko`      | Korean    | ✅ (thanks to [brighteast99](https://github.com/brighteast99)) |
-| `pt`      | Portugese |                                                               |
-| `ru`      | Russian   |                                                               |
-| `tr`      | Turkish   |                                                               |
+| `pt`      | Portugese | 🔜                                                            |
+| `ru`      | Russian   | 🔜                                                            |
+| `tr`      | Turkish   | 🔜                                                            |
 | `zh`      | Chinese   | ✅ (thanks to [gottyduke](https://github.com/gottyduke)       |
 
 

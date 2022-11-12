@@ -16,7 +16,7 @@ There are two decorators, i.e. images displayed on the regular item tooltip, th
 [list]
 [*][img]https://github.com/slothsoft/stardew-informant/raw/main/Informant/assets/bundle.png[/img] [b]Bundles Decorator[/b] - displayed when the item is still needed for the bundles
 [*][img]https://github.com/slothsoft/stardew-informant/raw/main/Informant/assets/museum.png[/img] [b]Museum Decorator[/b] - displayed when the item is still needed for the museum
-[*][img]https://github.com/slothsoft/stardew-informant/raw/main/Informant/assets/shipping_bin.png[/img] [b]Shipping Decorator[/b] - displayed when the item is still needed to be shipped
+[*][img]https://github.com/slothsoft/stardew-informant/raw/main/Informant/assets/shipping_bin.png[/img] [b]Shipping Decorator[/b] - displayed when the item was not yet shipped
 [/list]
 [size=5]Tooltips[/size]
 
@@ -37,8 +37,19 @@ But if you wish to change the [i]config.json[/i] file manually, you can also do 
 [size=6]Translator Guide[/size]
 
 Right now, not all translations are provided. If you want to help, translate either file in the [i][url=https://github.com/slothsoft/stardew-informant/blob/main/Informant/i18n/]i18n/[/url][/i] and test it right in your Stardew Valley (the same folder exists in your [i]Mods/[/i] folder). You can than provide it to me via [url=https://github.com/slothsoft/stardew-informant/fork]pull request[/url] or [url=mailto:s.schulz@slothsoft.de]email[/url].
-
-More information can be found [url=https://github.com/slothsoft/stardew-informant/blob/main/README.md#translator-guide]here[/url].
+[list]
+[*] English ([font=Courier New][color=#00ffff]default[/color][/font]): &#9989;
+[*] German ([font=Courier New][color=#00ffff]de[/color][/font]): &#9989;
+[*] Spanish ([font=Courier New][color=#00ffff]es[/color][/font]): &#128284;
+[*] French ([font=Courier New][color=#00ffff]fr[/color][/font]): &#128284;
+[*] Hungarian ([font=Courier New][color=#00ffff]hu[/color][/font]): &#128284;
+[*] Italian ([font=Courier New][color=#00ffff]it[/color][/font]): &#128284;
+[*] Korean ([font=Courier New][color=#00ffff]ko[/color][/font]): &#9989; (thanks to [url=https://github.com/brighteast99]brighteast99[/url])
+[*] Portugese ([font=Courier New][color=#00ffff]pt[/color][/font]): &#128284;
+[*] Russian ([font=Courier New][color=#00ffff]ru[/color][/font]): &#128284;
+[*] Turkish ([font=Courier New][color=#00ffff]tr[/color][/font]): &#128284;
+[*] Chinese ([font=Courier New][color=#00ffff]zh[/color][/font]): &#9989; (thanks to [url=https://github.com/gottyduke]gottyduke[/url]
+[/list]
 
 
 
