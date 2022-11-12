@@ -33,8 +33,8 @@ internal class FruitTreeTooltipGenerator : ITooltipGenerator<TerrainFeature> {
             Icon = Icon.ForParentSheetIndex(
                 fruitTree.indexOfFruit.Value, 
                 false, 
-                IPosition.TopLeft,
-                new Vector2(Game1.tileSize, Game1.tileSize)
+                IPosition.CenterRight,
+                new Vector2(Game1.tileSize / 2, Game1.tileSize / 2)
             ),
         };
     }

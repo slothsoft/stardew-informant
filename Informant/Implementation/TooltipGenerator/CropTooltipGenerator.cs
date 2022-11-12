@@ -34,8 +34,8 @@ internal class CropTooltipGenerator : ITooltipGenerator<TerrainFeature> {
             Icon = Icon.ForParentSheetIndex(
                 crop.indexOfHarvest.Value, 
                 false, 
-                IPosition.TopLeft,
-                new Vector2(Game1.tileSize, Game1.tileSize)
+                IPosition.CenterRight,
+                new Vector2(Game1.tileSize / 2f, Game1.tileSize / 2f)
             ),
         };
     }
