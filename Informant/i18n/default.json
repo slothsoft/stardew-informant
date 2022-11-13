@@ -7,6 +7,9 @@
   
   "MuseumDecorator": "Museum Decorator",
   "MuseumDecorator.Description": "Marks items that are needed for the museum",
+
+  "ShippingBinDecorator": "Shipping Decorator",
+  "ShippingBinDecorator.Description": "Marks items that were not shipped yet",
   
   "CropTooltipGenerator" : "Crops Tooltip",
   "CropTooltipGenerator.Description" : "A tooltip that displays the type of crop and remaining days till harvest",

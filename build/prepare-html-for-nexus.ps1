@@ -25,10 +25,6 @@ $html = $html -replace 'href="Informant','href="https://github.com/slothsoft/sta
 $html = $html -replace 'href="readme','href="https://github.com/slothsoft/stardew-informant/blob/main/readme'
 # Link the documentation for the config file
 $html = $html -replace "(?ms)The <em>config.json</em> with all entries(.*?)</table>","The <em>config.json</em> with all entries is documented <a href=""https://github.com/slothsoft/stardew-informant/blob/main/README.md#configuration"">here</a>.</p>"
-# Remove the versions section
-$html = $html -replace "(?ms)<h3 id=""versions(.*?)</p>(\n)+",''
-# Replace the translation table with link
-$html = $html -replace "(?ms)<table(.*?)German(.*?)</table>","<p>More information can be found <a href=""https://github.com/slothsoft/stardew-informant/blob/main/README.md#translator-guide"">here</a>.</p>"
 # Add link to GitHub
 $html = $html -replace "dev-notes.md"">here</a>.</p>", "dev-notes.md"">here</a>.</p>`n<p>The source code for this mod is on <a href=""https://github.com/slothsoft/stardew-informant"">GitHub</a>.</p>"
 # Remove Developer Notes

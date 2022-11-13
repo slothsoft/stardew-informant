@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Microsoft.Xna.Framework;
 using Slothsoft.Informant.Api;
 using Slothsoft.Informant.Implementation.Common;
 using StardewValley.TerrainFeatures;
@@ -23,13 +24,20 @@ internal class CropTooltipGenerator : ITooltipGenerator<TerrainFeature> {
     }
 
     public Tooltip Generate(TerrainFeature input) {
-        return new Tooltip(CreateText(_modHelper, ((HoeDirt) input).crop));
+        return CreateTooltip(_modHelper, ((HoeDirt) input).crop);
     }
 
-    internal static string CreateText(IModHelper modHelper, Crop crop) {
+    internal static Tooltip CreateTooltip(IModHelper modHelper, Crop crop) {
         var displayName = GameInformation.GetObjectDisplayName(crop.indexOfHarvest.Value);
         var daysLeft = CalculateDaysLeftString(modHelper, crop);
-        return $"{displayName}\n{daysLeft}";
+        return new Tooltip($"{displayName}\n{daysLeft}") {
+            Icon = Icon.ForParentSheetIndex(
+                crop.indexOfHarvest.Value, 
+                false, 
+                IPosition.CenterRight,
+                new Vector2(Game1.tileSize / 2f, Game1.tileSize / 2f)
+            ),
+        };
     }
 
     internal static string CalculateDaysLeftString(IModHelper modHelper, Crop crop) {

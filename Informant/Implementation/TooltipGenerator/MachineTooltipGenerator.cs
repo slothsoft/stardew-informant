@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Microsoft.Xna.Framework;
 using Slothsoft.Informant.Api;
 using Slothsoft.Informant.Implementation.Common;
 using StardewValley.Objects;
@@ -41,20 +42,27 @@ internal class MachineTooltipGenerator : ITooltipGenerator<SObject> {
         if (input.ParentSheetIndex == BigCraftableIds.GardenPot) {
             var gardenPot = input as IndoorPot;
             var crop = gardenPot?.hoeDirt.Value.crop;
-            return new Tooltip(crop == null ? "???" : CropTooltipGenerator.CreateText(_modHelper, crop));
+            return crop == null ? new Tooltip("???") : CropTooltipGenerator.CreateTooltip(_modHelper, crop);
         }
-        return new Tooltip(CreateText(input));
+        return CreateTooltip(input);
     }
 
-    private string CreateText(SObject input) {
+    private Tooltip CreateTooltip(SObject input) {
         var displayName = input.DisplayName;
         
-        if (input.heldObject.Value == null) {
-            return displayName;
+        var heldObject = input.heldObject.Value;
+        if (heldObject == null) { 
+            return new Tooltip(displayName);
         }
-        var heldObject = input.heldObject.Value.DisplayName;
+        var heldObjectName = heldObject.DisplayName;
         var daysLeft = CalculateMinutesLeftString(input);
-        return $"{displayName}\n> {heldObject}\n{daysLeft}";
+        return new Tooltip($"{displayName}\n> {heldObjectName}\n{daysLeft}") {
+            Icon = Icon.ForObject(
+                heldObject, 
+                IPosition.CenterRight,
+                new Vector2(Game1.tileSize / 2, Game1.tileSize / 2)
+            )
+        };
     }
 
     internal string CalculateMinutesLeftString(SObject input) {

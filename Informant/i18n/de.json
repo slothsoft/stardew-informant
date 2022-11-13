@@ -7,6 +7,9 @@
   
   "MuseumDecorator": "Museum-Dekoration",
   "MuseumDecorator.Description": "Markiert Gegenstände, die für das Museum gebraucht werden",
+
+  "ShippingBinDecorator": "Versand-Dekoration",
+  "ShippingBinDecorator.Description": "Markiert Gegenstände, die noch nie versandt worden sind",
   
   "CropTooltipGenerator" : "Nutzpflanzen-Tooltip",
   "CropTooltipGenerator.Description" : "Ein Tooltip, der die Art der Nutzpflanze und die Tage bis zur Ernte zeigt",

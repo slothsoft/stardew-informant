@@ -112,22 +112,34 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
             const int borderSize = 3 * Game1.pixelZoom;
             var font = Game1.smallFont;
             var approximateBounds = CalculateApproximateBounds(tooltipsArray, font);
+            var extendedBounds = ApplyTooltipIconPositions(approximateBounds, tooltipsArray);
+            
+            // move both bounds to the right and bottom if the tooltip was extended to the left and / or above
+            var diffX = approximateBounds.X - extendedBounds.X;
+            var diffY = approximateBounds.Y - extendedBounds.Y;
+            approximateBounds.X += diffX;
+            approximateBounds.Y += diffY;
+            extendedBounds.X += diffX;
+            approximateBounds.Y += diffY;
+            
+            // now we have all the data to create perfect little tooltip
             var startY = approximateBounds.Y;
             
             foreach (var tooltip in tooltipsArray) {
                 var height = Math.Max(60, (int) font.MeasureString(tooltip.Text).Y + Game1.tileSize / 2);
-                DrawSimpleTooltip(Game1.spriteBatch, tooltip, font, approximateBounds with {
+                DrawSimpleTooltip(Game1.spriteBatch, tooltip, font, extendedBounds with {
                     Y = startY,
                     Height = height,
-                });
+                }, new Vector2(approximateBounds.X, startY));
                 startY += height - borderSize;
             }
         }
     }
 
-    private static Rectangle CalculateApproximateBounds(IEnumerable<Tooltip> tooltips, SpriteFont font) {
+    private static Rectangle CalculateApproximateBounds(Tooltip[] tooltips, SpriteFont font) {
+        // this join with two linebreaks between the tooltips is a pretty good approximation (for English and German at least)
         var textSize = font.MeasureString(string.Join("\n\n", tooltips.Select(t => t.Text)));
-        var height = Math.Max(60, (int) textSize.Y + Game1.tileSize / 2);
+        var height = Math.Max(60, textSize.Y + Game1.tileSize / 2);
         var x = Game1.getOldMouseX() + Game1.tileSize / 2;
         var y = Game1.getOldMouseY() + Game1.tileSize / 2;
 
@@ -138,20 +150,54 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
 
         if (y + height > Game1.viewport.Height) {
             x += Game1.tileSize / 4;
-            y = Game1.viewport.Height - height;
+            y = (int) (Game1.viewport.Height - height);
         }
         return new Rectangle(x, y, (int) textSize.X + Game1.tileSize / 2, (int) textSize.Y);
     }
 
-    private static void DrawSimpleTooltip(SpriteBatch b, Tooltip tooltip, SpriteFont font, Rectangle textureBoxBounds) {
+    private static Rectangle ApplyTooltipIconPositions(Rectangle toolTipBounds, params Tooltip[] tooltips) {
+        var result = new Rectangle(toolTipBounds.X, toolTipBounds.Y, toolTipBounds.Width, toolTipBounds.Height);
+        
+        foreach (var tooltip in tooltips) {
+            var icon = tooltip.Icon;
+            if (icon == null) {
+                continue;
+            }
+            var iconPosition = icon.CalculateTooltipPosition(result);
+            result.X = Math.Min(result.X, iconPosition.X);
+            result.Y = Math.Min(result.Y, iconPosition.Y);
+            result.Width = Math.Max(result.X + result.Width, iconPosition.X + iconPosition.Width) - result.X;
+            result.Height = Math.Max(result.Y + result.Height, iconPosition.Y + iconPosition.Height) - result.Y;
+        }
+        // TODO: test this method?
+        return result;
+    }
+
+    private static void DrawSimpleTooltip(SpriteBatch b, Tooltip tooltip, SpriteFont font, Rectangle textureBoxBounds, Vector2 textPosition) {
         IClickableMenu.drawTextureBox(b, Game1.menuTexture, TooltipSourceRect, textureBoxBounds.X, textureBoxBounds.Y, 
             textureBoxBounds.Width, textureBoxBounds.Height, Color.White);
 
-        var position = new Vector2(textureBoxBounds.X + Game1.tileSize / 4, textureBoxBounds.Y + Game1.tileSize / 4 + 4);
+        var position = new Vector2(textPosition.X + Game1.tileSize / 4f, textPosition.Y + Game1.tileSize / 4f + 4);
         b.DrawString(font, tooltip.Text, position + new Vector2(2f, 2f), Game1.textShadowColor, 0, Vector2.Zero, 1f, SpriteEffects.None, 0);
         b.DrawString(font, tooltip.Text, position + new Vector2(0f, 2f), Game1.textShadowColor, 0, Vector2.Zero, 1f, SpriteEffects.None, 0);
         b.DrawString(font, tooltip.Text, position + new Vector2(2f, 0f), Game1.textShadowColor, 0, Vector2.Zero, 1f, SpriteEffects.None, 0);
         b.DrawString(font, tooltip.Text, position, Game1.textColor * 0.9f, 0, Vector2.Zero, 1f, SpriteEffects.None, 0);
+
+        if (tooltip.Icon != null) {
+            const int border = 3 * Game1.pixelZoom;
+            var textureBoxBoundsWithoutBorder = new Rectangle {
+                X = textureBoxBounds.X + border,
+                Y = textureBoxBounds.Y + border,
+                Width = textureBoxBounds.Width - 2 * border,
+                Height = textureBoxBounds.Height - 2 * border,
+            };
+            b.Draw(
+                tooltip.Icon.Texture, 
+                tooltip.Icon.CalculateIconPosition(textureBoxBoundsWithoutBorder), 
+                tooltip.Icon.NullSafeSourceRectangle, 
+                Color.White
+            );
+        }
     }
     
     public void Add(ITooltipGenerator<TerrainFeature> generator) {
