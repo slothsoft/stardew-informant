@@ -61,7 +61,7 @@ There are two decorators, i.e. images displayed on the regular item tooltip, tha
 
 - ![Bundle Image](./Informant/assets/bundle.png) **Bundles Decorator** - displayed when the item is still needed for the bundles
 - ![Museum Image](./Informant/assets/museum.png) **Museum Decorator** - displayed when the item is still needed for the museum
-- ![Museum Image](./Informant/assets/shipping_bin.png) **Shipping Decorator** - displayed when the item was not yet shipped
+- ![Shipping Bin Image](./Informant/assets/shipping_bin.png) **Shipping Decorator** - displayed when the item was not yet shipped
 
 #### Tooltips
 
@@ -126,15 +126,16 @@ entries is:
 |---------|-------------------------------------------------------------------------------|----------------------------------|
 | Future  | [Issues](https://github.com/slothsoft/stardew-informant/milestone/1)          |                                  |
 | 1.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/9?closed=1) | Additional information           |
-| 1.2.1   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/8?closed=1) | Chinese translation              |
-| 1.2.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/7?closed=1) | Sell price feature               |
-| 1.1.1   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/6?closed=1) | Bugfixes from NexusMods feedback |
-| 1.1.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/5?closed=1) | Split-screen & API fixes         |
-| 1.0.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/4?closed=1) | Nexus Release                    |
-| 0.4.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/3?closed=1) | Prepare for Nexus Release        |
-| 0.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/2?closed=1) | Strutured PoC                    |
-| 0.2.0   | -                                                                             | Crop Informant                   |
-| 0.1.0   | -                                                                             | Bundle Informant                 |
+| 1.2.2   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/10?closed=1) | Turkish translation              |
+| 1.2.1   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/8?closed=1)  | Chinese translation              |
+| 1.2.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/7?closed=1)  | Sell price feature               |
+| 1.1.1   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/6?closed=1)  | Bugfixes from NexusMods feedback |
+| 1.1.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/5?closed=1)  | Split-screen & API fixes         |
+| 1.0.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/4?closed=1)  | Nexus Release                    |
+| 0.4.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/3?closed=1)  | Prepare for Nexus Release        |
+| 0.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/2?closed=1)  | Strutured PoC                    |
+| 0.2.0   | -                                                                              | Crop Informant                   |
+| 0.1.0   | -                                                                              | Bundle Informant                 |
 
 _(All issues can be found [here](https://github.com/slothsoft/stardew-informant/issues).)_
 
@@ -146,19 +147,19 @@ Right now, not all translations are provided. If you want to help, translate eit
 and test it right in your Stardew Valley (the same folder exists in your _Mods/_ folder). You can than provide it
 to me via [pull request](https://github.com/slothsoft/stardew-informant/fork) or [email](mailto:s.schulz@slothsoft.de).
 
-| Key       | Language  | Translated?                                                   |
-|-----------|-----------|---------------------------------------------------------------|
-| `default` | English   | ✅                                                            |
-| `de`      | German    | ✅                                                            |
-| `es`      | Spanish   | 🔜                                                            |
-| `fr`      | French    | 🔜                                                            |
-| `hu`      | Hungarian | 🔜                                                            |
-| `it`      | Italian   | 🔜                                                            |
-| `ko`      | Korean    | ✅ (thanks to [brighteast99](https://github.com/brighteast99)) |
-| `pt`      | Portugese | 🔜                                                            |
-| `ru`      | Russian   | 🔜                                                            |
-| `tr`      | Turkish   | 🔜                                                            |
-| `zh`      | Chinese   | ✅ (thanks to [gottyduke](https://github.com/gottyduke)       |
+| Key       | Language  | Translated?                                                                         |
+|-----------|-----------|-------------------------------------------------------------------------------------|
+| `default` | English   | ✅                                                                                   |
+| `de`      | German    | ✅                                                                                   |
+| `es`      | Spanish   | 🔜                                                                                  |
+| `fr`      | French    | 🔜                                                                                  |
+| `hu`      | Hungarian | 🔜                                                                                  |
+| `it`      | Italian   | 🔜                                                                                  |
+| `ko`      | Korean    | ✅ (thanks to [brighteast99](https://github.com/brighteast99))                       |
+| `pt`      | Portugese | 🔜                                                                                  |
+| `ru`      | Russian   | 🔜                                                                                  |
+| `tr`      | Turkish   | ✅ (thanks to [ExaBronto](https://www.nexusmods.com/stardewvalley/users/114449313))  |
+| `zh`      | Chinese   | ✅ (thanks to [gottyduke](https://github.com/gottyduke)                              |
 
 
 
