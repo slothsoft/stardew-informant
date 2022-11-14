@@ -8,6 +8,9 @@
   "MuseumDecorator": "Museum Decorator",
   "MuseumDecorator.Description": "Marks items that are needed for the museum",
 
+  "NewRecipeDisplayable" : "New Recipe Decorator",
+  "NewRecipeDisplayable.Description" : "Marks recipes that where not yet cooked / crafted",
+  
   "ShippingBinDecorator": "Shipping Decorator",
   "ShippingBinDecorator.Description": "Marks items that were not shipped yet",
   
@@ -36,18 +39,21 @@
   "TreeTooltipGenerator.Type8" : "Mahogany Tree",
   "TreeTooltipGenerator.Type9" : "Palm Tree",
 
-  "Decorators.GeneralSection" : "Decorators - General",
-  "Decorators.Visibility" : "Decorators - Visibility",
-  "TooltipGenerators.GeneralSection" : "Tooltips - General",
-  "TooltipGenerators.Visibility" : "Tooltips - Visibility",
-  
-  "TooltipTrigger": "Tooltip Trigger",
-  "TooltipTrigger.Hover": "On hover",
-  "TooltipTrigger.ButtonHeld": "On button held",
-  "TooltipTriggerButton": "Tooltip Button",
+  "Config.Decorators.GeneralSection" : "Decorators - General",
+  "Config.Decorators.Visibility" : "Decorators - Visibility",
+  "Config.TooltipGenerators.GeneralSection" : "Tooltips - General",
+  "Config.TooltipGenerators.Visibility" : "Tooltips - Visibility",
 
-  "HideMachineTooltips": "Hide Machine Tooltips",
-  "HideMachineTooltips.ForNonMachines": "For non-machines",
-  "HideMachineTooltips.ForChests": "For chests",
-  "HideMachineTooltips.Never": "Never"
+  "Config.DecorateLockedBundles" : "Decorate Locked Bundles",
+  "Config.DecorateLockedBundles.Description" : "Displays Bundles Decorator for still locked bundles",
+  
+  "Config.TooltipTrigger": "Tooltip Trigger",
+  "Config.TooltipTrigger.Hover": "On hover",
+  "Config.TooltipTrigger.ButtonHeld": "On button held",
+  "Config.TooltipTriggerButton": "Tooltip Button",
+
+  "Config.HideMachineTooltips": "Hide Machine Tooltips",
+  "Config.HideMachineTooltips.ForNonMachines": "For non-machines",
+  "Config.HideMachineTooltips.ForChests": "For chests",
+  "Config.HideMachineTooltips.Never": "Never"
 }

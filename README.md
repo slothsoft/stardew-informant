@@ -57,11 +57,15 @@ can disable each type.
 
 #### Decorators
 
-There are two decorators, i.e. images displayed on the regular item tooltip, that have a specific meaning:
+There are some decorators, i.e. images displayed on the regular item tooltip, that have a specific meaning:
 
 - ![Bundle Image](./Informant/assets/bundle.png) **Bundles Decorator** - displayed when the item is still needed for the bundles
 - ![Museum Image](./Informant/assets/museum.png) **Museum Decorator** - displayed when the item is still needed for the museum
 - ![Shipping Bin Image](./Informant/assets/shipping_bin.png) **Shipping Decorator** - displayed when the item was not yet shipped
+
+For the **Bundles Decorator**, there is the option to show it on items needed for still locked bundles. On
+default, the decorator is only shown for the bundles you have access to, to keep it fair and balanced.
+
 
 #### Tooltips
 
@@ -81,6 +85,7 @@ page.
 
 <img alt="Screenshot" src="./readme/screenshot_config.png" width="300"/>
 <img alt="Screenshot" src="./readme/screenshot_config2.png" width="300"/>
+<img alt="Screenshot" src="./readme/screenshot_config3.png" width="300"/>
 
 But if you wish to change the _config.json_ file manually, you can also do that. The _config.json_ with all
 entries is:
@@ -98,44 +103,46 @@ entries is:
     "shipping": true,
     "tree": true
   },
+  "DecorateLockedBundles": false,
   "HideMachineTooltips": "ForNonMachines",
   "TooltipTrigger": "Hover",
   "TooltipTriggerButton": "MouseRight"
 }
 ```
 
-| Key in JSON             | Config Name           | Default Value    | Explanation                                                                                                                                              |
-|-------------------------|-----------------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `DisplayIds.bundles`    | Bundles Decorator     | `true`           | True if the bundle decorator should be activated                                                                                                         |
-| `DisplayIds.crop`       | Crops Tooltip         | `true`           | True if the crops tooltip should be activated                                                                                                            |
-| `DisplayIds.fruit-tree` | Fruit Trees Tooltip   | `true`           | True if the fruit trees tooltip should be activated                                                                                                      |
-| `DisplayIds.machine`    | Machines Tooltip      | `true`           | True if the machines tooltip should be activated                                                                                                         |
-| `DisplayIds.museum`     | Museum Decorator      | `true`           | True if the museum decorator should be activated                                                                                                         |
-| `DisplayIds.sell-price` | Sell Price Decorator  | `true`           | True to show the item's price on the bottom of the tooltip                                                                                               |
-| `DisplayIds.shipping`   | Shipping Decorator    | `true`           | True to marks items that were not shipped yet                                                                                                            |
-| `DisplayIds.tree`       | Trees Tooltip         | `true`           | True if the trees tooltip should be activated                                                                                                            |
-| `HideMachineTooltips`   | Hide Machine Tooltips | `ForNonMachines` | `ForNonMachines` displays tooltips only on machines that do work<br>`ForChests` hides tooltips only for chests<br>`Never` displays tooltip on every item |
-| `TooltipTrigger`        | Tooltip Trigger       | `Hover`          | `Hover` to get tooltips when the mouse hovers over the item<br>`ButtonHeld` to get tooltips only when a button is held                                   |
-| `TooltipTriggerButton`  | Tooltip Button        | `MouseRight`     | If the trigger is `ButtonHeld`, this is the button that triggers the tooltip                                                                             |
+| Key in JSON             | Config Name             | Default Value    | Explanation                                                                                                                                              |
+|-------------------------|-------------------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `DisplayIds.bundles`    | Bundles Decorator       | `true`           | True if the bundle decorator should be activated                                                                                                         |
+| `DisplayIds.crop`       | Crops Tooltip           | `true`           | True if the crops tooltip should be activated                                                                                                            |
+| `DisplayIds.fruit-tree` | Fruit Trees Tooltip     | `true`           | True if the fruit trees tooltip should be activated                                                                                                      |
+| `DisplayIds.machine`    | Machines Tooltip        | `true`           | True if the machines tooltip should be activated                                                                                                         |
+| `DisplayIds.museum`     | Museum Decorator        | `true`           | True if the museum decorator should be activated                                                                                                         |
+| `DisplayIds.sell-price` | Sell Price Decorator    | `true`           | True to show the item's price on the bottom of the tooltip                                                                                               |
+| `DisplayIds.shipping`   | Shipping Decorator      | `true`           | True to marks items that were not shipped yet                                                                                                            |
+| `DisplayIds.tree`       | Trees Tooltip           | `true`           | True if the trees tooltip should be activated                                                                                                            |
+| `DecorateLockedBundles` | Decorate Locked Bundles | `false`          | `ForNonMachines` displays tooltips only on machines that do work<br>`ForChests` hides tooltips only for chests<br>`Never` displays tooltip on every item |
+| `HideMachineTooltips`   | Hide Machine Tooltips   | `ForNonMachines` | `ForNonMachines` displays tooltips only on machines that do work<br>`ForChests` hides tooltips only for chests<br>`Never` displays tooltip on every item |
+| `TooltipTrigger`        | Tooltip Trigger         | `Hover`          | `Hover` to get tooltips when the mouse hovers over the item<br>`ButtonHeld` to get tooltips only when a button is held                                   |
+| `TooltipTriggerButton`  | Tooltip Button          | `MouseRight`     | If the trigger is `ButtonHeld`, this is the button that triggers the tooltip                                                                             |
 
 
 
 ### Versions
 
-| Version | Issues                                                                        | Changes                          |
-|---------|-------------------------------------------------------------------------------|----------------------------------|
-| Future  | [Issues](https://github.com/slothsoft/stardew-informant/milestone/1)          |                                  |
-| 1.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/9?closed=1) | Additional information           |
-| 1.2.2   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/10?closed=1) | Turkish translation              |
-| 1.2.1   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/8?closed=1)  | Chinese translation              |
-| 1.2.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/7?closed=1)  | Sell price feature               |
-| 1.1.1   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/6?closed=1)  | Bugfixes from NexusMods feedback |
-| 1.1.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/5?closed=1)  | Split-screen & API fixes         |
-| 1.0.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/4?closed=1)  | Nexus Release                    |
-| 0.4.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/3?closed=1)  | Prepare for Nexus Release        |
-| 0.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/2?closed=1)  | Strutured PoC                    |
-| 0.2.0   | -                                                                              | Crop Informant                   |
-| 0.1.0   | -                                                                              | Bundle Informant                 |
+| Version | Issues                                                                        | Changes                                                                                       |
+|---------|-------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| Future  | [Issues](https://github.com/slothsoft/stardew-informant/milestone/1)          |                                                                                               |
+| 1.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/9?closed=1) | Additional information (marks uncrafted recipes, shipping decorator, shows icons on tooltips) |
+| 1.2.2   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/10?closed=1) | Turkish translation                                                                           |
+| 1.2.1   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/8?closed=1)  | Chinese translation                                                                           |
+| 1.2.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/7?closed=1)  | Sell price feature                                                                            |
+| 1.1.1   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/6?closed=1)  | Bugfixes from NexusMods feedback                                                              |
+| 1.1.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/5?closed=1)  | Split-screen & API fixes                                                                      |
+| 1.0.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/4?closed=1)  | Nexus Release                                                                                 |
+| 0.4.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/3?closed=1)  | Prepare for Nexus Release                                                                     |
+| 0.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/2?closed=1)  | Strutured PoC                                                                                 |
+| 0.2.0   | -                                                                              | Crop Informant                                                                                |
+| 0.1.0   | -                                                                              | Bundle Informant                                                                              |
 
 _(All issues can be found [here](https://github.com/slothsoft/stardew-informant/issues).)_
 
@@ -186,24 +193,25 @@ using StardewValley.TerrainFeatures;
 namespace MyMod.ThirdParty; 
 
 /// <summary>
-/// Base class for the entire API. Can be used to add custom information providers.
+/// Base class for the entire API. Can be used to add custom information providers.<br/>
+/// <b>API Version:</b> 1.3.0
 /// </summary>
 public interface IInformant {
 
     /// <summary>
     /// Adds a tooltip generator for the <see cref="TerrainFeature"/>(s) under the mouse position.
     /// </summary>
-    void AddTerrainFeatureTooltipGenerator(string id, string displayName, string description, Func<TerrainFeature, string> generator); 
+    void AddTerrainFeatureTooltipGenerator(string id, Func<string> displayName, Func<string> description, Func<TerrainFeature, string> generator); 
     
     /// <summary>
     /// Adds a tooltip generator for the <see cref="Object"/>(s) under the mouse position.
     /// </summary>
-    void AddObjectTooltipGenerator(string id, string displayName, string description, Func<SObject, string?> generator); 
+    void AddObjectTooltipGenerator(string id, Func<string> displayName, Func<string> description, Func<SObject, string?> generator); 
     
     /// <summary>
     /// Adds a decorator for the <see cref="Item"/>(s) under the mouse position.
     /// </summary>
-    void AddItemDecorator(string id, string displayName, string description, Func<Item, Texture2D?> decorator); 
+    void AddItemDecorator(string id, Func<string> displayName, Func<string> description, Func<Item, Texture2D?> decorator); 
 }
 ```
 

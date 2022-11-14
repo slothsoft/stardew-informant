@@ -8,6 +8,9 @@
   "MuseumDecorator": "Museum-Dekoration",
   "MuseumDecorator.Description": "Markiert Gegenstände, die für das Museum gebraucht werden",
 
+  "NewRecipeDisplayable" : "Neue-Rezepte-Dekoration",
+  "NewRecipeDisplayable.Description" : "Markiert Rezepte, die noch nicht gefertigt / gekocht worden sind",
+  
   "ShippingBinDecorator": "Versand-Dekoration",
   "ShippingBinDecorator.Description": "Markiert Gegenstände, die noch nie versandt worden sind",
   
@@ -36,18 +39,21 @@
   "TreeTooltipGenerator.Type8" : "Mahagoni-Baum",
   "TreeTooltipGenerator.Type9" : "Palme",
 
-  "Decorators.GeneralSection" : "Dekorationen - Allgemein", 
-  "Decorators.Visibility" : "Dekorationen - Sichtbarkeit", 
-  "TooltipGenerators.GeneralSection" : "Tooltips - Allgemein", 
-  "TooltipGenerators.Visibility" : "Tooltips - Sichtbarkeit",
+  "Config.Decorators.GeneralSection" : "Dekorationen - Allgemein", 
+  "Config.Decorators.Visibility" : "Dekorationen - Sichtbarkeit", 
+  "Config.TooltipGenerators.GeneralSection" : "Tooltips - Allgemein", 
+  "Config.TooltipGenerators.Visibility" : "Tooltips - Sichtbarkeit",
+
+  "Config.DecorateLockedBundles" : "Dekoriere versteckte Bündel",
+  "Config.DecorateLockedBundles.Description" : "Bündel-Dekoration wird auch für noch versteckte Bündel angezeigt",
   
-  "TooltipTrigger": "Tooltip-Auslöser",
-  "TooltipTrigger.Hover": "Mausberührung",
-  "TooltipTrigger.ButtonHeld": "Bei gedrückter Taste",
-  "TooltipTriggerButton": "Tooltip-Taste",
+  "Config.TooltipTrigger": "Tooltip-Auslöser",
+  "Config.TooltipTrigger.Hover": "Mausberührung",
+  "Config.TooltipTrigger.ButtonHeld": "Bei gedrückter Taste",
+  "Config.TooltipTriggerButton": "Tooltip-Taste",
   
-  "HideMachineTooltips": "Verstecke Machinen-Tooltips",
-  "HideMachineTooltips.ForNonMachines": "Alle außer Machinen",
-  "HideMachineTooltips.ForChests": "Kisten",
-  "HideMachineTooltips.Never": "Keine"
+  "Config.HideMachineTooltips": "Verstecke Machinen-Tooltips",
+  "Config.HideMachineTooltips.ForNonMachines": "Alle außer Machinen",
+  "Config.HideMachineTooltips.ForChests": "Kisten",
+  "Config.HideMachineTooltips.Never": "Keine"
 }

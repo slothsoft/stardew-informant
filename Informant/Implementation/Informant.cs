@@ -15,10 +15,12 @@ public class Informant : IInformant {
     private TooltipGeneratorManager? _terrainFeatureInformant;
     private ItemDecoratorManager? _itemDecoratorInformant;
     private readonly SellPriceDisplayable _sellPriceDisplayable;
+    private readonly NewRecipeDisplayable _newRecipeDisplayable;
     
     public Informant(IModHelper modHelper) {
         _modHelper = modHelper;
         _sellPriceDisplayable = new SellPriceDisplayable(modHelper);
+        _newRecipeDisplayable = new NewRecipeDisplayable(modHelper);
     }
     
     public ITooltipGeneratorManager<TerrainFeature> TerrainFeatureTooltipGenerators {
@@ -29,6 +31,10 @@ public class Informant : IInformant {
     }
 
     public void AddTerrainFeatureTooltipGenerator(string id, string displayName, string description, Func<TerrainFeature, string> generator) {
+        TerrainFeatureTooltipGenerators.Add(new TooltipGenerator<TerrainFeature>(id, () => displayName, () => description, generator));
+    }
+    
+    public void AddTerrainFeatureTooltipGenerator(string id, Func<string> displayName, Func<string> description, Func<TerrainFeature, string> generator) {
         TerrainFeatureTooltipGenerators.Add(new TooltipGenerator<TerrainFeature>(id, displayName, description, generator));
     }
 
@@ -40,6 +46,10 @@ public class Informant : IInformant {
     }
 
     public void AddObjectTooltipGenerator(string id, string displayName, string description, Func<SObject, string?> generator) {
+        ObjectTooltipGenerators.Add(new TooltipGenerator<SObject>(id, () => displayName, () => description, generator));
+    }
+    
+    public void AddObjectTooltipGenerator(string id, Func<string> displayName, Func<string> description, Func<SObject, string?> generator) {
         ObjectTooltipGenerators.Add(new TooltipGenerator<SObject>(id, displayName, description, generator));
     }
     
@@ -51,8 +61,12 @@ public class Informant : IInformant {
     }
     
     public void AddItemDecorator(string id, string displayName, string description, Func<Item, Texture2D?> decorator) {
+        ItemDecorators.Add(new Decorator<Item>(id, () => displayName, () => description, decorator));
+    }
+    
+    public void AddItemDecorator(string id, Func<string> displayName, Func<string> description, Func<Item, Texture2D?> decorator) {
         ItemDecorators.Add(new Decorator<Item>(id, displayName, description, decorator));
     }
 
-    public IEnumerable<IDisplayable> GeneralDisplayables => new[] {_sellPriceDisplayable};
+    public IEnumerable<IDisplayable> GeneralDisplayables => new IDisplayable[] {_sellPriceDisplayable, _newRecipeDisplayable};
 }
