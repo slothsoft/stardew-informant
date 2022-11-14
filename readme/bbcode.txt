@@ -12,12 +12,15 @@ If you don’t like one or more of the displayed information (or worse, if there
 
 [size=5]Decorators[/size]
 
-There are two decorators, i.e. images displayed on the regular item tooltip, that have a specific meaning:
+There are some decorators, i.e. images displayed on the regular item tooltip, that have a specific meaning:
 [list]
 [*][img]https://github.com/slothsoft/stardew-informant/raw/main/Informant/assets/bundle.png[/img] [b]Bundles Decorator[/b] - displayed when the item is still needed for the bundles
 [*][img]https://github.com/slothsoft/stardew-informant/raw/main/Informant/assets/museum.png[/img] [b]Museum Decorator[/b] - displayed when the item is still needed for the museum
 [*][img]https://github.com/slothsoft/stardew-informant/raw/main/Informant/assets/shipping_bin.png[/img] [b]Shipping Decorator[/b] - displayed when the item was not yet shipped
 [/list]
+For the [b]Bundles Decorator[/b], there is the option to show it on items needed for still locked bundles. On default, the decorator is only shown for the bundles you have access to, to keep it fair and balanced.
+
+
 [size=5]Tooltips[/size]
 
 You can also configure the tooltip “trigger”, i.e. if you want the tooltip to show when the mouse hovers over an object, or if you want to press a key. You can also select the key to press.
@@ -37,7 +40,7 @@ But if you wish to change the [i]config.json[/i] file manually, you can also do 
 [size=6]Versions[/size]
 [list]
 [*] [B]Future[/B] ([url=https://github.com/slothsoft/stardew-informant/milestone/1]Issues[/url]): 
-[*] [B]1.3.0[/B] ([url=https://github.com/slothsoft/stardew-informant/milestone/9?closed=1]Issues[/url]): Additional information
+[*] [B]1.3.0[/B] ([url=https://github.com/slothsoft/stardew-informant/milestone/9?closed=1]Issues[/url]): Additional information (marks uncrafted recipes, shipping decorator, shows icons on tooltips)
 [*] [B]1.2.2[/B] ([url=https://github.com/slothsoft/stardew-informant/milestone/10?closed=1]Issues[/url]): Turkish translation
 [*] [B]1.2.1[/B] ([url=https://github.com/slothsoft/stardew-informant/milestone/8?closed=1]Issues[/url]): Chinese translation
 [*] [B]1.2.0[/B] ([url=https://github.com/slothsoft/stardew-informant/milestone/7?closed=1]Issues[/url]): Sell price feature
