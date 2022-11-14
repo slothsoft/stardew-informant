@@ -7,6 +7,9 @@
   
   "MuseumDecorator": "博物馆",
   "MuseumDecorator.Description": "标记还未捐赠的物品",
+
+  "ShippingBinDecorator": "Shipping Decorator",
+  "ShippingBinDecorator.Description": "Marks items that were not shipped yet",
   
   "CropTooltipGenerator" : "作物",
   "CropTooltipGenerator.Description" : "作物相关的信息, 如种类, 收获日",

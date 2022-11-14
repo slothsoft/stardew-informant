@@ -7,6 +7,9 @@
 
   "MuseumDecorator": "Müze Belirteci",
   "MuseumDecorator.Description": "Müze için gerekli olan nesneleri belirtir.",
+
+  "ShippingBinDecorator": "Shipping Decorator",
+  "ShippingBinDecorator.Description": "Marks items that were not shipped yet",
   
   "CropTooltipGenerator" : "Ekin İpucu",
   "CropTooltipGenerator.Description" : "Mahsul türünü ve hasata kalan gün sayısını gösteren bir ipucu",

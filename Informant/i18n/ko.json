@@ -7,6 +7,9 @@
   
   "MuseumDecorator": "박물관 표시",
   "MuseumDecorator.Description": "박물관에 기증해야 하는 아이템을 표시합니다",
+
+  "ShippingBinDecorator": "Shipping Decorator",
+  "ShippingBinDecorator.Description": "Marks items that were not shipped yet",
   
   "CropTooltipGenerator" : "작물 정보",
   "CropTooltipGenerator.Description" : "작물의 종류와 수확까지 남은 시간을 보여줍니다",

@@ -8,20 +8,26 @@ namespace Slothsoft.Informant.Api;
 /// </summary>
 /// <param name="Texture">the texture to display.</param>
 public record Icon(Texture2D Texture) {
-    public static Icon ForObject(SObject obj, IPosition? position = null, Vector2? iconSize = null) {
+    public static Icon? ForObject(SObject obj, IPosition? position = null, Vector2? iconSize = null) {
         return ForParentSheetIndex(obj.ParentSheetIndex, obj.bigCraftable.Value, position, iconSize);
     }
     
-    public static Icon ForParentSheetIndex(int parentSheetIndex, bool bigCraftable, IPosition? position = null, Vector2? iconSize = null) {
+    public static Icon? ForParentSheetIndex(int parentSheetIndex, bool bigCraftable, IPosition? position = null, Vector2? iconSize = null) {
         position ??= IPosition.TopRight;
         iconSize ??= new Vector2(Game1.tileSize, Game1.tileSize);
         
         if (bigCraftable) {
+            if (Game1.bigCraftableSpriteSheet == null) {
+                return null;
+            }
             return new Icon(Game1.bigCraftableSpriteSheet) {
                 SourceRectangle = SObject.getSourceRectForBigCraftable(parentSheetIndex),
                 Position = position,
                 IconSize = iconSize,
             };
+        }
+        if (Game1.objectSpriteSheet == null) {
+            return null;
         }
         return new Icon(Game1.objectSpriteSheet) {
             SourceRectangle = Game1.getSourceRectForStandardTileSheet(Game1.objectSpriteSheet, parentSheetIndex, 16, 16),
