@@ -23,37 +23,45 @@ internal static class HookToGenericModConfigMenu {
         );
         
         // add some config options for tooltip generators
-        configMenu.AddSectionTitle(informantMod.ModManifest, () => informantMod.Helper.Translation.Get("TooltipGenerators.GeneralSection"));
+        configMenu.AddSectionTitle(informantMod.ModManifest, () => informantMod.Helper.Translation.Get("Config.TooltipGenerators.GeneralSection"));
         configMenu.AddEnumOption(
             mod: informantMod.ModManifest,
-            name: () => informantMod.Helper.Translation.Get("TooltipTrigger"),
+            name: () => informantMod.Helper.Translation.Get("Config.TooltipTrigger"),
             getValue: () => informantMod.Config.TooltipTrigger,
             setValue: value => informantMod.Config.TooltipTrigger = value,
-            getDisplayName: value => informantMod.Helper.Translation.Get("TooltipTrigger." + value)
+            getDisplayName: value => informantMod.Helper.Translation.Get("Config.TooltipTrigger." + value)
         );
         configMenu.AddKeybind(
             mod: informantMod.ModManifest,
-            name: () => informantMod.Helper.Translation.Get("TooltipTriggerButton"),
+            name: () => informantMod.Helper.Translation.Get("Config.TooltipTriggerButton"),
             getValue: () => informantMod.Config.TooltipTriggerButton,
             setValue: value => informantMod.Config.TooltipTriggerButton = value
         );
         configMenu.AddEnumOption(
             mod: informantMod.ModManifest,
-            name: () => informantMod.Helper.Translation.Get("HideMachineTooltips"),
+            name: () => informantMod.Helper.Translation.Get("Config.HideMachineTooltips"),
             getValue: () => informantMod.Config.HideMachineTooltips,
             setValue: value => informantMod.Config.HideMachineTooltips = value,
-            getDisplayName: value => informantMod.Helper.Translation.Get("HideMachineTooltips." + value)
+            getDisplayName: value => informantMod.Helper.Translation.Get("Config.HideMachineTooltips." + value)
         );
         
-        configMenu.AddSectionTitle(informantMod.ModManifest, () => informantMod.Helper.Translation.Get("TooltipGenerators.Visibility"));
+        configMenu.AddSectionTitle(informantMod.ModManifest, () => informantMod.Helper.Translation.Get("Config.TooltipGenerators.Visibility"));
         var configurables = new List<IDisplayable>();
         configurables.AddRange(api.ObjectTooltipGenerators.Generators);
         configurables.AddRange(api.TerrainFeatureTooltipGenerators.Generators);
         CreateDisplayableOptions(configMenu, configurables, informantMod);
         
         // add some config options for decorators
-        // TODO: commong soon? configMenu.AddSectionTitle(informantMod.ModManifest, () => informantMod.Helper.Translation.Get("Decorators.GeneralSection"));
-        configMenu.AddSectionTitle(informantMod.ModManifest, () => informantMod.Helper.Translation.Get("Decorators.Visibility"));
+        configMenu.AddSectionTitle(informantMod.ModManifest, () => informantMod.Helper.Translation.Get("Config.Decorators.GeneralSection"));
+        configMenu.AddBoolOption(
+            mod: informantMod.ModManifest,
+            name: () => informantMod.Helper.Translation.Get("Config.DecorateLockedBundles"),
+            tooltip: () => informantMod.Helper.Translation.Get("Config.DecorateLockedBundles.Description"),
+            getValue: () => informantMod.Config.DecorateLockedBundles,
+            setValue: value => informantMod.Config.DecorateLockedBundles = value
+        );
+        
+        configMenu.AddSectionTitle(informantMod.ModManifest, () => informantMod.Helper.Translation.Get("Config.Decorators.Visibility"));
         configurables = new List<IDisplayable>();
         configurables.AddRange(api.ItemDecorators.Decorators);
         configurables.AddRange(api.GeneralDisplayables); 

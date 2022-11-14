@@ -36,18 +36,21 @@
   "TreeTooltipGenerator.Type8" : "桃花心木",
   "TreeTooltipGenerator.Type9" : "棕榈树",
 
-  "Decorators.GeneralSection" : "通用标记",
-  "Decorators.Visibility" : "标记开关",
-  "TooltipGenerators.GeneralSection" : "通用信息",
-  "TooltipGenerators.Visibility" : "信息开关",
-  
-  "TooltipTrigger": "信息显示模式",
-  "TooltipTrigger.Hover": "鼠标悬停",
-  "TooltipTrigger.ButtonHeld": "按键按下",
-  "TooltipTriggerButton": "信息显示按键",
+  "Config.Decorators.GeneralSection" : "通用标记",
+  "Config.Decorators.Visibility" : "标记开关",
+  "Config.TooltipGenerators.GeneralSection" : "通用信息",
+  "Config.TooltipGenerators.Visibility" : "信息开关",
 
-  "HideMachineTooltips": "隐藏机器信息",
-  "HideMachineTooltips.ForNonMachines": "隐藏非机器",
-  "HideMachineTooltips.ForChests": "隐藏箱子",
-  "HideMachineTooltips.Never": "永不"
+  "Config.DecorateLockedBundles" : "Decorate Locked Bundles",
+  "Config.DecorateLockedBundles.Description" : "Displays Bundles Decorator for still locked bundles",
+  
+  "Config.TooltipTrigger": "信息显示模式",
+  "Config.TooltipTrigger.Hover": "鼠标悬停",
+  "Config.TooltipTrigger.ButtonHeld": "按键按下",
+  "Config.TooltipTriggerButton": "信息显示按键",
+
+  "Config.HideMachineTooltips": "隐藏机器信息",
+  "Config.HideMachineTooltips.ForNonMachines": "隐藏非机器",
+  "Config.HideMachineTooltips.ForChests": "隐藏箱子",
+  "Config.HideMachineTooltips.Never": "永不"
 }

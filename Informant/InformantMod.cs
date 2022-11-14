@@ -13,7 +13,7 @@ public class InformantMod : Mod {
 
     private IInformant? _api;
     internal InformantConfig Config = null!;
-    
+
     /// <summary>The mod entry point, called after the mod is first loaded.</summary>
     /// <param name="modHelper">Provides simplified APIs for writing mods.</param>
     public override void Entry(IModHelper modHelper) {

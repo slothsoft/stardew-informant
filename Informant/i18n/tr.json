@@ -36,18 +36,21 @@
   "TreeTooltipGenerator.Type8" : "Maun Ağacı",
   "TreeTooltipGenerator.Type9" : "Palmiye Ağacı",
 
-  "Decorators.GeneralSection" : "Belirteçler - Genel",
-  "Decorators.Visibility" : "Belirteçler - Görünürlük",
-  "TooltipGenerators.GeneralSection" : "İpuçları - Genel",
-  "TooltipGenerators.Visibility" : "İpuçları - Görünürlük",
-  
-  "TooltipTrigger": "İpucu aktifleşmesi",
-  "TooltipTrigger.Hover": "Üzerinde imleç ile gezinildiğinde",
-  "TooltipTrigger.ButtonHeld": "Düğme basılı tutulduğunda",
-  "TooltipTriggerButton": "İpucu Butonu",
+  "Config.Decorators.GeneralSection" : "Belirteçler - Genel",
+  "Config.Decorators.Visibility" : "Belirteçler - Görünürlük",
+  "Config.TooltipGenerators.GeneralSection" : "İpuçları - Genel",
+  "Config.TooltipGenerators.Visibility" : "İpuçları - Görünürlük",
 
-  "HideMachineTooltips": "Makine İpucunu Gizle",
-  "HideMachineTooltips.ForNonMachines": "Makine olmayanlar için",
-  "HideMachineTooltips.ForChests": "Sandıklar için",
-  "HideMachineTooltips.Never": "Asla"
+  "Config.DecorateLockedBundles" : "Decorate Locked Bundles",
+  "Config.DecorateLockedBundles.Description" : "Displays Bundles Decorator for still locked bundles",
+  
+  "Config.TooltipTrigger": "İpucu aktifleşmesi",
+  "Config.TooltipTrigger.Hover": "Üzerinde imleç ile gezinildiğinde",
+  "Config.TooltipTrigger.ButtonHeld": "Düğme basılı tutulduğunda",
+  "Config.TooltipTriggerButton": "İpucu Butonu",
+
+  "Config.HideMachineTooltips": "Makine İpucunu Gizle",
+  "Config.HideMachineTooltips.ForNonMachines": "Makine olmayanlar için",
+  "Config.HideMachineTooltips.ForChests": "Sandıklar için",
+  "Config.HideMachineTooltips.Never": "Asla"
 }

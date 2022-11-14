@@ -24,19 +24,21 @@ internal class BundleDecorator : IDecorator<Item> {
 
     public bool HasDecoration(Item input) {
         if (_bundle != null && input is SObject obj && !obj.bigCraftable.Value) {
+
+            int[]? allowedAreas;
             
-            // if player can't read Junimo text, they can't have bundles yet
             if (!Game1.player.mailReceived.Contains("canReadJunimoText")) {
-                return false;
+                // if player can't read Junimo text, they can't have bundles yet
+                allowedAreas = null;
+            } else {
+                // let the community center calculate which bundles are allowed
+                var communityCenter = Game1.getLocationFromName("CommunityCenter") as CommunityCenter;
+                allowedAreas = communityCenter?.areasComplete
+                    .Select((complete, index) => new { complete, index})
+                    .Where(area => communityCenter.shouldNoteAppearInArea(area.index) && !area.complete)
+                    .Select(area => area.index)
+                    .ToArray();
             }
-            
-            // let the community center calculate which bundles are allowed
-            var communityCenter = Game1.getLocationFromName("CommunityCenter") as CommunityCenter;
-            var allowedAreas = communityCenter?.areasComplete
-                .Select((complete, index) => new { complete, index})
-                .Where(area => communityCenter.shouldNoteAppearInArea(area.index) && !area.complete)
-                .Select(area => area.index)
-                .ToArray();
             
             return GetNeededItems(allowedAreas).Contains(input.ParentSheetIndex);
         }
@@ -58,6 +60,12 @@ internal class BundleDecorator : IDecorator<Item> {
         // bundleTitle = Boiler Room/22
         // bundleData = Adventurer's/R 518 1/766 99 0 767 10 0 768 1 0 881 10 0/1/2/22
 
+        var decorateLockedBundles = InformantMod.Instance?.Config.DecorateLockedBundles ?? false;
+        if ((allowedAreas == null || allowedAreas.Length == 0) && !decorateLockedBundles) {
+            // no areas are allowed, and we don't decorate locked bundles; so no bundle is needed yet
+            yield break;
+        }
+
         var bundleData = Game1.netWorldState.Value.BundleData;
         var bundlesCompleted = Game1.netWorldState.Value.Bundles.Pairs
             .ToDictionary(p => p.Key, p => p.Value.ToArray());
@@ -65,7 +73,7 @@ internal class BundleDecorator : IDecorator<Item> {
         foreach (var bundleTitle in bundleData.Keys) {
             var bundleTitleSplit = bundleTitle.Split('/');
             var bundleTitleId = bundleTitleSplit[0];
-            if (allowedAreas != null && !allowedAreas.Contains(CommunityCenter.getAreaNumberFromName(bundleTitleId))) {
+            if ((allowedAreas != null && !allowedAreas.Contains(CommunityCenter.getAreaNumberFromName(bundleTitleId))) && !decorateLockedBundles) {
                 // bundle was not yet unlocked or already completed
                 continue;
             }
