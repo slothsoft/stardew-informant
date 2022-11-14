@@ -8,6 +8,9 @@
   "MuseumDecorator": "Museum-Dekoration",
   "MuseumDecorator.Description": "Markiert Gegenstände, die für das Museum gebraucht werden",
 
+  "NewRecipeDisplayable" : "Neue-Rezepte-Dekoration",
+  "NewRecipeDisplayable.Description" : "Markiert Rezepte, die noch nicht gefertigt / gekocht worden sind",
+  
   "ShippingBinDecorator": "Versand-Dekoration",
   "ShippingBinDecorator.Description": "Markiert Gegenstände, die noch nie versandt worden sind",
   

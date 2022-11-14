@@ -15,10 +15,12 @@ public class Informant : IInformant {
     private TooltipGeneratorManager? _terrainFeatureInformant;
     private ItemDecoratorManager? _itemDecoratorInformant;
     private readonly SellPriceDisplayable _sellPriceDisplayable;
+    private readonly NewRecipeDisplayable _newRecipeDisplayable;
     
     public Informant(IModHelper modHelper) {
         _modHelper = modHelper;
         _sellPriceDisplayable = new SellPriceDisplayable(modHelper);
+        _newRecipeDisplayable = new NewRecipeDisplayable(modHelper);
     }
     
     public ITooltipGeneratorManager<TerrainFeature> TerrainFeatureTooltipGenerators {
@@ -54,5 +56,5 @@ public class Informant : IInformant {
         ItemDecorators.Add(new Decorator<Item>(id, displayName, description, decorator));
     }
 
-    public IEnumerable<IDisplayable> GeneralDisplayables => new[] {_sellPriceDisplayable};
+    public IEnumerable<IDisplayable> GeneralDisplayables => new IDisplayable[] {_sellPriceDisplayable, _newRecipeDisplayable};
 }

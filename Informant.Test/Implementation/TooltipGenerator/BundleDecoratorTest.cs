@@ -63,6 +63,9 @@ public class BundleDecoratorTest {
 
         Game1.netWorldState = new NetRoot<IWorldState>(worldState);
         
-        Assert.AreEqual(expectedNeededItems, BundleDecorator.GetNeededItems(null).ToArray());
+        Assert.AreEqual(expectedNeededItems, BundleDecorator.GetNeededItems(null, true).ToArray());
+        
+        // since the game is not set up correctly, decorateLockedBundles=false will return an empty array
+        Assert.AreEqual(Array.Empty<int>(), BundleDecorator.GetNeededItems(null, false).ToArray());
     }
 }

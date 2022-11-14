@@ -8,6 +8,9 @@
   "MuseumDecorator": "Müze Belirteci",
   "MuseumDecorator.Description": "Müze için gerekli olan nesneleri belirtir.",
 
+  "NewRecipeDisplayable" : "New Recipe Decorator",
+  "NewRecipeDisplayable.Description" : "Marks recipes that where not yet cooked / crafted",
+
   "ShippingBinDecorator": "Shipping Decorator",
   "ShippingBinDecorator.Description": "Marks items that were not shipped yet",
   

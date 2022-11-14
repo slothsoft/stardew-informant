@@ -40,12 +40,12 @@ internal class BundleDecorator : IDecorator<Item> {
                     .ToArray();
             }
             
-            return GetNeededItems(allowedAreas).Contains(input.ParentSheetIndex);
+            return GetNeededItems(allowedAreas, InformantMod.Instance?.Config.DecorateLockedBundles ?? false).Contains(input.ParentSheetIndex);
         }
         return false;
     }
 
-    internal static IEnumerable<int> GetNeededItems(int[]? allowedAreas) {
+    internal static IEnumerable<int> GetNeededItems(int[]? allowedAreas, bool decorateLockedBundles) {
         // BUNDLE DATA
         // ============
         // See https://stardewvalleywiki.com/Modding:Bundles
@@ -60,7 +60,6 @@ internal class BundleDecorator : IDecorator<Item> {
         // bundleTitle = Boiler Room/22
         // bundleData = Adventurer's/R 518 1/766 99 0 767 10 0 768 1 0 881 10 0/1/2/22
 
-        var decorateLockedBundles = InformantMod.Instance?.Config.DecorateLockedBundles ?? false;
         if ((allowedAreas == null || allowedAreas.Length == 0) && !decorateLockedBundles) {
             // no areas are allowed, and we don't decorate locked bundles; so no bundle is needed yet
             yield break;

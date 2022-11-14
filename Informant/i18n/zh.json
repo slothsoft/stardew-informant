@@ -8,9 +8,12 @@
   "MuseumDecorator": "博物馆",
   "MuseumDecorator.Description": "标记还未捐赠的物品",
 
+  "NewRecipeDisplayable" : "New Recipe Decorator",
+  "NewRecipeDisplayable.Description" : "Marks recipes that where not yet cooked / crafted",
+
   "ShippingBinDecorator": "Shipping Decorator",
   "ShippingBinDecorator.Description": "Marks items that were not shipped yet",
-  
+
   "CropTooltipGenerator" : "作物",
   "CropTooltipGenerator.Description" : "作物相关的信息, 如种类, 收获日",
   "CropTooltipGenerator.0DaysLeft" : "成熟",
