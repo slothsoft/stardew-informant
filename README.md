@@ -5,7 +5,7 @@ _A Mod for Stardew Valley_
 [![MIT Licence](https://img.shields.io/github/license/jenkinsci/java-client-api.svg?label=License)](./LICENSE)
 
 - **Author:** [Stef Schulz](mailto:s.schulz@slothsoft.de)
-- **Repository:** https://github.com/slothsoft/stardew-informant]
+- **Repository:** <https://github.com/slothsoft/stardew-informant>
 - **Open Issues:** <https://github.com/slothsoft/stardew-informant/issues>
 - **NexusMods:** <https://www.nexusmods.com/stardewvalley/mods/14293>
 
@@ -154,19 +154,19 @@ Right now, not all translations are provided. If you want to help, translate eit
 and test it right in your Stardew Valley (the same folder exists in your _Mods/_ folder). You can than provide it
 to me via [pull request](https://github.com/slothsoft/stardew-informant/fork) or [email](mailto:s.schulz@slothsoft.de).
 
-| Key       | Language  | Translated?                                                                         |
-|-----------|-----------|-------------------------------------------------------------------------------------|
-| `default` | English   | ✅                                                                                   |
-| `de`      | German    | ✅                                                                                   |
-| `es`      | Spanish   | 🔜                                                                                  |
-| `fr`      | French    | 🔜                                                                                  |
-| `hu`      | Hungarian | 🔜                                                                                  |
-| `it`      | Italian   | 🔜                                                                                  |
-| `ko`      | Korean    | ✅ (thanks to [brighteast99](https://github.com/brighteast99))                       |
-| `pt`      | Portugese | 🔜                                                                                  |
-| `ru`      | Russian   | 🔜                                                                                  |
-| `tr`      | Turkish   | ✅ (thanks to [ExaBronto](https://www.nexusmods.com/stardewvalley/users/114449313))  |
-| `zh`      | Chinese   | ✅ (thanks to [gottyduke](https://github.com/gottyduke)                              |
+| Key       | Language  | Translated?                                                                        |
+|-----------|-----------|------------------------------------------------------------------------------------|
+| `default` | English   | ✅                                                                                  |
+| `de`      | German    | ✅                                                                                  |
+| `es`      | Spanish   | 🔜                                                                                 |
+| `fr`      | French    | 🔜                                                                                 |
+| `hu`      | Hungarian | 🔜                                                                                 |
+| `it`      | Italian   | 🔜                                                                                 |
+| `ko`      | Korean    | ✅ (thanks to [brighteast99](https://github.com/brighteast99))                      |
+| `pt`      | Portugese | 🔜                                                                                 |
+| `ru`      | Russian   | 🔜                                                                                 |
+| `tr`      | Turkish   | ✅ (thanks to [ExaBronto](https://www.nexusmods.com/stardewvalley/users/114449313)) |
+| `zh`      | Chinese   | ✅ (thanks to [gottyduke](https://github.com/gottyduke))                            |
 
 
 
