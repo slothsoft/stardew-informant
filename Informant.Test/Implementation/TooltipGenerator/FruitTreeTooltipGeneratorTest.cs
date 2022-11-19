@@ -114,4 +114,24 @@ public class FruitTreeTooltipGeneratorTest {
         };
         Assert.AreEqual(expectedDaysLeft, _classUnderTest.CalculateDaysLeft(fruitTree));
     }
+    
+    [Test]
+    [TestCase(10,Seasons.Spring, 10, 0, Seasons.Summer, 10)]
+    [TestCase(10,Seasons.Spring, 18, 0, Seasons.Spring, 18)]
+    [TestCase(10,Seasons.Fall, 0, 1, Seasons.Fall, 0)]
+    [TestCase(5,Seasons.Spring, 0, 0, "unsupported season", 1)] // we don't check the season
+    public void CalculateDaysLeftOnIsland(int dayOfMonth, string season, int daysUntilMature, int fruitsOnTree, string fruitSeason, int expectedDaysLeft) {
+        Game1.dayOfMonth = dayOfMonth;
+        Game1.currentSeason = season;
+        
+        var fruitTree = new FruitTree {
+            currentLocation = new Farm {
+                name = { "IslandWest" },
+            },
+            daysUntilMature = { daysUntilMature },
+            fruitsOnTree = { fruitsOnTree },
+            fruitSeason = { fruitSeason },
+        };
+        Assert.AreEqual(expectedDaysLeft, _classUnderTest.CalculateDaysLeft(fruitTree));
+    }
 }
