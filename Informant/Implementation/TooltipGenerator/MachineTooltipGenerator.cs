@@ -66,15 +66,40 @@ internal class MachineTooltipGenerator : ITooltipGenerator<SObject> {
     }
 
     internal string CalculateMinutesLeftString(SObject input) {
-        switch (input.MinutesUntilReady) {
+        if (input is Cask cask) {
+            return CalculateMinutesLeftStringForCask(cask);
+        }
+        
+        var minutesUntilReady = input.MinutesUntilReady;
+        switch (minutesUntilReady) {
             case < 0:
                 return _modHelper.Translation.Get("MachineTooltipGenerator.CannotBeUnloaded");
             case 0:
                 return _modHelper.Translation.Get("MachineTooltipGenerator.Finished");
         }
-        var minutesLeft = input.MinutesUntilReady % 60;
-        var hoursLeft = (input.MinutesUntilReady / 60) % 24;
-        var daysLeft = input.MinutesUntilReady / 60 / 24;
+        var minutesLeft = minutesUntilReady % 60;
+        var hoursLeft = (minutesUntilReady / 60) % 24;
+        var daysLeft = minutesUntilReady / 60 / 24;
         return $"{daysLeft:D2}:{hoursLeft:D2}:{minutesLeft:D2}";
+    }
+    
+    private string CalculateMinutesLeftStringForCask(Cask input) {
+        if (input.MinutesUntilReady == 1) {
+            return _modHelper.Translation.Get("MachineTooltipGenerator.Finished");
+        }
+        var daysForQuality = input.GetDaysForQuality(input.GetNextQuality(input.heldObject.Value.Quality));
+        var daysNeededForNextQuality = (int) (input.daysToMature.Value - daysForQuality);
+        var daysNeededTotal = (int) input.daysToMature.Value;
+
+        if (daysNeededTotal <= 0) {
+            // if the wine is finished, we only need "Finished" once
+            return _modHelper.Translation.Get("MachineTooltipGenerator.Finished");
+        }
+        
+        var daysNeededForNextQualityString = _modHelper.Translation.Get("MachineTooltipGenerator.ForNextQuality", 
+            new { X = CropTooltipGenerator.ToDaysLeftString(_modHelper, daysNeededForNextQuality)});
+        var daysNeededTotalString = _modHelper.Translation.Get("MachineTooltipGenerator.ForTotal", 
+            new { X = CropTooltipGenerator.ToDaysLeftString(_modHelper, daysNeededTotal)});
+        return $"{daysNeededForNextQualityString}\n{daysNeededTotalString}";
     }
 }

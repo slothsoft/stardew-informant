@@ -28,6 +28,8 @@
   "MachineTooltipGenerator.Description" : "Üretilen nesnenin türünü ve kalan süreyi gösteren bir ipucu",
   "MachineTooltipGenerator.Finished" : "Tamamlandı",
   "MachineTooltipGenerator.CannotBeUnloaded" : "Boşaltılamaz",
+  "MachineTooltipGenerator.ForNextQuality" : "{{X}} for next quality",
+  "MachineTooltipGenerator.ForTotal" : "{{X}} in total",
  
   "TreeTooltipGenerator" : "Ağaç İpucu",
   "TreeTooltipGenerator.Description" : "Ağacın türünü gösteren bir ipucu",
