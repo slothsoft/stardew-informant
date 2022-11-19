@@ -2,6 +2,7 @@
 using System.Collections.Immutable;
 using System.Linq;
 using HarmonyLib;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Slothsoft.Informant.Api;
 using StardewValley.Menus;
@@ -78,10 +79,22 @@ internal class ItemDecoratorManager : IDecoratorManager<Item> {
             decoratorsBox.X + indent,
             decoratorsBox.Y + indent,
             decoratorsHeight - 2 * indent,
-            decoratorsHeight - 2 * indent);
+            decoratorsHeight - 2 * indent
+        );
         
         foreach (var decoration in decorations) {
             b.Draw(decoration.Texture, destinationRectangle, null, Color.White);
+
+            var counter = decoration.Counter;
+            if (counter != null) {
+                const float scale = 0.5f;
+                // these x and y coordinates are the top left of the right-most number of the counter
+                var x = destinationRectangle.X + destinationRectangle.Width - NumberSprite.getWidth(counter.Value % 10) + 2;
+                var y = destinationRectangle.Y + destinationRectangle.Height - NumberSprite.getHeight() + 2;
+                NumberSprite.draw(counter.Value, b, new Vector2(x, y), Color.White, scale, 1, 1, 0);
+            }
+            
+            
             destinationRectangle.X += destinationRectangle.Width + Game1.pixelZoom;
         }
     }
