@@ -10,6 +10,8 @@ using Rectangle = Microsoft.Xna.Framework.Rectangle;
 namespace Slothsoft.Informant.Implementation;
 
 internal class SellPriceDisplayable : IDisplayable {
+    
+    private static string DisplayableId => "sell-price";
     private static readonly Rectangle CoinSourceBounds = new(5, 69, 6, 6);
     
     private record MoneyToDisplay(int One, int? Stack);
@@ -51,7 +53,7 @@ internal class SellPriceDisplayable : IDisplayable {
         );
     }
 
-    public string Id => "sell-price";
+    public string Id => DisplayableId;
     public string DisplayName => _modHelper.Translation.Get("SellPriceDisplayable");
     public string Description => _modHelper.Translation.Get("SellPriceDisplayable.Description");
 
@@ -61,9 +63,8 @@ internal class SellPriceDisplayable : IDisplayable {
     private static void ManipulateMoneyValue(Item? hoveredItem, ref int moneyAmountToShowAtBottom, out MoneyToDisplay? __state) {
         __state = null;
 
-        
         var config = InformantMod.Instance?.Config ?? new InformantConfig();
-        if (!config.DisplayIds.GetValueOrDefault("sell-price", true)) {
+        if (!config.DisplayIds.GetValueOrDefault(DisplayableId, true)) {
             return; // this "decorator" is deactivated
         }
            
