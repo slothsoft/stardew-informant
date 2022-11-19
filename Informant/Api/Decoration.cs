@@ -7,5 +7,8 @@ namespace Slothsoft.Informant.Api;
 /// </summary>
 /// <param name="Texture">the texture to display.</param>
 public record Decoration(Texture2D Texture) {
-    
+    /// <summary>
+    /// Optionally displays a little number over the texture.
+    /// </summary>
+    public int? Counter { get; init; }
 }

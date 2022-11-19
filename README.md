@@ -5,7 +5,7 @@ _A Mod for Stardew Valley_
 [![MIT Licence](https://img.shields.io/github/license/jenkinsci/java-client-api.svg?label=License)](./LICENSE)
 
 - **Author:** [Stef Schulz](mailto:s.schulz@slothsoft.de)
-- **Repository:** https://github.com/slothsoft/stardew-informant]
+- **Repository:** <https://github.com/slothsoft/stardew-informant>
 - **Open Issues:** <https://github.com/slothsoft/stardew-informant/issues>
 - **NexusMods:** <https://www.nexusmods.com/stardewvalley/mods/14293>
 
@@ -129,20 +129,21 @@ entries is:
 
 ### Versions
 
-| Version | Issues                                                                        | Changes                                                                                       |
-|---------|-------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
-| Future  | [Issues](https://github.com/slothsoft/stardew-informant/milestone/1)          |                                                                                               |
-| 1.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/9?closed=1) | Additional information (marks uncrafted recipes, shipping decorator, shows icons on tooltips) |
-| 1.2.2   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/10?closed=1) | Turkish translation                                                                           |
-| 1.2.1   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/8?closed=1)  | Chinese translation                                                                           |
-| 1.2.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/7?closed=1)  | Sell price feature                                                                            |
-| 1.1.1   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/6?closed=1)  | Bugfixes from NexusMods feedback                                                              |
-| 1.1.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/5?closed=1)  | Split-screen & API fixes                                                                      |
-| 1.0.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/4?closed=1)  | Nexus Release                                                                                 |
-| 0.4.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/3?closed=1)  | Prepare for Nexus Release                                                                     |
-| 0.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/2?closed=1)  | Strutured PoC                                                                                 |
-| 0.2.0   | -                                                                              | Crop Informant                                                                                |
-| 0.1.0   | -                                                                              | Bundle Informant                                                                              |
+| Version | Issues                                                                         | Changes                                                                                                                                                                                                       |
+|---------|--------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Future  | [Issues](https://github.com/slothsoft/stardew-informant/milestone/1)           |                                                                                                                                                                                                               |
+| 1.3.1   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/11?closed=1) | Bugfixes (fix config for "new" recipe; fix fruit tree calculation on Ginger Island; make decorator display shipped item needed for "ship 15 of everything"; fix time remaining for casks; fix ginger tooltip) |
+| 1.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/9?closed=1)  | Additional information (marks uncrafted recipes, shipping decorator, shows icons on tooltips)                                                                                                                 |
+| 1.2.2   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/10?closed=1) | Turkish translation                                                                                                                                                                                           |
+| 1.2.1   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/8?closed=1)  | Chinese translation                                                                                                                                                                                           |
+| 1.2.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/7?closed=1)  | Sell price feature                                                                                                                                                                                            |
+| 1.1.1   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/6?closed=1)  | Bugfixes from NexusMods feedback                                                                                                                                                                              |
+| 1.1.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/5?closed=1)  | Split-screen & API fixes                                                                                                                                                                                      |
+| 1.0.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/4?closed=1)  | Nexus Release                                                                                                                                                                                                 |
+| 0.4.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/3?closed=1)  | Prepare for Nexus Release                                                                                                                                                                                     |
+| 0.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/2?closed=1)  | Strutured PoC                                                                                                                                                                                                 |
+| 0.2.0   | -                                                                              | Crop Informant                                                                                                                                                                                                |
+| 0.1.0   | -                                                                              | Bundle Informant                                                                                                                                                                                              |
 
 _(All issues can be found [here](https://github.com/slothsoft/stardew-informant/issues).)_
 
@@ -154,19 +155,19 @@ Right now, not all translations are provided. If you want to help, translate eit
 and test it right in your Stardew Valley (the same folder exists in your _Mods/_ folder). You can than provide it
 to me via [pull request](https://github.com/slothsoft/stardew-informant/fork) or [email](mailto:s.schulz@slothsoft.de).
 
-| Key       | Language  | Translated?                                                                         |
-|-----------|-----------|-------------------------------------------------------------------------------------|
-| `default` | English   | ✅                                                                                   |
-| `de`      | German    | ✅                                                                                   |
-| `es`      | Spanish   | 🔜                                                                                  |
-| `fr`      | French    | 🔜                                                                                  |
-| `hu`      | Hungarian | 🔜                                                                                  |
-| `it`      | Italian   | 🔜                                                                                  |
-| `ko`      | Korean    | ✅ (thanks to [brighteast99](https://github.com/brighteast99))                       |
-| `pt`      | Portugese | 🔜                                                                                  |
-| `ru`      | Russian   | 🔜                                                                                  |
-| `tr`      | Turkish   | ✅ (thanks to [ExaBronto](https://www.nexusmods.com/stardewvalley/users/114449313))  |
-| `zh`      | Chinese   | ✅ (thanks to [gottyduke](https://github.com/gottyduke)                              |
+| Key       | Language  | Translated?                                                                        |
+|-----------|-----------|------------------------------------------------------------------------------------|
+| `default` | English   | ✅                                                                                  |
+| `de`      | German    | ✅                                                                                  |
+| `es`      | Spanish   | 🔜                                                                                 |
+| `fr`      | French    | 🔜                                                                                 |
+| `hu`      | Hungarian | 🔜                                                                                 |
+| `it`      | Italian   | 🔜                                                                                 |
+| `ko`      | Korean    | ✅ (thanks to [brighteast99](https://github.com/brighteast99))                      |
+| `pt`      | Portugese | 🔜                                                                                 |
+| `ru`      | Russian   | 🔜                                                                                 |
+| `tr`      | Turkish   | ✅ (thanks to [ExaBronto](https://www.nexusmods.com/stardewvalley/users/114449313)) |
+| `zh`      | Chinese   | ✅ (thanks to [gottyduke](https://github.com/gottyduke))                            |
 
 
 
@@ -194,7 +195,7 @@ namespace MyMod.ThirdParty;
 
 /// <summary>
 /// Base class for the entire API. Can be used to add custom information providers.<br/>
-/// <b>API Version:</b> 1.3.0
+/// <b>API Version:</b> 1.3.1
 /// </summary>
 public interface IInformant {
 

@@ -5,6 +5,7 @@ using Slothsoft.Informant;
 using Slothsoft.Informant.Implementation.Common;
 using Slothsoft.Informant.Implementation.TooltipGenerator;
 using StardewTests.Harness;
+using StardewValley.Objects;
 
 namespace InformantTest.Implementation.TooltipGenerator;
 
@@ -107,6 +108,34 @@ internal class MachineTooltipGeneratorTest {
     public void CalculateMinutesLeftString(int minutesLeft, string expectedString) {
         var obj = new SObject {
             minutesUntilReady = { minutesLeft }
+        };
+        Assert.AreEqual(expectedString, _classUnderTest.CalculateMinutesLeftString(obj));
+    }
+    
+    [Test]
+    [TestCase(1, 56, 0, "Finished")]
+    public void CalculateMinutesLeftStringForCaskWithMinutesLeft(int minutesLeft, int daysToMature, int quality, string expectedString) {
+        var obj = new Cask {
+            minutesUntilReady = { minutesLeft },
+            daysToMature = { daysToMature },
+            heldObject = {  new SObject {
+                quality = { quality },
+            } }
+        };
+        Assert.AreEqual(expectedString, _classUnderTest.CalculateMinutesLeftString(obj));
+    }
+    
+    [Test]
+    [TestCase(56, 0, "14 days left for next quality\n56 days left in total")]
+    [TestCase(56 - 13, 0, "1 day left for next quality\n43 days left in total")]
+    [TestCase(56 - 13, 1, "15 days left for next quality\n43 days left in total")]
+    [TestCase(56 - 13, 2, "43 days left for next quality\n43 days left in total")]
+    public void CalculateMinutesLeftStringForCask(int daysToMature, int quality, string expectedString) {
+        var obj = new Cask {
+            daysToMature = { daysToMature },
+            heldObject = {  new SObject {
+                quality = { quality },
+            } }
         };
         Assert.AreEqual(expectedString, _classUnderTest.CalculateMinutesLeftString(obj));
     }

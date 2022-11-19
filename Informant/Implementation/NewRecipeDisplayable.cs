@@ -12,6 +12,7 @@ namespace Slothsoft.Informant.Implementation;
 
 internal class NewRecipeDisplayable : IDisplayable {
 
+    private static string DisplayableId => "new-recipe";
     private static readonly Rectangle NewSourceRectangle = new(144, 440, 16, 7);
         
     private readonly IModHelper _modHelper;
@@ -49,7 +50,7 @@ internal class NewRecipeDisplayable : IDisplayable {
         );
     }
 
-    public string Id => "new-recipe";
+    public string Id => DisplayableId;
     public string DisplayName => _modHelper.Translation.Get("NewRecipeDisplayable");
     public string Description => _modHelper.Translation.Get("NewRecipeDisplayable.Description");
 
@@ -63,6 +64,11 @@ internal class NewRecipeDisplayable : IDisplayable {
         if (recipe == null) {
             // we are on the recipe page, but have no recipe? ignore!
             return;
+        }
+        
+        var config = InformantMod.Instance?.Config ?? new InformantConfig();
+        if (!config.DisplayIds.GetValueOrDefault(DisplayableId, true)) {
+            return; // this "decorator" is deactivated
         }
 
         // recipe.timesCrafted is not updated it seems

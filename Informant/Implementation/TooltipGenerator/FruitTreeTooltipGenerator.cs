@@ -46,8 +46,12 @@ internal class FruitTreeTooltipGenerator : ITooltipGenerator<TerrainFeature> {
             daysLeft = fruitTree.fruitsOnTree.Value <= 0 ? 1 : 0;
         }
         if (daysLeft > 0) {
-            if (fruitTree.currentLocation?.isGreenhouse.Value ?? false) {
+            if (fruitTree.currentLocation?.IsGreenhouse ?? false) {
                 // if we are in the greenhouse, we don't need to add anything for seasons
+                return daysLeft;
+            }
+            if (fruitTree.currentLocation?.Name.Contains("Island") ?? false) {
+                // if we are on the island, we don't need to add anything for seasons
                 return daysLeft;
             }
             // check that the date we are calculating is in the correct season   

@@ -5,5 +5,8 @@
 /// </summary>
 /// <param name="Text">the multiline text to display.</param>
 public record Tooltip(string Text) {
+    /// <summary>
+    /// Optionally displays an icon around the tooltip.
+    /// </summary>
     public Icon? Icon { get; init; }
 }

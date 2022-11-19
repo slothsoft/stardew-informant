@@ -28,6 +28,8 @@
   "MachineTooltipGenerator.Description" : "机器相关的信息, 如产物, 剩余时间",
   "MachineTooltipGenerator.Finished" : "已完成",
   "MachineTooltipGenerator.CannotBeUnloaded" : "无法卸货",
+  "MachineTooltipGenerator.ForNextQuality" : "{{X}} for next quality",
+  "MachineTooltipGenerator.ForTotal" : "{{X}} in total",
  
   "TreeTooltipGenerator" : "树木",
   "TreeTooltipGenerator.Description" : "普通树木的种类信息",

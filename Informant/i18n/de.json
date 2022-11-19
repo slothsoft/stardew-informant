@@ -28,6 +28,8 @@
   "MachineTooltipGenerator.Description" : "Ein Tooltip, der die Art des Erzeugnisses und die verbleibende Zeit zeigt",
   "MachineTooltipGenerator.Finished" : "Fertig",
   "MachineTooltipGenerator.CannotBeUnloaded" : "Kann nicht entladen werden",
+  "MachineTooltipGenerator.ForNextQuality" : "{{X}} bis zur nächsten Qualität",
+  "MachineTooltipGenerator.ForTotal" : "{{X}} total",
   
   "TreeTooltipGenerator" : "Bäume-Tooltip",
   "TreeTooltipGenerator.Description" : "Ein Tooltip, der die Art des Baums zeigt",

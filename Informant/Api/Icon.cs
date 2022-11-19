@@ -8,10 +8,16 @@ namespace Slothsoft.Informant.Api;
 /// </summary>
 /// <param name="Texture">the texture to display.</param>
 public record Icon(Texture2D Texture) {
+    /// <summary>
+    /// Create an icon for an Stardew Valley <see cref="SObject"/>. 
+    /// </summary>
     public static Icon? ForObject(SObject obj, IPosition? position = null, Vector2? iconSize = null) {
         return ForParentSheetIndex(obj.ParentSheetIndex, obj.bigCraftable.Value, position, iconSize);
     }
     
+    /// <summary>
+    /// Create an icon for a parentSheetIndex and bigCraftable.
+    /// </summary>
     public static Icon? ForParentSheetIndex(int parentSheetIndex, bool bigCraftable, IPosition? position = null, Vector2? iconSize = null) {
         position ??= IPosition.TopRight;
         iconSize ??= new Vector2(Game1.tileSize, Game1.tileSize);
@@ -36,8 +42,17 @@ public record Icon(Texture2D Texture) {
         };
     }
     
+    /// <summary>
+    /// Optionally defines the source rectangle of the texture. Will be the entire <see cref="Texture"/> if not set. 
+    /// </summary>
     public Rectangle? SourceRectangle { get; init; }
+    /// <summary>
+    /// Optionally defines the position of the icon. Will be <see cref="IPosition.TopLeft"/> if not set. 
+    /// </summary>
     public IPosition? Position { get; init; }
+    /// <summary>
+    /// Optionally defines the size of the icon. Will be the <see cref="Texture"/>'s size if not set. 
+    /// </summary>
     public Vector2? IconSize { get; init; }
 
     internal Rectangle NullSafeSourceRectangle => SourceRectangle ?? new Rectangle(0, 0, Texture.Width, Texture.Height);
