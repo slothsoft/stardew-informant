@@ -28,11 +28,13 @@ internal class CropTooltipGenerator : ITooltipGenerator<TerrainFeature> {
     }
 
     internal static Tooltip CreateTooltip(IModHelper modHelper, Crop crop) {
-        var displayName = GameInformation.GetObjectDisplayName(crop.indexOfHarvest.Value);
+        // for some reason, ginger is displayed as weeds
+        var parentSheetIndex = crop.whichForageCrop.Value == ObjectIds.GingerForageCropId ? ObjectIds.Ginger : crop.indexOfHarvest.Value;
+        var displayName = GameInformation.GetObjectDisplayName(parentSheetIndex);
         var daysLeft = CalculateDaysLeftString(modHelper, crop);
         return new Tooltip($"{displayName}\n{daysLeft}") {
             Icon = Icon.ForParentSheetIndex(
-                crop.indexOfHarvest.Value, 
+                parentSheetIndex, 
                 false, 
                 IPosition.CenterRight,
                 new Vector2(Game1.tileSize / 2f, Game1.tileSize / 2f)

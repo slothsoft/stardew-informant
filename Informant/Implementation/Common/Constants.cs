@@ -202,3 +202,12 @@ public static class BigCraftableIds {
         Workbench, MiniJukebox, Telephone, CursedPkArcadeSystem, MiniObelisk, FarmComputer, SewingMachine, AutoPetter, Hopper, Campfire2,
     }).ToArray();
 }
+
+/// <summary>
+/// These constants can be used to compare to <code>Object.ParentSheetIndex</code>.
+/// See https://stardewcommunitywiki.com/Modding:Object_data
+/// </summary>
+public static class ObjectIds {
+    public const int GingerForageCropId = 2;
+    public const int Ginger = 829;
+}
