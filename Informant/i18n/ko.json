@@ -1,24 +1,24 @@
-﻿{
+{
   "BundleTooltipDecorator" : "번들 표시",
   "BundleTooltipDecorator.Description" : "번들에 필요한 아이템을 표시합니다",
 
-  "SellPriceDisplayable" : "Sell Price Decorator",
-  "SellPriceDisplayable.Description" : "Adds the sell price at the bottom of the tooltip",
+  "SellPriceDisplayable" : "판매 가격 표시",
+  "SellPriceDisplayable.Description" : "툴팁 하단에 판매 가격을 표시합니다",
   
   "MuseumDecorator": "박물관 표시",
   "MuseumDecorator.Description": "박물관에 기증해야 하는 아이템을 표시합니다",
 
-  "NewRecipeDisplayable" : "New Recipe Decorator",
-  "NewRecipeDisplayable.Description" : "Marks recipes that where not yet cooked / crafted",
+  "NewRecipeDisplayable" : "새 제작법 표시",
+  "NewRecipeDisplayable.Description" : "아직 요리하거나 제작해본적 없는 제작법을 표시합니다",
   
-  "ShippingBinDecorator": "Shipping Decorator",
-  "ShippingBinDecorator.Description": "Marks items that were not shipped yet",
+  "ShippingBinDecorator": "출하 표시",
+  "ShippingBinDecorator.Description": "출하한적 없는 아이템을 표시합니다",
   
   "CropTooltipGenerator" : "작물 정보",
   "CropTooltipGenerator.Description" : "작물의 종류와 수확까지 남은 시간을 보여줍니다",
   "CropTooltipGenerator.0DaysLeft" : "다 자람",
-  "CropTooltipGenerator.1DayLeft" : "내일 수확 가능",
-  "CropTooltipGenerator.XDaysLeft" : "{{X}}일 뒤 수확 가능",
+  "CropTooltipGenerator.1DayLeft" : "하루 남음",
+  "CropTooltipGenerator.XDaysLeft" : "{{X}}일 남음",
   "CropTooltipGenerator.Dead" : "시듦",
 
   "FruitTreeTooltipGenerator" : "과일 나무 정보",
@@ -28,8 +28,8 @@
   "MachineTooltipGenerator.Description" : "기계의 결과물과 남은 시간을 보여줍니다",
   "MachineTooltipGenerator.Finished" : "완료",
   "MachineTooltipGenerator.CannotBeUnloaded" : "취소 불가능",
-  "MachineTooltipGenerator.ForNextQuality" : "{{X}} for next quality",
-  "MachineTooltipGenerator.ForTotal" : "{{X}} in total",
+  "MachineTooltipGenerator.ForNextQuality" : "다음 등급까지 {{X}}",
+  "MachineTooltipGenerator.ForTotal" : "총 {{X}}",
  
   "TreeTooltipGenerator" : "나무 정보",
   "TreeTooltipGenerator.Description" : "나무의 정보를 보여줍니다",
@@ -46,11 +46,11 @@
   "Config.TooltipGenerators.GeneralSection" : "정보 - 일반",
   "Config.TooltipGenerators.Visibility" : "정보 - 활성화",
 
-  "Config.DecorateLockedBundles" : "Decorate Locked Bundles",
-  "Config.DecorateLockedBundles.Description" : "Displays Bundles Decorator for still locked bundles",
+  "Config.DecorateLockedBundles" : "잠긴 번들 표시",
+  "Config.DecorateLockedBundles.Description" : "아직 잠겨있는 번들에 필요한 아이템도 표시합니다",
   
   "Config.TooltipTrigger": "정보 표시 조건",
-  "Config.TooltipTrigger.Hover": "마우스 올릴 때",
+  "Config.TooltipTrigger.Hover": "커서 가져다댈 때",
   "Config.TooltipTrigger.ButtonHeld": "버튼 누를 때",
   "Config.TooltipTriggerButton": "정보 표시 버튼",
 
