@@ -12,6 +12,7 @@ public class I18NTest {
     [TestCase(LocalizedContentManager.LanguageCode.ko)] 
     [TestCase(LocalizedContentManager.LanguageCode.tr)] 
     [TestCase(LocalizedContentManager.LanguageCode.zh)] 
+    [TestCase(LocalizedContentManager.LanguageCode.fr)] 
     public void ValidateLocales(LocalizedContentManager.LanguageCode locale) {
         I18NTestUtil.Assert18NCorrect(TestUtils.ModFolder, locale);
     }
