@@ -17,8 +17,8 @@
   "CropTooltipGenerator" : "작물 정보",
   "CropTooltipGenerator.Description" : "작물의 종류와 수확까지 남은 시간을 보여줍니다",
   "CropTooltipGenerator.0DaysLeft" : "다 자람",
-  "CropTooltipGenerator.1DayLeft" : "내일 수확 가능",
-  "CropTooltipGenerator.XDaysLeft" : "{{X}}일 뒤 수확 가능",
+  "CropTooltipGenerator.1DayLeft" : "하루 남음",
+  "CropTooltipGenerator.XDaysLeft" : "{{X}}일 남음",
   "CropTooltipGenerator.Dead" : "시듦",
 
   "FruitTreeTooltipGenerator" : "과일 나무 정보",
@@ -28,8 +28,8 @@
   "MachineTooltipGenerator.Description" : "기계의 결과물과 남은 시간을 보여줍니다",
   "MachineTooltipGenerator.Finished" : "완료",
   "MachineTooltipGenerator.CannotBeUnloaded" : "취소 불가능",
-  "MachineTooltipGenerator.ForNextQuality" : "다음 등급까지 {{X}}일 남음",
-  "MachineTooltipGenerator.ForTotal" : "총 {{X}}일 남음",
+  "MachineTooltipGenerator.ForNextQuality" : "다음 등급까지 {{X}}",
+  "MachineTooltipGenerator.ForTotal" : "총 {{X}}",
  
   "TreeTooltipGenerator" : "나무 정보",
   "TreeTooltipGenerator.Description" : "나무의 정보를 보여줍니다",
