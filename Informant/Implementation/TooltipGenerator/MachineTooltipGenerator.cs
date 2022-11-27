@@ -88,8 +88,8 @@ internal class MachineTooltipGenerator : ITooltipGenerator<SObject> {
             return _modHelper.Translation.Get("MachineTooltipGenerator.Finished");
         }
         var daysForQuality = input.GetDaysForQuality(input.GetNextQuality(input.heldObject.Value.Quality));
-        var daysNeededForNextQuality = (int) (input.daysToMature.Value - daysForQuality);
-        var daysNeededTotal = (int) input.daysToMature.Value;
+        var daysNeededForNextQuality = (int) ((input.daysToMature.Value - daysForQuality) / input.agingRate.Value);
+        var daysNeededTotal = (int) (input.daysToMature.Value / input.agingRate.Value);
 
         if (daysNeededTotal <= 0) {
             // if the wine is finished, we only need "Finished" once

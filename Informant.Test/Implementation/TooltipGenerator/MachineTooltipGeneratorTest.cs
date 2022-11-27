@@ -120,7 +120,8 @@ internal class MachineTooltipGeneratorTest {
             daysToMature = { daysToMature },
             heldObject = {  new SObject {
                 quality = { quality },
-            } }
+            } },
+            agingRate = { 1 },
         };
         Assert.AreEqual(expectedString, _classUnderTest.CalculateMinutesLeftString(obj));
     }
@@ -135,7 +136,23 @@ internal class MachineTooltipGeneratorTest {
             daysToMature = { daysToMature },
             heldObject = {  new SObject {
                 quality = { quality },
-            } }
+            } },
+            agingRate = { 1 },
+        };
+        Assert.AreEqual(expectedString, _classUnderTest.CalculateMinutesLeftString(obj));
+    }
+    
+    [Test]
+    [TestCase(54, 0, 4f, "3 days left for next quality\n13 days left in total")]
+    [TestCase(43, 1, 3, "5 days left for next quality\n14 days left in total")]
+    [TestCase(43, 2, 5, "8 days left for next quality\n8 days left in total")]
+    public void CalculateMinutesLeftStringForCaskWithAgingRate(int daysToMature, int quality, float agingRate, string expectedString) {
+        var obj = new Cask {
+            daysToMature = { daysToMature },
+            heldObject = {  new SObject {
+                quality = { quality },
+            } },
+            agingRate = { agingRate },
         };
         Assert.AreEqual(expectedString, _classUnderTest.CalculateMinutesLeftString(obj));
     }
