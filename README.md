@@ -132,6 +132,7 @@ entries is:
 | Version | Issues                                                                         | Changes                                                                                                                                                                                                       |
 |---------|--------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Future  | [Issues](https://github.com/slothsoft/stardew-informant/milestone/1)           |                                                                                                                                                                                                               |
+| 1.3.3   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/13?closed=1) | Portuguese translation and bugfixes                                                                                                                       |
 | 1.3.2   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/12?closed=1) | Translations (add French translation; update Korean translation)                                                                                                                                              |
 | 1.3.1   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/11?closed=1) | Bugfixes (fix config for "new" recipe; fix fruit tree calculation on Ginger Island; make decorator display shipped item needed for "ship 15 of everything"; fix time remaining for casks; fix ginger tooltip) |
 | 1.3.0   | [Issues](https://github.com/slothsoft/stardew-informant/milestone/9?closed=1)  | Additional information (marks uncrafted recipes, shipping decorator, shows icons on tooltips)                                                                                                                 |
@@ -161,12 +162,14 @@ to me via [pull request](https://github.com/slothsoft/stardew-informant/fork) or
 | `default` | English   | ✅                                                                                  |
 | `de`      | German    | ✅                                                                                  |
 | `es`      | Spanish   | 🔜                                                                                 |
-| `fr`      | French    | ✅ (thanks to [ArndGlh](https://github.com/ArndGlh))                              |
+| `fr`      | French    | ✅ (thanks to [ArndGlh](https://github.com/ArndGlh))                                |
 | `hu`      | Hungarian | 🔜                                                                                 |
 | `it`      | Italian   | 🔜                                                                                 |
+| `ja`      | Japanese  | 🔜                                                                                 |
 | `ko`      | Korean    | ✅ (thanks to [brighteast99](https://github.com/brighteast99))                      |
-| `pt`      | Portugese | 🔜                                                                                 |
+| `pt`      | Portugese | ✅ (thanks to [Mikeliro](https://github.com/Mikeliro)                                     |
 | `ru`      | Russian   | 🔜                                                                                 |
+| `th`      | Thai      | 🔜                                                                                 |
 | `tr`      | Turkish   | ✅ (thanks to [ExaBronto](https://www.nexusmods.com/stardewvalley/users/114449313)) |
 | `zh`      | Chinese   | ✅ (thanks to [gottyduke](https://github.com/gottyduke))                            |
 
@@ -196,7 +199,7 @@ namespace MyMod.ThirdParty;
 
 /// <summary>
 /// Base class for the entire API. Can be used to add custom information providers.<br/>
-/// <b>API Version:</b> 1.3.2
+/// <b>API Version:</b> 1.3.3
 /// </summary>
 public interface IInformant {
 
