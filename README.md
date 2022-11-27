@@ -161,12 +161,14 @@ to me via [pull request](https://github.com/slothsoft/stardew-informant/fork) or
 | `default` | English   | ✅                                                                                  |
 | `de`      | German    | ✅                                                                                  |
 | `es`      | Spanish   | 🔜                                                                                 |
-| `fr`      | French    | ✅ (thanks to [ArndGlh](https://github.com/ArndGlh))                              |
+| `fr`      | French    | ✅ (thanks to [ArndGlh](https://github.com/ArndGlh))                                |
 | `hu`      | Hungarian | 🔜                                                                                 |
 | `it`      | Italian   | 🔜                                                                                 |
+| `ja`      | Japanese  | 🔜                                                                                 |
 | `ko`      | Korean    | ✅ (thanks to [brighteast99](https://github.com/brighteast99))                      |
 | `pt`      | Portugese | ✅ (thanks to [Mikeliro](https://github.com/Mikeliro)                                     |
 | `ru`      | Russian   | 🔜                                                                                 |
+| `th`      | Thai      | 🔜                                                                                 |
 | `tr`      | Turkish   | ✅ (thanks to [ExaBronto](https://www.nexusmods.com/stardewvalley/users/114449313)) |
 | `zh`      | Chinese   | ✅ (thanks to [gottyduke](https://github.com/gottyduke))                            |
 
