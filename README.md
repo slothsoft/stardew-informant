@@ -165,7 +165,7 @@ to me via [pull request](https://github.com/slothsoft/stardew-informant/fork) or
 | `hu`      | Hungarian | 🔜                                                                                 |
 | `it`      | Italian   | 🔜                                                                                 |
 | `ko`      | Korean    | ✅ (thanks to [brighteast99](https://github.com/brighteast99))                      |
-| `pt`      | Portugese | 🔜                                                                                 |
+| `pt`      | Portugese | ✅ (thanks to [Mikeliro](https://github.com/Mikeliro)                                     |
 | `ru`      | Russian   | 🔜                                                                                 |
 | `tr`      | Turkish   | ✅ (thanks to [ExaBronto](https://www.nexusmods.com/stardewvalley/users/114449313)) |
 | `zh`      | Chinese   | ✅ (thanks to [gottyduke](https://github.com/gottyduke))                            |

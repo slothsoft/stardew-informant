@@ -70,7 +70,7 @@ Right now, not all translations are provided. If you want to help, translate eit
 [*] Hungarian ([font=Courier New][color=#00ffff]hu[/color][/font]): &#128284;
 [*] Italian ([font=Courier New][color=#00ffff]it[/color][/font]): &#128284;
 [*] Korean ([font=Courier New][color=#00ffff]ko[/color][/font]): &#9989; (thanks to [url=https://github.com/brighteast99]brighteast99[/url])
-[*] Portugese ([font=Courier New][color=#00ffff]pt[/color][/font]): &#128284;
+[*] Portugese ([font=Courier New][color=#00ffff]pt[/color][/font]): &#9989; (thanks to [url=https://github.com/Mikeliro]Mikeliro[/url]
 [*] Russian ([font=Courier New][color=#00ffff]ru[/color][/font]): &#128284;
 [*] Turkish ([font=Courier New][color=#00ffff]tr[/color][/font]): &#9989; (thanks to [url=https://www.nexusmods.com/stardewvalley/users/114449313]ExaBronto[/url])
 [*] Chinese ([font=Courier New][color=#00ffff]zh[/color][/font]): &#9989; (thanks to [url=https://github.com/gottyduke]gottyduke[/url])
