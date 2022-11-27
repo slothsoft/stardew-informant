@@ -2,6 +2,9 @@
   "BundleTooltipDecorator" : "Bundles Decorator",
   "BundleTooltipDecorator.Description" : "Marks items that are needed for the bundles",
 
+  "FieldOfficeDecorator" : "Field Office Decorator",
+  "FieldOfficeDecorator.Description" : "Marks items that are needed for the island field office",
+  
   "SellPriceDisplayable" : "Sell Price Decorator",
   "SellPriceDisplayable.Description" : "Adds the sell price at the bottom of the tooltip",
   

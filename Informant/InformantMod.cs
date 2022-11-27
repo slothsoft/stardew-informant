@@ -28,6 +28,7 @@ public class InformantMod : Mod {
         _api.ObjectTooltipGenerators.Add(new MachineTooltipGenerator(modHelper));
         
         _api.ItemDecorators.Add(new BundleDecorator(modHelper));
+        _api.ItemDecorators.Add(new FieldOfficeDecorator(modHelper));
         _api.ItemDecorators.Add(new MuseumDecorator(modHelper));
         _api.ItemDecorators.Add(new ShippingBinDecorator(modHelper));
         
