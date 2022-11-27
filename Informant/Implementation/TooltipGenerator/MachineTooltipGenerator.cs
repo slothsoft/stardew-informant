@@ -51,8 +51,8 @@ internal class MachineTooltipGenerator : ITooltipGenerator<SObject> {
         var displayName = input.DisplayName;
         
         var heldObject = input.heldObject.Value;
-        if (heldObject == null) { 
-            return new Tooltip(displayName);
+        if (heldObject == null || BigCraftableIds.AutoGrabber == input.ParentSheetIndex) { 
+            return new Tooltip(displayName); // we don't show any icon for AutoGrabber
         }
         var heldObjectName = heldObject.DisplayName;
         var daysLeft = CalculateMinutesLeftString(input);
