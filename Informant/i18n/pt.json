@@ -4,6 +4,9 @@
 
   "FieldOfficeDecorator" : "Field Office Decorator",
   "FieldOfficeDecorator.Description" : "Marks items that are needed for the island field office",
+
+  "RarecrowDecorator" : "Rarecrow Decorator",
+  "RarecrowDecorator.Description" : "Marks items that are needed for the rarecrow collection",
   
   "SellPriceDisplayable" : "Marcador de Preço de Venda",
   "SellPriceDisplayable.Description" : "Adiciona o preço de venda na parte inferior da Tooltip",

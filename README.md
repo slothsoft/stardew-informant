@@ -60,8 +60,9 @@ can disable each type.
 There are some decorators, i.e. images displayed on the regular item tooltip, that have a specific meaning:
 
 - ![Bundle Image](./Informant/assets/bundle.png) **Bundles Decorator** - displayed when the item is still needed for the bundles
-- ![Museum Image](./Informant/assets/field_office.png) **Field Office Decorator** - displayed when the item is still needed for the island field office
+- ![Field Office Image](./Informant/assets/field_office.png) **Field Office Decorator** - displayed when the item is still needed for the island field office
 - ![Museum Image](./Informant/assets/museum.png) **Museum Decorator** - displayed when the item is still needed for the museum
+- ![Rarecrow Image](./Informant/assets/rarecrow.png) **Rarecrow Decorator** - displayed when the item is still needed for the rarecrow collection
 - ![Shipping Bin Image](./Informant/assets/shipping_bin.png) **Shipping Decorator** - displayed when the item was not yet shipped
 
 For the **Bundles Decorator**, there is the option to show it on items needed for still locked bundles. On
@@ -99,6 +100,7 @@ entries is:
     "crop": true,
     "fieldoffice": true,
     "fruit-tree": true,
+    "rarecrow": true,
     "machine": true,
     "museum": true,
     "sell-price": true,
@@ -112,21 +114,22 @@ entries is:
 }
 ```
 
-| Key in JSON               | Config Name             | Default Value    | Explanation                                                                                                                                              |
-|---------------------------|-------------------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `DisplayIds.bundles`      | Bundles Decorator       | `true`           | True if the bundle decorator should be activated                                                                                                         |
-| `DisplayIds.crop`         | Crops Tooltip           | `true`           | True if the crops tooltip should be activated                                                                                                            |
-| `DisplayIds.fieldoffice`  | Field Office Decorator  | `true`           | True if the field office decorator tooltip should be activated                                                                                           |
-| `DisplayIds.fruit-tree`   | Fruit Trees Tooltip     | `true`           | True if the fruit trees tooltip should be activated                                                                                                      |
-| `DisplayIds.machine`      | Machines Tooltip        | `true`           | True if the machines tooltip should be activated                                                                                                         |
-| `DisplayIds.museum`       | Museum Decorator        | `true`           | True if the museum decorator should be activated                                                                                                         |
-| `DisplayIds.sell-price`   | Sell Price Decorator    | `true`           | True to show the item's price on the bottom of the tooltip                                                                                               |
-| `DisplayIds.shipping`     | Shipping Decorator      | `true`           | True to marks items that were not shipped yet                                                                                                            |
-| `DisplayIds.tree`         | Trees Tooltip           | `true`           | True if the trees tooltip should be activated                                                                                                            |
-| `DecorateLockedBundles`   | Decorate Locked Bundles | `false`          | `ForNonMachines` displays tooltips only on machines that do work<br>`ForChests` hides tooltips only for chests<br>`Never` displays tooltip on every item |
-| `HideMachineTooltips`     | Hide Machine Tooltips   | `ForNonMachines` | `ForNonMachines` displays tooltips only on machines that do work<br>`ForChests` hides tooltips only for chests<br>`Never` displays tooltip on every item |
-| `TooltipTrigger`          | Tooltip Trigger         | `Hover`          | `Hover` to get tooltips when the mouse hovers over the item<br>`ButtonHeld` to get tooltips only when a button is held                                   |
-| `TooltipTriggerButton`    | Tooltip Button          | `MouseRight`     | If the trigger is `ButtonHeld`, this is the button that triggers the tooltip                                                                             |
+| Key in JSON              | Config Name             | Default Value    | Explanation                                                                                                                                              |
+|--------------------------|-------------------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `DisplayIds.bundles`     | Bundles Decorator       | `true`           | True if the bundle decorator should be activated                                                                                                         |
+| `DisplayIds.crop`        | Crops Tooltip           | `true`           | True if the crops tooltip should be activated                                                                                                            |
+| `DisplayIds.fieldoffice` | Field Office Decorator  | `true`           | True if the field office decorator tooltip should be activated                                                                                           |
+| `DisplayIds.fruit-tree`  | Fruit Trees Tooltip     | `true`           | True if the fruit trees tooltip should be activated                                                                                                      |
+| `DisplayIds.machine`     | Machines Tooltip        | `true`           | True if the machines tooltip should be activated                                                                                                         |
+| `DisplayIds.museum`      | Museum Decorator        | `true`           | True if the museum decorator should be activated                                                                                                         |
+| `DisplayIds.rarecrow`    | Rarecrow Decorator      | `true`           | True if the rarecrow decorator should be activated                                                                                                       |
+| `DisplayIds.sell-price`  | Sell Price Decorator    | `true`           | True to show the item's price on the bottom of the tooltip                                                                                               |
+| `DisplayIds.shipping`    | Shipping Decorator      | `true`           | True to marks items that were not shipped yet                                                                                                            |
+| `DisplayIds.tree`        | Trees Tooltip           | `true`           | True if the trees tooltip should be activated                                                                                                            |
+| `DecorateLockedBundles`  | Decorate Locked Bundles | `false`          | `ForNonMachines` displays tooltips only on machines that do work<br>`ForChests` hides tooltips only for chests<br>`Never` displays tooltip on every item |
+| `HideMachineTooltips`    | Hide Machine Tooltips   | `ForNonMachines` | `ForNonMachines` displays tooltips only on machines that do work<br>`ForChests` hides tooltips only for chests<br>`Never` displays tooltip on every item |
+| `TooltipTrigger`         | Tooltip Trigger         | `Hover`          | `Hover` to get tooltips when the mouse hovers over the item<br>`ButtonHeld` to get tooltips only when a button is held                                   |
+| `TooltipTriggerButton`   | Tooltip Button          | `MouseRight`     | If the trigger is `ButtonHeld`, this is the button that triggers the tooltip                                                                             |
 
 
 

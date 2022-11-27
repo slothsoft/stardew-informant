@@ -7,13 +7,13 @@ namespace Slothsoft.Informant.Implementation.Decorator;
 
 internal class FieldOfficeDecorator : IDecorator<Item> {
 
-    private static Texture2D? _bundle;
+    private static Texture2D? _fieldOffice;
     
     private readonly IModHelper _modHelper;
     
     public FieldOfficeDecorator(IModHelper modHelper) {
         _modHelper = modHelper;
-        _bundle ??= modHelper.ModContent.Load<Texture2D>("assets/field_office.png");
+        _fieldOffice ??= modHelper.ModContent.Load<Texture2D>("assets/field_office.png");
     }
 
     public string Id => "fieldoffice";
@@ -26,7 +26,7 @@ internal class FieldOfficeDecorator : IDecorator<Item> {
             // the field office is not open yet
             return false;
         }    
-        if (_bundle != null && input is SObject obj && !obj.bigCraftable.Value) {
+        if (_fieldOffice != null && input is SObject obj && !obj.bigCraftable.Value) {
             // this method highlights the bones that are still needed, so perfect for this decorator
             return FieldOfficeMenu.highlightBones(obj);
         }
@@ -34,6 +34,6 @@ internal class FieldOfficeDecorator : IDecorator<Item> {
     }
     
     public Decoration Decorate(Item input) {
-        return new Decoration(_bundle!);
+        return new Decoration(_fieldOffice!);
     }
 }
