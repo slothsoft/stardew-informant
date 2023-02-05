@@ -63,5 +63,8 @@
   "Config.HideMachineTooltips": "Verstecke Machinen-Tooltips",
   "Config.HideMachineTooltips.ForNonMachines": "Alle außer Machinen",
   "Config.HideMachineTooltips.ForChests": "Kisten",
-  "Config.HideMachineTooltips.Never": "Keine"
+  "Config.HideMachineTooltips.Never": "Keine",
+  
+  "AquariumTooltipDecorator": "Sternentau Aquarium-Dekoration",
+  "AquariumTooltipDecorator.Description":"Markiert Fische, welche noch nicht dem Sternentau Aquarium gespendet wurden."
 }

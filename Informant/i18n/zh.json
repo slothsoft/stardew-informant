@@ -63,5 +63,8 @@
   "Config.HideMachineTooltips": "隐藏机器信息",
   "Config.HideMachineTooltips.ForNonMachines": "隐藏非机器",
   "Config.HideMachineTooltips.ForChests": "隐藏箱子",
-  "Config.HideMachineTooltips.Never": "永不"
+  "Config.HideMachineTooltips.Never": "永不",
+
+  "AquariumTooltipDecorator": "Stardew Aquarium Decorator",
+  "AquariumTooltipDecorator.Description":"Marks Fish that have not yet been donated to the Stardew Aquarium"
 }

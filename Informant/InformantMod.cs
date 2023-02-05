@@ -32,6 +32,11 @@ public class InformantMod : Mod {
         _api.ItemDecorators.Add(new MuseumDecorator(modHelper));
         _api.ItemDecorators.Add(new RarecrowDecorator(modHelper));
         _api.ItemDecorators.Add(new ShippingBinDecorator(modHelper));
+
+        if (modHelper.ModRegistry.IsLoaded("Cherry.StardewAquarium"))
+        {
+            _api.ItemDecorators.Add(new AquariumDecorator(modHelper));
+        }
         
         // has to be done after registering all the tooltips and decorators
         Helper.Events.GameLoop.GameLaunched += OnGameLaunched;
