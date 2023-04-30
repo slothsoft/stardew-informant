@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Slothsoft.Informant.Api;
-using StardewModdingAPI;
-using StardewValley;
-using SObject = StardewValley.Object;
+
 
 namespace Slothsoft.Informant.Implementation.Decorator;
 
