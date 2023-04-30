@@ -63,5 +63,8 @@
   "Config.HideMachineTooltips": "기계 정보 숨기기",
   "Config.HideMachineTooltips.ForNonMachines": "비기계류에 대해",
   "Config.HideMachineTooltips.ForChests": "상자에 대해",
-  "Config.HideMachineTooltips.Never": "숨기지 않음"
+  "Config.HideMachineTooltips.Never": "숨기지 않음",
+
+  "AquariumTooltipDecorator": "Stardew Aquarium Decorator",
+  "AquariumTooltipDecorator.Description":"Marks Fish that have not yet been donated to the Stardew Aquarium"
 }

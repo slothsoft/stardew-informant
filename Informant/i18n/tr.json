@@ -63,5 +63,8 @@
   "Config.HideMachineTooltips": "Makine İpucunu Gizle",
   "Config.HideMachineTooltips.ForNonMachines": "Makine olmayanlar için",
   "Config.HideMachineTooltips.ForChests": "Sandıklar için",
-  "Config.HideMachineTooltips.Never": "Asla"
+  "Config.HideMachineTooltips.Never": "Asla",
+
+  "AquariumTooltipDecorator": "Stardew Aquarium Decorator",
+  "AquariumTooltipDecorator.Description":"Marks Fish that have not yet been donated to the Stardew Aquarium"
 }
