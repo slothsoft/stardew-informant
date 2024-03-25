@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Slothsoft.Informant.Api;
 using Slothsoft.Informant.Implementation.Decorator;
 using Slothsoft.Informant.Implementation.TooltipGenerator;
+using StardewModdingAPI;
 using StardewValley.TerrainFeatures;
 
 namespace Slothsoft.Informant.Implementation; 

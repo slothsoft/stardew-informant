@@ -32,6 +32,10 @@ internal class TreeTooltipGenerator : ITooltipGenerator<TerrainFeature> {
             case Tree.mushroomTree:
             case Tree.mahoganyTree:
             case Tree.palmTree2:
+            case Tree.greenRainTreeBushy:
+            case Tree.greenRainTreeLeafy:
+            case Tree.greenRainTreeFern:
+            case Tree.mysticTree:
                 return _modHelper.Translation.Get("TreeTooltipGenerator.Type" + tree.treeType.Value);
         }
         return "???";

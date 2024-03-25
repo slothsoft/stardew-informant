@@ -37,7 +37,7 @@ internal class SellPriceDisplayable : IDisplayable {
             original: AccessTools.Method(
                 typeof(SpriteBatch),
                 nameof(SpriteBatch.Draw),
-                new[] {
+                [
                     typeof(Texture2D),
                     typeof(Vector2),
                     typeof(Rectangle?),
@@ -47,7 +47,7 @@ internal class SellPriceDisplayable : IDisplayable {
                     typeof(Vector2),
                     typeof(SpriteEffects),
                     typeof(float),
-                }
+                ]
             ),
             prefix: new HarmonyMethod(typeof(SellPriceDisplayable), nameof(RememberCurrencyCoordinates))
         );

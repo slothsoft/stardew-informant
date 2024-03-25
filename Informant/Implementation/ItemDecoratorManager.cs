@@ -31,7 +31,7 @@ internal class ItemDecoratorManager : IDecoratorManager<Item> {
             original: AccessTools.Method(
                 typeof(IClickableMenu),
                 nameof(IClickableMenu.drawTextureBox),
-                new[] {
+                [
                     typeof(SpriteBatch),
                     typeof(Texture2D),
                     typeof(Rectangle),
@@ -43,7 +43,7 @@ internal class ItemDecoratorManager : IDecoratorManager<Item> {
                     typeof(float),
                     typeof(bool),
                     typeof(float)
-                }
+                ]
             ),
             postfix: new HarmonyMethod(typeof(ItemDecoratorManager), nameof(RememberToolTipCoordinates))
         );
