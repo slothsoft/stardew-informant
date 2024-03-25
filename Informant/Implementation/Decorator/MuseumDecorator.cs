@@ -28,7 +28,10 @@ internal class MuseumDecorator : IDecorator<Item> {
     }
 
     private static bool IsNeeded(Item item) {
-        return Game1.netWorldState.Value.MuseumPieces.Pairs.All(pair => Convert.ToInt32(pair.Value) != item.ParentSheetIndex);
+        return Game1.netWorldState.Value.MuseumPieces.Pairs.All(pair => {
+            _ = int.TryParse(pair.Value, out var parentSheetIndex);
+            return parentSheetIndex != item.ParentSheetIndex;
+        });
     }
 
     public Decoration Decorate(Item input) {
