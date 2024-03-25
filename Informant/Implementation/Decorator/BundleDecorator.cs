@@ -81,7 +81,7 @@ internal class BundleDecorator : IDecorator<Item> {
             var indexStackQuality = bundleDataSplit[2].Split(' ');
             for (var index = 0; index < indexStackQuality.Length; index += 3) {
                 if (!bundlesCompleted[bundleIndex][index / 3]) {
-                    var parentSheetIndex = Convert.ToInt32(indexStackQuality[index]);
+                    int.TryParse(indexStackQuality[index], out var parentSheetIndex);
                     if (parentSheetIndex > 0) {
                         yield return parentSheetIndex;
                     }
