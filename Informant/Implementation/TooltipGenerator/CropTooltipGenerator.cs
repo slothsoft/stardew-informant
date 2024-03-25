@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Slothsoft.Informant.Api;
 using Slothsoft.Informant.Implementation.Common;
 using StardewValley.TerrainFeatures;
+using StardewValley.TokenizableStrings;
 
 namespace Slothsoft.Informant.Implementation.TooltipGenerator;
 
@@ -29,9 +30,11 @@ internal class CropTooltipGenerator : ITooltipGenerator<TerrainFeature> {
 
     internal static Tooltip CreateTooltip(IModHelper modHelper, Crop crop) {
         // for some reason, ginger is displayed as weeds
-        var parentSheetIndex = crop.whichForageCrop.Value == ObjectIds.GingerForageCropId ? ObjectIds.Ginger : crop.indexOfHarvest.Value;
-        var displayName = GameInformation.GetObjectDisplayName(parentSheetIndex);
+        var parentSheetIndexString = crop.whichForageCrop.Value == ObjectIds.GingerForageCropId ? ObjectIds.Ginger : crop.indexOfHarvest.Value;
+        Game1.objectData.TryGetValue(parentSheetIndexString, out var data);
         var daysLeft = CalculateDaysLeftString(modHelper, crop);
+        var displayName = TokenParser.ParseText(data?.DisplayName) ?? ItemRegistry.GetErrorItemName();
+        _ = int.TryParse(parentSheetIndexString, out var parentSheetIndex);
         return new Tooltip($"{displayName}\n{daysLeft}") {
             Icon = Icon.ForParentSheetIndex(
                 parentSheetIndex, 
@@ -61,7 +64,7 @@ internal class CropTooltipGenerator : ITooltipGenerator<TerrainFeature> {
     internal static int CalculateDaysLeft(Crop crop) {
         var currentPhase = crop.currentPhase.Value;
         var dayOfCurrentPhase = crop.dayOfCurrentPhase.Value;
-        var regrowAfterHarvest = crop.regrowAfterHarvest.Value;
+        var regrowAfterHarvest = crop.RegrowsAfterHarvest();
         var cropPhaseDays = crop.phaseDays.ToArray();
 
         // Amaranth:  current = 4 | day = 0 | days = 1, 2, 2, 2, 99999 | result => 0
@@ -77,7 +80,7 @@ internal class CropTooltipGenerator : ITooltipGenerator<TerrainFeature> {
                 if (phase == currentPhase) {
                     result -= dayOfCurrentPhase;
                 }
-            } else if (currentPhase == cropPhaseDays.Length - 1 && regrowAfterHarvest > 0) {
+            } else if (currentPhase == cropPhaseDays.Length - 1 && regrowAfterHarvest) {
                 // calculate the repeating harvests, it seems the dayOfCurrentPhase counts backwards now
                 result = dayOfCurrentPhase;
             }

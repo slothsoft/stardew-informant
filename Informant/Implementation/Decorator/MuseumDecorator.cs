@@ -5,7 +5,7 @@ using Slothsoft.Informant.Api;
 namespace Slothsoft.Informant.Implementation.Decorator;
 
 internal class MuseumDecorator : IDecorator<Item> {
-    private static readonly string[] ValidTypes = {"Arch", "Minerals"};
+    private static readonly string[] ValidTypes = { "Arch", "Minerals" };
 
     private static Texture2D? _museum;
 
@@ -28,7 +28,10 @@ internal class MuseumDecorator : IDecorator<Item> {
     }
 
     private static bool IsNeeded(Item item) {
-        return Game1.netWorldState.Value.MuseumPieces.Pairs.All(pair => pair.Value != item.ParentSheetIndex);
+        return Game1.netWorldState.Value.MuseumPieces.Pairs.All(pair => {
+            _ = int.TryParse(pair.Value, out var parentSheetIndex);
+            return parentSheetIndex != item.ParentSheetIndex;
+        });
     }
 
     public Decoration Decorate(Item input) {

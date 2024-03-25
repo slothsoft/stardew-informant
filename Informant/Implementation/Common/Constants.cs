@@ -7,21 +7,8 @@ using System.Linq;
 namespace Slothsoft.Informant.Implementation.Common;
 
 /// <summary>
-/// Contains constants for all the seasons.
-/// </summary>
-internal static class Seasons {
-    public const string Spring = "spring";
-    public const string Summer = "summer";
-    public const string Fall = "fall";
-    public const string Winter = "winter";
-    public static readonly string[] All = {Spring, Summer, Fall, Winter};
-
-    public const int LengthInDays = 28;
-}
-
-/// <summary>
 /// These constants can be used to compare to <code>Object.ParentSheetIndex</code>.
-/// See https://stardewcommunitywiki.com/Modding:Big_craftables_data
+/// Updated for 1.6
 /// </summary>
 public static class BigCraftableIds {
     public const int BeeHouse = 10;
@@ -56,12 +43,21 @@ public static class BigCraftableIds {
     public const int Deconstructor = 265;
     public const int StatueOfPerfection = 160;
     public const int StatueOfTruePerfection = 280;
+    // 1.6
+    public const int BaitMaker = 285;
+    public const int MushroomLog = 283;
+    public const int Dehydrator = 286;
+    public const int HeavyFurnace = 288;
+    public const int StatueOfBlessings = 290;
+    public const int StatueOfTheDwarfKing = 292;
+    public const int FishSmoker = 296;
+    public const int DeluxeWormbin = 298;
 
     public static readonly int[] AllMachines = {
         BeeHouse, Cask, CheesePress, Keg, Loom, MayonnaiseMachine, OilMaker, PreservesJar,
         BoneMill, CharcoalKiln, Crystalarium, Furnace, GeodeCrusher, HeavyTapper, LightningRod, OstrichIncubator, RecyclingMachine, SeedMaker, SlimeEggPress,
         SlimeIncubator, SlimeIncubator2, SolarPanel, Tapper, WoodChipper, WormBin, Incubator, Incubator2, Incubator3, CoffeeMaker, Deconstructor,
-        StatueOfPerfection, StatueOfTruePerfection
+        StatueOfPerfection, StatueOfTruePerfection, BaitMaker, MushroomLog, Dehydrator, HeavyFurnace, StatueOfBlessings, StatueOfTheDwarfKing, FishSmoker, DeluxeWormbin,
     };
 
     public const int Chest = 130;
@@ -69,9 +65,12 @@ public static class BigCraftableIds {
     public const int MiniFridge = 216;
     public const int StoneChest = 232;
     public const int MiniShippingBin = 248;
+    // 1.6
+    public const int BigChest = 304;
+    public const int BigStoneChest = 328;
 
     public static readonly int[] AllChests = {
-        Chest, JunimoChest, MiniFridge, StoneChest, MiniShippingBin
+        Chest, JunimoChest, MiniFridge, StoneChest, MiniShippingBin, BigChest, BigStoneChest,
     };
 
     public static readonly int[] HousePlants = Enumerable.Range(0, 7 + 1).ToArray();
@@ -212,6 +211,6 @@ public static class BigCraftableIds {
 /// See https://stardewcommunitywiki.com/Modding:Object_data
 /// </summary>
 public static class ObjectIds {
-    public const int GingerForageCropId = 2;
-    public const int Ginger = 829;
+    public const string GingerForageCropId = "2";
+    public const string Ginger = "829";
 }

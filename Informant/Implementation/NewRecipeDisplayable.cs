@@ -27,12 +27,13 @@ internal class NewRecipeDisplayable : IDisplayable {
             original: AccessTools.Method(
                 typeof(ClickableTextureComponent),
                 nameof(ClickableTextureComponent.draw),
-                new[] {
+                [
                     typeof(SpriteBatch),
                     typeof(Color),
                     typeof(float),
                     typeof(int),
-                }
+                    typeof(int),
+                ]
             ),
             postfix: new HarmonyMethod(typeof(NewRecipeDisplayable), nameof(DrawOverlayIfNecessary))
         );
@@ -41,9 +42,9 @@ internal class NewRecipeDisplayable : IDisplayable {
             original: AccessTools.Method(
                 typeof(CraftingPage),
                 nameof(CraftingPage.draw),
-                new[] {
+                [
                     typeof(SpriteBatch),
-                }
+                ]
             ),
             prefix: new HarmonyMethod(typeof(NewRecipeDisplayable), nameof(BeforeCraftingPageDraw)),
             postfix: new HarmonyMethod(typeof(NewRecipeDisplayable), nameof(AfterCraftingPageDraw))

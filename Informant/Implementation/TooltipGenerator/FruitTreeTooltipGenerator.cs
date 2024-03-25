@@ -27,47 +27,48 @@ internal class FruitTreeTooltipGenerator : ITooltipGenerator<TerrainFeature> {
     }
 
     private Tooltip CreateTooltip(FruitTree fruitTree) {
-        var displayName = GameInformation.GetObjectDisplayName(fruitTree.indexOfFruit.Value);
+        var displayName = fruitTree.GetDisplayName();
         var daysLeft = CropTooltipGenerator.ToDaysLeftString(_modHelper, CalculateDaysLeft(fruitTree));
-        return new Tooltip($"{displayName}\n{daysLeft}") {
-            Icon = Icon.ForParentSheetIndex(
-                fruitTree.indexOfFruit.Value, 
-                false, 
-                IPosition.CenterRight,
-                new Vector2(Game1.tileSize / 2, Game1.tileSize / 2)
-            ),
-        };
+        var icon = fruitTree.fruit.Count == 0 ? null :
+            Icon.ForParentSheetIndex(
+                    fruitTree.fruit[0].ParentSheetIndex,
+                    false,
+                    IPosition.CenterRight,
+                    new Vector2(Game1.tileSize / 2, Game1.tileSize / 2)
+                );
+        return new Tooltip($"{displayName}\n{daysLeft}") { Icon = icon };
     }
 
     internal int CalculateDaysLeft(FruitTree fruitTree) {
         var daysLeft = fruitTree.daysUntilMature.Value;
         if (daysLeft <= 0) {
             // if mature, 0 days are left if there are fruits on the tree, else 1 day
-            daysLeft = fruitTree.fruitsOnTree.Value <= 0 ? 1 : 0;
+            daysLeft = fruitTree.fruit.Count <= 0 ? 1 : 0;
         }
         if (daysLeft > 0) {
-            if (fruitTree.currentLocation?.IsGreenhouse ?? false) {
+            if (fruitTree.Location.IsGreenhouse) {
                 // if we are in the greenhouse, we don't need to add anything for seasons
                 return daysLeft;
             }
-            if (fruitTree.currentLocation?.Name.Contains("Island") ?? false) {
+            if (fruitTree.Location.InIslandContext()) {
                 // if we are on the island, we don't need to add anything for seasons
                 return daysLeft;
             }
-            // check that the date we are calculating is in the correct season   
-            var futureDay = Game1.dayOfMonth + daysLeft;
-            var seasonsLeft = futureDay / Seasons.LengthInDays;
-            futureDay %= Seasons.LengthInDays;
+            // check that the date we are calculating is in the correct season
+            var futureDay = Game1.Date.DayOfMonth + daysLeft;
+            int seasonsLeft = futureDay / WorldDate.DaysPerMonth;
+            futureDay %= WorldDate.DaysPerMonth;
 
-            var futureSeasonIndex = Array.IndexOf(Seasons.All, Game1.currentSeason) + seasonsLeft;
-            var futureSeason = Seasons.All[futureSeasonIndex % Seasons.All.Length];
-            while (futureSeason != fruitTree.fruitSeason.Value) {
+            int futureSeasonIndex = Game1.Date.SeasonIndex + seasonsLeft;
+            futureSeasonIndex %= WorldDate.MonthsPerYear;
+            var futureSeason = (Season)futureSeasonIndex;
+            while (!fruitTree.GetData()?.Seasons.Contains(futureSeason) ?? false) {
                 futureSeasonIndex++;
-                futureSeason = Seasons.All[futureSeasonIndex % Seasons.All.Length];
-                daysLeft += Seasons.LengthInDays - futureDay; // add only the remainder of the month
+                futureSeason = (Season)futureSeasonIndex;
+                daysLeft += WorldDate.DaysPerMonth - futureDay; // add only the remainder of the month
                 futureDay = 0; // and after the remainder was added, all following months are fully added
 
-                if (daysLeft > Seasons.All.Length * Seasons.LengthInDays) {
+                if (daysLeft > WorldDate.DaysPerYear) {
                     // daysLeft is now more than one year - which might happen if the fruitSeason is unknown
                     // (or I misspelled "winter" in the seasons constants) -> just ignore this
                     return -1;
