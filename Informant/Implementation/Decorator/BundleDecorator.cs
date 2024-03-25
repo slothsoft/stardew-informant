@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Microsoft.Xna.Framework.Graphics;
 using Slothsoft.Informant.Api;
 using StardewValley.Locations;
 
 namespace Slothsoft.Informant.Implementation.Decorator;
 
-internal class BundleDecorator : IDecorator<Item> {
+internal class BundleDecorator : IDecorator<Item>
+{
 
     private static Texture2D? _bundle;
-    
+    private int? _lastCachedItemQuantity;
+
     private readonly IModHelper _modHelper;
-    
-    public BundleDecorator(IModHelper modHelper) {
+
+    public BundleDecorator(IModHelper modHelper)
+    {
         _modHelper = modHelper;
         _bundle ??= modHelper.ModContent.Load<Texture2D>("assets/bundle.png");
     }
@@ -22,11 +26,12 @@ internal class BundleDecorator : IDecorator<Item> {
     public string DisplayName => _modHelper.Translation.Get("BundleTooltipDecorator");
     public string Description => _modHelper.Translation.Get("BundleTooltipDecorator.Description");
 
-    public bool HasDecoration(Item input) {
+    public bool HasDecoration(Item input)
+    {
         if (_bundle != null && input is SObject obj && !obj.bigCraftable.Value) {
 
             int[]? allowedAreas;
-            
+
             if (!Game1.player.mailReceived.Contains("canReadJunimoText")) {
                 // if player can't read Junimo text, they can't have bundles yet
                 allowedAreas = null;
@@ -34,18 +39,27 @@ internal class BundleDecorator : IDecorator<Item> {
                 // let the community center calculate which bundles are allowed
                 var communityCenter = Game1.getLocationFromName("CommunityCenter") as CommunityCenter;
                 allowedAreas = communityCenter?.areasComplete
-                    .Select((complete, index) => new { complete, index})
+                    .Select((complete, index) => new { complete, index })
                     .Where(area => communityCenter.shouldNoteAppearInArea(area.index) && !area.complete)
                     .Select(area => area.index)
                     .ToArray();
             }
-            
-            return GetNeededItems(allowedAreas, InformantMod.Instance?.Config.DecorateLockedBundles ?? false).Contains(input.ParentSheetIndex);
+
+            var neededItems = GetNeededItems(allowedAreas, InformantMod.Instance?.Config.DecorateLockedBundles ?? false)
+                .Where(kv => kv.Key == input.ParentSheetIndex);
+            if (neededItems.Any() && int.TryParse(neededItems.First().Value, out var neededQuantity)) {
+                _lastCachedItemQuantity = neededQuantity;
+            } else {
+                _lastCachedItemQuantity = null;
+            }
+
+            return neededItems.Any();
         }
         return false;
     }
 
-    internal static IEnumerable<int> GetNeededItems(int[]? allowedAreas, bool decorateLockedBundles) {
+    internal static IEnumerable<KeyValuePair<int, string>> GetNeededItems(int[]? allowedAreas, bool decorateLockedBundles)
+    {
         // BUNDLE DATA
         // ============
         // See https://stardewvalleywiki.com/Modding:Bundles
@@ -83,14 +97,15 @@ internal class BundleDecorator : IDecorator<Item> {
                 if (!bundlesCompleted[bundleIndex][index / 3]) {
                     _ = int.TryParse(indexStackQuality[index], out var parentSheetIndex);
                     if (parentSheetIndex > 0) {
-                        yield return parentSheetIndex;
+                        yield return new KeyValuePair<int, string>(parentSheetIndex, indexStackQuality[index + 1]);
                     }
                 }
             }
         }
     }
-    
-    public Decoration Decorate(Item input) {
-        return new Decoration(_bundle!);
+
+    public Decoration Decorate(Item input)
+    {
+        return new Decoration(_bundle!) { Counter = _lastCachedItemQuantity };
     }
 }
