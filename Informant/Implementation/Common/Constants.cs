@@ -211,6 +211,5 @@ public static class BigCraftableIds {
 /// See https://stardewcommunitywiki.com/Modding:Object_data
 /// </summary>
 public static class ObjectIds {
-    public const string GingerForageCropId = "2";
     public const string Ginger = "829";
 }

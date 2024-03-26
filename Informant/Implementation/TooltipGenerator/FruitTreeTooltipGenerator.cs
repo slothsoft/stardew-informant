@@ -31,8 +31,7 @@ internal class FruitTreeTooltipGenerator : ITooltipGenerator<TerrainFeature> {
         var daysLeft = CropTooltipGenerator.ToDaysLeftString(_modHelper, CalculateDaysLeft(fruitTree));
         var icon = fruitTree.fruit.Count == 0 ? null :
             Icon.ForParentSheetIndex(
-                    fruitTree.fruit[0].ParentSheetIndex,
-                    false,
+                    fruitTree.fruit[0].QualifiedItemId,
                     IPosition.CenterRight,
                     new Vector2(Game1.tileSize / 2, Game1.tileSize / 2)
                 );

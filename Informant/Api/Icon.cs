@@ -12,31 +12,19 @@ public record Icon(Texture2D Texture) {
     /// Create an icon for an Stardew Valley <see cref="SObject"/>. 
     /// </summary>
     public static Icon? ForObject(SObject obj, IPosition? position = null, Vector2? iconSize = null) {
-        return ForParentSheetIndex(obj.ParentSheetIndex, obj.bigCraftable.Value, position, iconSize);
+        return ForParentSheetIndex(obj.QualifiedItemId, position, iconSize);
     }
     
     /// <summary>
     /// Create an icon for a parentSheetIndex and bigCraftable.
     /// </summary>
-    public static Icon? ForParentSheetIndex(int parentSheetIndex, bool bigCraftable, IPosition? position = null, Vector2? iconSize = null) {
+    public static Icon? ForParentSheetIndex(string qualified, IPosition? position = null, Vector2? iconSize = null) {
+        var item = ItemRegistry.GetDataOrErrorItem(qualified);
         position ??= IPosition.TopRight;
         iconSize ??= new Vector2(Game1.tileSize, Game1.tileSize);
-        
-        if (bigCraftable) {
-            if (Game1.bigCraftableSpriteSheet == null) {
-                return null;
-            }
-            return new Icon(Game1.bigCraftableSpriteSheet) {
-                SourceRectangle = SObject.getSourceRectForBigCraftable(parentSheetIndex),
-                Position = position,
-                IconSize = iconSize,
-            };
-        }
-        if (Game1.objectSpriteSheet == null) {
-            return null;
-        }
-        return new Icon(Game1.objectSpriteSheet) {
-            SourceRectangle = Game1.getSourceRectForStandardTileSheet(Game1.objectSpriteSheet, parentSheetIndex, 16, 16),
+
+        return new Icon(item.GetTexture()) {
+            SourceRectangle = item.GetSourceRect(),
             Position = position,
             IconSize = iconSize,
         };

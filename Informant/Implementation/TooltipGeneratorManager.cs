@@ -42,12 +42,12 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
 
     private void OnUpdateTicked(object? sender, UpdateTickedEventArgs e2) {
         if (!Context.IsPlayerFree) {
-            _tooltips.Value = Array.Empty<Tooltip>();
+            _tooltips.Value = [];
             return;
         }
 
         if (!WasTriggered()) {
-            _tooltips.Value = Array.Empty<Tooltip>();
+            _tooltips.Value = [];
             return;
         }
         
