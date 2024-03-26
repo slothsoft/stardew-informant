@@ -70,14 +70,14 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
     private IEnumerable<Tooltip> GenerateTerrainFeatureTooltips() {
         return GenerateTooltips(_terrainFeatureManager, (mousePosX, mousePosY) => 
             Game1.currentLocation.terrainFeatures.Values
-            .Where(t => mousePosX == (int) t.currentTileLocation.X && mousePosY == (int) t.currentTileLocation.Y)
+            .Where(t => mousePosX == (int) t.Tile.X && mousePosY == (int) t.Tile.Y)
             .ToArray());
     }
     
     private static IEnumerable<Tooltip> GenerateTooltips<TTile>(BaseTooltipGeneratorManager<TTile>? manager, Func<int, int, TTile[]> getTilesForPosition) {
         if (manager == null) {
             // if there is no generator in that, we don't need to do anything further
-            return Enumerable.Empty<Tooltip>();
+            return [];
         }
         
         var mouseX = Game1.getOldMouseX();
@@ -86,7 +86,7 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
         var toolbar = Game1.onScreenMenus.FirstOrDefault(m => m is Toolbar);
         if (toolbar != null && toolbar.isWithinBounds(mouseX, mouseY)) {
             // mouse is over the toolbar, so we won't generate tooltips for the map
-            return Enumerable.Empty<Tooltip>();
+            return [];
         }
         
         var mousePosX = (mouseX + Game1.viewport.X) / Game1.tileSize;

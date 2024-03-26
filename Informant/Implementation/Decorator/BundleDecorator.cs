@@ -76,12 +76,12 @@ internal class BundleDecorator : IDecorator<Item> {
                 // bundle was not yet unlocked or already completed
                 continue;
             }
-            var bundleIndex = Convert.ToInt32(bundleTitleSplit[1]);
+            _ = int.TryParse(bundleTitleSplit[1], out var bundleIndex);
             var bundleDataSplit = bundleData[bundleTitle].Split('/');
             var indexStackQuality = bundleDataSplit[2].Split(' ');
             for (var index = 0; index < indexStackQuality.Length; index += 3) {
                 if (!bundlesCompleted[bundleIndex][index / 3]) {
-                    var parentSheetIndex = Convert.ToInt32(indexStackQuality[index]);
+                    _ = int.TryParse(indexStackQuality[index], out var parentSheetIndex);
                     if (parentSheetIndex > 0) {
                         yield return parentSheetIndex;
                     }
