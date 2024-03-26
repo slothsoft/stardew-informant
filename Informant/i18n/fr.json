@@ -30,6 +30,9 @@
   "FruitTreeTooltipGenerator": "Infobulle des arbres fruitier",
   "FruitTreeTooltipGenerator.Description": "Une infobulle qui affiche le type d'arbre fruitier et le temps restant avant la récolte",
 
+  "TeaBushTooltipGenerator": "Tea Bush Tooltip",
+  "TeaBushTooltipGenerator.Description": "A tooltip that displays the remaining days of tea bush",
+
   "MachineTooltipGenerator": "Infobulle des machines",
   "MachineTooltipGenerator.Description": "Une infobulle qui affiche le type de résultat et le temps restant",
   "MachineTooltipGenerator.Finished": "Fini",

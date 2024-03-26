@@ -30,6 +30,9 @@
   "FruitTreeTooltipGenerator": "Meyve Ağacı İpucu",
   "FruitTreeTooltipGenerator.Description": "Meyve ağacının türünü ve hasada kalan gün sayısını gösteren bir ipucu",
 
+  "TeaBushTooltipGenerator": "Tea Bush Tooltip",
+  "TeaBushTooltipGenerator.Description": "A tooltip that displays the remaining days of tea bush",
+
   "MachineTooltipGenerator": "Makine İpucu",
   "MachineTooltipGenerator.Description": "Üretilen nesnenin türünü ve kalan süreyi gösteren bir ipucu",
   "MachineTooltipGenerator.Finished": "Tamamlandı",

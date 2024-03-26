@@ -25,6 +25,7 @@ public class InformantMod : Mod
 
         _api.TerrainFeatureTooltipGenerators.Add(new CropTooltipGenerator(modHelper));
         _api.TerrainFeatureTooltipGenerators.Add(new FruitTreeTooltipGenerator(modHelper));
+        _api.TerrainFeatureTooltipGenerators.Add(new TeaBushTooltipGenerator(modHelper));
         _api.TerrainFeatureTooltipGenerators.Add(new TreeTooltipGenerator(modHelper));
 
         _api.ObjectTooltipGenerators.Add(new MachineTooltipGenerator(modHelper));

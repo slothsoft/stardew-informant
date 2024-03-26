@@ -30,6 +30,9 @@
   "FruitTreeTooltipGenerator": "Fruit Trees Tooltip",
   "FruitTreeTooltipGenerator.Description": "A tooltip that displays the type of fruit tree and remaining days till harvest",
 
+  "TeaBushTooltipGenerator": "Tea Bush Tooltip",
+  "TeaBushTooltipGenerator.Description": "A tooltip that displays the remaining days of tea bush",
+
   "MachineTooltipGenerator": "Machines Tooltip",
   "MachineTooltipGenerator.Description": "A tooltip that displays the type of result and remaining time",
   "MachineTooltipGenerator.Finished": "Finished",
