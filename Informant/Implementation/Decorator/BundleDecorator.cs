@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using Microsoft.Xna.Framework.Graphics;
 using Slothsoft.Informant.Api;
 using StardewValley.Locations;
-using StardewValley.Menus;
 using Color = Microsoft.Xna.Framework.Color;
 using Rectangle = Microsoft.Xna.Framework.Rectangle;
 

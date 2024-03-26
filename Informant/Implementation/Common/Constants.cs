@@ -2,15 +2,14 @@
 // ReSharper disable UnusedMember.Global
 // ReSharper disable UnusedType.Global
 
-using System.Linq;
-
 namespace Slothsoft.Informant.Implementation.Common;
 
 /// <summary>
 /// These constants can be used to compare to <code>Object.ParentSheetIndex</code>.
 /// Updated for 1.6
 /// </summary>
-public static class BigCraftableIds {
+public static class BigCraftableIds
+{
     public const int BeeHouse = 10;
     public const int Cask = 163;
     public const int CheesePress = 16;
@@ -200,7 +199,7 @@ public static class BigCraftableIds {
         WoodLamppost, IronLamppost, Hmtgf, JunimoKartArcadeSystem, PinkyLemon, Foroguemo, SolidGoldLewis, AutoGrabber, DeluxeScarecrow, Barrel, Crate,
         Workbench, MiniJukebox, Telephone, CursedPkArcadeSystem, MiniObelisk, FarmComputer, SewingMachine, AutoPetter, Hopper, Campfire2,
     }).ToArray();
-    
+
     public static readonly int[] AllRarecrows = {
         Rarecrow, Rarecrow2, Rarecrow3, Rarecrow4, Rarecrow5, Rarecrow6, Rarecrow7, Rarecrow8
     };
@@ -210,6 +209,7 @@ public static class BigCraftableIds {
 /// These constants can be used to compare to <code>Object.ParentSheetIndex</code>.
 /// See https://stardewcommunitywiki.com/Modding:Object_data
 /// </summary>
-public static class ObjectIds {
+public static class ObjectIds
+{
     public const string Ginger = "829";
 }

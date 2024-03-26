@@ -1,46 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Linq;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Slothsoft.Informant.Api;
 using StardewModdingAPI.Events;
 using StardewModdingAPI.Utilities;
 using StardewValley.Menus;
 using StardewValley.TerrainFeatures;
+using System.Collections.Immutable;
 
-namespace Slothsoft.Informant.Implementation; 
+namespace Slothsoft.Informant.Implementation;
 
 /// <summary>
 /// Generating tooltips for all kinds of objects is actually pretty similar, that's why this
 /// is only one instance for all <see cref="ITooltipGeneratorManager{TInput}"/> implementations.
 /// </summary>
 
-internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature>, ITooltipGeneratorManager<SObject> {
+internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature>, ITooltipGeneratorManager<SObject>
+{
 
     internal static Rectangle TooltipSourceRect = new(0, 256, 60, 60);
-    
+
     private readonly IModHelper _modHelper;
     private BaseTooltipGeneratorManager<TerrainFeature>? _terrainFeatureManager;
     private BaseTooltipGeneratorManager<SObject>? _objectInformant;
-    
+
     private readonly PerScreen<IEnumerable<Tooltip>?> _tooltips = new();
 
-    public TooltipGeneratorManager(IModHelper modHelper) {
+    public TooltipGeneratorManager(IModHelper modHelper)
+    {
         _modHelper = modHelper;
-        
+
         modHelper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
         modHelper.Events.Display.Rendered += OnRendered;
     }
 
-    IEnumerable<IDisplayable> ITooltipGeneratorManager<SObject>.Generators => 
+    IEnumerable<IDisplayable> ITooltipGeneratorManager<SObject>.Generators =>
         _objectInformant?.Generators.ToImmutableArray() ?? Enumerable.Empty<IDisplayable>();
 
-    IEnumerable<IDisplayable> ITooltipGeneratorManager<TerrainFeature>.Generators => 
+    IEnumerable<IDisplayable> ITooltipGeneratorManager<TerrainFeature>.Generators =>
         _terrainFeatureManager?.Generators.ToImmutableArray() ?? Enumerable.Empty<IDisplayable>();
 
-    private void OnUpdateTicked(object? sender, UpdateTickedEventArgs e2) {
+    private void OnUpdateTicked(object? sender, UpdateTickedEventArgs e2)
+    {
         if (!Context.IsPlayerFree) {
             _tooltips.Value = [];
             return;
@@ -50,11 +50,12 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
             _tooltips.Value = [];
             return;
         }
-        
+
         _tooltips.Value = GenerateObjectTooltips().Concat(GenerateTerrainFeatureTooltips());
     }
 
-    private bool WasTriggered() {
+    private bool WasTriggered()
+    {
         var config = InformantMod.Instance?.Config;
         if (config == null) {
             return false; // something went wrong here!
@@ -67,42 +68,46 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
         };
     }
 
-    private IEnumerable<Tooltip> GenerateTerrainFeatureTooltips() {
-        return GenerateTooltips(_terrainFeatureManager, (mousePosX, mousePosY) => 
+    private IEnumerable<Tooltip> GenerateTerrainFeatureTooltips()
+    {
+        return GenerateTooltips(_terrainFeatureManager, (mousePosX, mousePosY) =>
             Game1.currentLocation.terrainFeatures.Values
-            .Where(t => mousePosX == (int) t.Tile.X && mousePosY == (int) t.Tile.Y)
+            .Where(t => mousePosX == (int)t.Tile.X && mousePosY == (int)t.Tile.Y)
             .ToArray());
     }
-    
-    private static IEnumerable<Tooltip> GenerateTooltips<TTile>(BaseTooltipGeneratorManager<TTile>? manager, Func<int, int, TTile[]> getTilesForPosition) {
+
+    private static IEnumerable<Tooltip> GenerateTooltips<TTile>(BaseTooltipGeneratorManager<TTile>? manager, Func<int, int, TTile[]> getTilesForPosition)
+    {
         if (manager == null) {
             // if there is no generator in that, we don't need to do anything further
             return [];
         }
-        
+
         var mouseX = Game1.getOldMouseX();
         var mouseY = Game1.getOldMouseY();
-        
+
         var toolbar = Game1.onScreenMenus.FirstOrDefault(m => m is Toolbar);
         if (toolbar != null && toolbar.isWithinBounds(mouseX, mouseY)) {
             // mouse is over the toolbar, so we won't generate tooltips for the map
             return [];
         }
-        
+
         var mousePosX = (mouseX + Game1.viewport.X) / Game1.tileSize;
         var mousePosY = (mouseY + Game1.viewport.Y) / Game1.tileSize;
-        
+
         return manager.Generate(getTilesForPosition.Invoke(mousePosX, mousePosY));
     }
-    
-    private IEnumerable<Tooltip> GenerateObjectTooltips() {
-        return GenerateTooltips(_objectInformant, (mousePosX, mousePosY) => 
+
+    private IEnumerable<Tooltip> GenerateObjectTooltips()
+    {
+        return GenerateTooltips(_objectInformant, (mousePosX, mousePosY) =>
             Game1.currentLocation.netObjects.Values
-                .Where(t => mousePosX == (int) t.TileLocation.X && mousePosY == (int) t.TileLocation.Y)
+                .Where(t => mousePosX == (int)t.TileLocation.X && mousePosY == (int)t.TileLocation.Y)
                 .ToArray());
     }
 
-    private void OnRendered(object? sender, RenderedEventArgs e) {
+    private void OnRendered(object? sender, RenderedEventArgs e)
+    {
         if (Context.IsPlayerFree && _tooltips.Value != null) {
             var tooltipsArray = _tooltips.Value.ToArray();
 
@@ -113,7 +118,7 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
             var font = Game1.smallFont;
             var approximateBounds = CalculateApproximateBounds(tooltipsArray, font);
             var extendedBounds = ApplyTooltipIconPositions(approximateBounds, tooltipsArray);
-            
+
             // move both bounds to the right and bottom if the tooltip was extended to the left and / or above
             var diffX = approximateBounds.X - extendedBounds.X;
             var diffY = approximateBounds.Y - extendedBounds.Y;
@@ -121,12 +126,12 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
             approximateBounds.Y += diffY;
             extendedBounds.X += diffX;
             approximateBounds.Y += diffY;
-            
+
             // now we have all the data to create perfect little tooltip
             var startY = approximateBounds.Y;
-            
+
             foreach (var tooltip in tooltipsArray) {
-                var height = Math.Max(60, (int) font.MeasureString(tooltip.Text).Y + Game1.tileSize / 2);
+                var height = Math.Max(60, (int)font.MeasureString(tooltip.Text).Y + Game1.tileSize / 2);
                 DrawSimpleTooltip(Game1.spriteBatch, tooltip, font, extendedBounds with {
                     Y = startY,
                     Height = height,
@@ -136,7 +141,8 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
         }
     }
 
-    private static Rectangle CalculateApproximateBounds(Tooltip[] tooltips, SpriteFont font) {
+    private static Rectangle CalculateApproximateBounds(Tooltip[] tooltips, SpriteFont font)
+    {
         // this join with two linebreaks between the tooltips is a pretty good approximation (for English and German at least)
         var textSize = font.MeasureString(string.Join("\n\n", tooltips.Select(t => t.Text)));
         var height = Math.Max(60, textSize.Y + Game1.tileSize / 2);
@@ -144,20 +150,21 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
         var y = Game1.getOldMouseY() + Game1.tileSize / 2;
 
         if (x + textSize.X > Game1.viewport.Width) {
-            x = (int) (Game1.viewport.Width - textSize.X);
+            x = (int)(Game1.viewport.Width - textSize.X);
             y += Game1.tileSize / 4;
         }
 
         if (y + height > Game1.viewport.Height) {
             x += Game1.tileSize / 4;
-            y = (int) (Game1.viewport.Height - height);
+            y = (int)(Game1.viewport.Height - height);
         }
-        return new Rectangle(x, y, (int) textSize.X + Game1.tileSize / 2, (int) textSize.Y);
+        return new Rectangle(x, y, (int)textSize.X + Game1.tileSize / 2, (int)textSize.Y);
     }
 
-    private static Rectangle ApplyTooltipIconPositions(Rectangle toolTipBounds, params Tooltip[] tooltips) {
+    private static Rectangle ApplyTooltipIconPositions(Rectangle toolTipBounds, params Tooltip[] tooltips)
+    {
         var result = new Rectangle(toolTipBounds.X, toolTipBounds.Y, toolTipBounds.Width, toolTipBounds.Height);
-        
+
         foreach (var tooltip in tooltips) {
             var icon = tooltip.Icon;
             if (icon == null) {
@@ -173,8 +180,9 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
         return result;
     }
 
-    private static void DrawSimpleTooltip(SpriteBatch b, Tooltip tooltip, SpriteFont font, Rectangle textureBoxBounds, Vector2 textPosition) {
-        IClickableMenu.drawTextureBox(b, Game1.menuTexture, TooltipSourceRect, textureBoxBounds.X, textureBoxBounds.Y, 
+    private static void DrawSimpleTooltip(SpriteBatch b, Tooltip tooltip, SpriteFont font, Rectangle textureBoxBounds, Vector2 textPosition)
+    {
+        IClickableMenu.drawTextureBox(b, Game1.menuTexture, TooltipSourceRect, textureBoxBounds.X, textureBoxBounds.Y,
             textureBoxBounds.Width, textureBoxBounds.Height, Color.White);
 
         var position = new Vector2(textPosition.X + Game1.tileSize / 4f, textPosition.Y + Game1.tileSize / 4f + 4);
@@ -192,25 +200,28 @@ internal class TooltipGeneratorManager : ITooltipGeneratorManager<TerrainFeature
                 Height = textureBoxBounds.Height - 2 * border,
             };
             b.Draw(
-                tooltip.Icon.Texture, 
-                tooltip.Icon.CalculateIconPosition(textureBoxBoundsWithoutBorder), 
-                tooltip.Icon.NullSafeSourceRectangle, 
+                tooltip.Icon.Texture,
+                tooltip.Icon.CalculateIconPosition(textureBoxBoundsWithoutBorder),
+                tooltip.Icon.NullSafeSourceRectangle,
                 Color.White
             );
         }
     }
-    
-    public void Add(ITooltipGenerator<TerrainFeature> generator) {
+
+    public void Add(ITooltipGenerator<TerrainFeature> generator)
+    {
         _terrainFeatureManager ??= new BaseTooltipGeneratorManager<TerrainFeature>();
         _terrainFeatureManager.Add(generator);
     }
 
-    public void Remove(string generatorId) {
+    public void Remove(string generatorId)
+    {
         _terrainFeatureManager?.Remove(generatorId);
         _objectInformant?.Remove(generatorId);
     }
 
-    public void Add(ITooltipGenerator<SObject> generator) {
+    public void Add(ITooltipGenerator<SObject> generator)
+    {
         _objectInformant ??= new BaseTooltipGeneratorManager<SObject>();
         _objectInformant.Add(generator);
     }

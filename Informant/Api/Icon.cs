@@ -1,24 +1,27 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Slothsoft.Informant.Api; 
+namespace Slothsoft.Informant.Api;
 
 /// <summary>
 /// All information needed to display an icon somewhere.
 /// </summary>
 /// <param name="Texture">the texture to display.</param>
-public record Icon(Texture2D Texture) {
+public record Icon(Texture2D Texture)
+{
     /// <summary>
     /// Create an icon for an Stardew Valley <see cref="SObject"/>. 
     /// </summary>
-    public static Icon? ForObject(SObject obj, IPosition? position = null, Vector2? iconSize = null) {
+    public static Icon? ForObject(SObject obj, IPosition? position = null, Vector2? iconSize = null)
+    {
         return ForParentSheetIndex(obj.QualifiedItemId, position, iconSize);
     }
-    
+
     /// <summary>
     /// Create an icon for a parentSheetIndex and bigCraftable.
     /// </summary>
-    public static Icon? ForParentSheetIndex(string qualified, IPosition? position = null, Vector2? iconSize = null) {
+    public static Icon? ForParentSheetIndex(string qualified, IPosition? position = null, Vector2? iconSize = null)
+    {
         var item = ItemRegistry.GetDataOrErrorItem(qualified);
         position ??= IPosition.TopRight;
         iconSize ??= new Vector2(Game1.tileSize, Game1.tileSize);
@@ -29,7 +32,7 @@ public record Icon(Texture2D Texture) {
             IconSize = iconSize,
         };
     }
-    
+
     /// <summary>
     /// Optionally defines the source rectangle of the texture. Will be the entire <see cref="Texture"/> if not set. 
     /// </summary>
@@ -45,13 +48,15 @@ public record Icon(Texture2D Texture) {
 
     internal Rectangle NullSafeSourceRectangle => SourceRectangle ?? new Rectangle(0, 0, Texture.Width, Texture.Height);
     private IPosition NullSafePosition => Position ?? IPosition.TopLeft;
-    private Vector2 NullSafeIconSize =>  IconSize ?? new Vector2(NullSafeSourceRectangle.Width, NullSafeSourceRectangle.Height);
+    private Vector2 NullSafeIconSize => IconSize ?? new Vector2(NullSafeSourceRectangle.Width, NullSafeSourceRectangle.Height);
 
-    internal Rectangle CalculateIconPosition(Rectangle tooltipBounds) {
+    internal Rectangle CalculateIconPosition(Rectangle tooltipBounds)
+    {
         return NullSafePosition.CalculateIconPosition(tooltipBounds, NullSafeIconSize);
     }
-    
-    internal Rectangle CalculateTooltipPosition(Rectangle tooltipBounds) {
+
+    internal Rectangle CalculateTooltipPosition(Rectangle tooltipBounds)
+    {
         return NullSafePosition.CalculateTooltipPosition(tooltipBounds, NullSafeIconSize);
     }
 }
